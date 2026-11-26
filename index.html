@@ -1,0 +1,1553 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Inglese facile</title>
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Inglese facile">
+<meta name="theme-color" content="#23473f">
+<style>
+:root{
+  --bg:#f4f3ee; --card:#ffffff; --ink:#1d2a33; --soft:#5b6873; --line:#e2e2da;
+  --green:#23473f; --green2:#2f5d52; --pale:#edf2ee; --yellow:#f7e8a6;
+  --ok:#2d7a4f; --okbg:#e6f3ea; --no:#b2452f; --nobg:#fbeae5; --hint:#8a6a12; --hintbg:#fdf5d9;
+}
+*{box-sizing:border-box}
+html,body{margin:0;background:var(--bg);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;font-size:17px;line-height:1.5;-webkit-text-size-adjust:100%}
+button{font:inherit;color:inherit;cursor:pointer}
+header.top{background:var(--green);color:#fff;padding:22px 20px 20px}
+header.top .kick{letter-spacing:.14em;text-transform:uppercase;font-size:12.5px;font-weight:700;opacity:.8}
+header.top h1{font-family:Georgia,"Times New Roman",serif;font-size:38px;line-height:1.1;margin:6px 0 6px}
+header.top p{margin:0;opacity:.9}
+.stats{display:flex;gap:10px;margin-top:16px;flex-wrap:wrap}
+.pill{background:rgba(255,255,255,.12);border-radius:999px;padding:6px 14px;font-weight:600;font-size:15px}
+main{max-width:640px;margin:0 auto;padding:16px 14px 60px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:22px;padding:20px;margin-bottom:14px}
+.big{display:block;width:100%;text-align:left;background:var(--yellow);border:0;border-radius:18px;padding:18px 20px;margin-bottom:14px}
+.big b{display:block;font-size:20px}
+.big span{color:#5a4d14;font-size:15px}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.tile{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:16px;text-align:left;min-height:104px}
+.tile b{display:block;font-size:17px;margin-bottom:4px}
+.tile span{color:var(--soft);font-size:14px;line-height:1.35;display:block}
+.back{background:none;border:0;color:var(--green);font-weight:700;padding:4px 0;margin-bottom:8px}
+h2{font-family:Georgia,"Times New Roman",serif;font-size:28px;line-height:1.15;margin:4px 0 12px}
+h3{font-size:18px;margin:18px 0 8px}
+.muted{color:var(--soft)}
+.list button{display:flex;width:100%;justify-content:space-between;align-items:center;background:var(--card);border:1px solid var(--line);border-radius:16px;padding:14px 16px;margin-bottom:10px;text-align:left}
+.list .sub{display:block;color:var(--soft);font-size:14px}
+.stars{color:#c99a12;font-size:15px;white-space:nowrap;margin-left:10px}
+.tb{width:100%;border-collapse:collapse;margin:10px 0 6px;font-size:16px}
+.tb th,.tb td{border-bottom:1px solid var(--line);padding:7px 6px;text-align:left;vertical-align:top}
+.tb th{font-size:13px;text-transform:uppercase;letter-spacing:.05em;color:var(--soft)}
+.box{background:var(--pale);border-radius:16px;padding:14px 16px;margin:12px 0}
+.box.warn{background:var(--hintbg)}
+.box .lab{font-weight:700;color:var(--green);display:block;margin-bottom:4px}
+.box.warn .lab{color:var(--hint)}
+.ex{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:9px 0;border-bottom:1px solid var(--line)}
+.ex:last-child{border-bottom:0}
+.ex .it{display:block;color:var(--soft);font-size:14.5px}
+.say{flex:none;background:var(--pale);border:1px solid #d3ddd6;border-radius:12px;padding:6px 12px;font-weight:700;color:var(--green);font-size:14.5px}
+body.novoice .say{display:none!important}
+.btn{background:var(--green);color:#fff;border:0;border-radius:14px;padding:13px 20px;font-weight:700}
+.btn.ghost{background:#fff;color:var(--green);border:1px solid #c9d5cd}
+.btn.wide{width:100%}
+.row{display:flex;gap:10px;flex-wrap:wrap;margin-top:12px}
+.prog{height:8px;background:#e3e3dc;border-radius:99px;overflow:hidden;margin:6px 0 14px}
+.prog i{display:block;height:100%;background:var(--green2);border-radius:99px;transition:width .3s}
+.qtop{display:flex;justify-content:space-between;color:var(--soft);font-size:14px;font-weight:600}
+.ask{color:var(--soft);font-size:15px;margin:6px 0 4px}
+.q{font-size:22px;line-height:1.45;margin:6px 0 16px}
+.gap{display:inline-block;min-width:70px;border-bottom:3px solid var(--green2);margin:0 4px;color:var(--green2);font-weight:700;text-align:center}
+.opts{display:grid;gap:10px}
+.opt{background:#fff;border:2px solid var(--line);border-radius:14px;padding:13px 16px;text-align:left;font-size:18px;font-weight:600}
+.opt:disabled{opacity:.45}
+.opt.right{border-color:var(--ok);background:var(--okbg);opacity:1}
+.opt.wrong{border-color:var(--no);background:var(--nobg)}
+input.ans{width:100%;font-size:20px;padding:13px 14px;border:2px solid #c9d1cb;border-radius:14px;background:#fff;outline:none}
+input.ans:focus{border-color:var(--green2)}
+.fb{border-radius:16px;padding:13px 16px;margin-top:14px;font-size:16px}
+.fb.ok{background:var(--okbg);color:#1f5a39}
+.fb.no{background:var(--nobg);color:#7d2f1f}
+.fb.hint{background:var(--hintbg);color:#6b520c}
+.fb.info{background:var(--pale);color:var(--green)}
+.fb b{display:block;margin-bottom:2px}
+.link{background:none;border:0;color:var(--green);text-decoration:underline;padding:0;font-weight:600;font-size:15px}
+.tries{display:flex;gap:6px;margin-top:10px}
+.tries i{width:12px;height:12px;border-radius:50%;background:#dcdcd4}
+.tries i.used{background:#d99a87}
+.res{padding:10px 0;border-bottom:1px solid var(--line);font-size:15.5px}
+.res:last-child{border-bottom:0}
+.score{font-family:Georgia,serif;font-size:56px;line-height:1;color:var(--green);margin:6px 0}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin:10px 0}
+.chip{border:1px solid #c9d5cd;background:#fff;border-radius:999px;padding:7px 13px;font-size:14.5px;font-weight:600}
+.chip.on{background:var(--green);color:#fff;border-color:var(--green)}
+.song .ttl{font-family:Georgia,serif;font-size:26px;line-height:1.3;margin:8px 0 4px}
+.song .by{color:var(--soft);margin-bottom:14px}
+.yt{display:inline-block;margin-top:8px;color:var(--green);font-weight:700}
+.sheet{position:fixed;inset:0;background:rgba(20,30,28,.45);display:flex;align-items:flex-end;z-index:20}
+.sheet .in{background:var(--bg);width:100%;max-height:86vh;overflow:auto;border-radius:22px 22px 0 0;padding:18px 16px 40px}
+.sheet .in .close{position:sticky;top:0;float:right}
+.toggle{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:10px 0;border-bottom:1px solid var(--line)}
+.sw{width:52px;height:30px;border-radius:99px;background:#cfd3cc;border:0;position:relative;flex:none}
+.sw::after{content:"";position:absolute;top:3px;left:3px;width:24px;height:24px;border-radius:50%;background:#fff;transition:left .2s}
+.sw.on{background:var(--green2)}
+.sw.on::after{left:25px}
+.dlg{background:var(--pale);border-radius:14px;padding:10px 14px;margin:6px 0 12px;font-size:17px;line-height:1.5}
+.dlg div{padding:3px 0}
+.built{min-height:56px;border:2px dashed #c9d1cb;border-radius:14px;padding:8px;display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-bottom:10px}
+.tiles{display:flex;flex-wrap:wrap;gap:8px}
+.tw{background:#fff;border:2px solid var(--line);border-radius:12px;padding:9px 13px;font-size:17px;font-weight:600}
+.tw.on{background:var(--okbg);border-color:#bcd9c6}
+.tw:disabled{opacity:.3}
+.bar{height:8px;background:#e3e3dc;border-radius:99px;overflow:hidden;margin-top:6px}
+.bar i{display:block;height:100%;background:var(--green2)}
+.big.comp{background:var(--green);color:#fff}
+.big.comp span{color:#d9e6df}
+.cd{font-family:Georgia,serif;font-size:44px;line-height:1;color:var(--green)}
+.exb{background:#f6f3e4;border-radius:12px;padding:9px 13px;margin:6px 0 10px;font-size:15.5px;color:#4a4528}
+.exb .lab{display:block;font-weight:700;font-size:12.5px;letter-spacing:.06em;text-transform:uppercase;color:#8a6a12}
+.exb .exa{color:var(--ok);font-weight:700}
+.gapx{display:inline-block;min-width:34px;border-bottom:2px solid #b9ab6a;text-align:center}
+small{font-size:13.5px}
+</style>
+</head>
+<body class="novoice">
+<header class="top" id="hdr"></header>
+<main id="app"></main>
+<div id="sheet"></div>
+
+<script>
+/* =========================================================
+   CONTENUTI
+   q: frase ("___" = spazio da completare)
+   m: opzioni a scelta (a = indice giusto)  |  w: risposte accettate
+   h: aiutino   y: perché
+   ========================================================= */
+const TOPICS = [
+{
+ id:"pron", t:"Pronomi personali", s:"I, you, he… e me, him, her…",
+ ask:"Completa con il pronome giusto.",
+ rule:`<p>In inglese il <b>soggetto si scrive sempre</b>. In italiano dici «è simpatica», in inglese devi dire chi: <b>She</b> is nice.</p>
+ <table class="tb"><tr><th>Italiano</th><th>Soggetto</th><th>Complemento</th></tr>
+ <tr><td>io</td><td><b>I</b></td><td>me</td></tr>
+ <tr><td>tu</td><td><b>you</b></td><td>you</td></tr>
+ <tr><td>lui</td><td><b>he</b></td><td>him</td></tr>
+ <tr><td>lei</td><td><b>she</b></td><td>her</td></tr>
+ <tr><td>cosa o animale</td><td><b>it</b></td><td>it</td></tr>
+ <tr><td>noi</td><td><b>we</b></td><td>us</td></tr>
+ <tr><td>voi</td><td><b>you</b></td><td>you</td></tr>
+ <tr><td>loro</td><td><b>they</b></td><td>them</td></tr></table>
+ <p><b>Soggetto</b>: prima del verbo, è chi fa l'azione. <b>Complemento</b>: dopo il verbo o dopo parole come <i>for, with, at</i>.</p>
+ <p><b>I</b> (io) si scrive sempre maiuscolo.</p>`,
+ ex:[["She is my friend.","Lei è mia amica."],["I like him.","Lui mi piace."],["It's cold.","Fa freddo."],["Look at them!","Guardali!"]],
+ trap:"Per il tempo e l'ora serve sempre it: «È tardi» = It's late. «Is late» da solo è sbagliato.",
+ pr:[["he","«hii», con la h soffiata"],["she","«scii»"],["they","«dhei»: punta della lingua tra i denti"],["them","«dhem»"],["you","«iù»"]],
+ qs:[
+  {q:"___ is my brother. His name is Luca.",m:["He","Him","His"],a:0,h:"Prima del verbo serve il soggetto.",y:"Prima del verbo (is) va il soggetto. Luca è maschio → He."},
+  {q:"Look at ___! She's so funny.",m:["she","her","he"],a:1,h:"Dopo «look at» serve il complemento.",y:"Dopo look at serve il complemento: lei → her."},
+  {q:"My dog is very old. ___ is twelve.",w:["it"],h:"Per animali e cose c'è un pronome tutto suo.",y:"Il cane è un animale → it."},
+  {q:"Can you help ___? (noi)",w:["us"],h:"Dopo il verbo serve il complemento di «noi».",y:"Noi come complemento = us."},
+  {q:"Marco and I are friends. ___ are in the same class.",w:["we"],h:"Marco e io = noi.",y:"Marco and I = noi, soggetto → we."},
+  {q:"I love ___. (loro)",m:["they","them","their"],a:1,h:"Dopo il verbo serve il complemento.",y:"Dopo love serve il complemento di loro → them."},
+  {q:"Where are Anna and Sara? I can't see ___.",w:["them"],h:"Anna e Sara = loro. Dopo «see» serve il complemento.",y:"Loro come complemento = them."},
+  {q:"___ is cold today.",m:["It","Is","He"],a:0,h:"In inglese il soggetto c'è sempre, anche quando parli del tempo.",y:"Per il tempo si usa it: It is cold."},
+  {q:"This present is for ___. (te)",w:["you"],h:"Tu e te in inglese sono la stessa parola.",y:"You va bene sia come soggetto sia come complemento."},
+  {q:"Paul is nice. I like ___.",m:["he","him","his"],a:1,h:"Dopo «like» serve il complemento.",y:"Dopo like serve il complemento: lui → him."},
+  {q:"___ am fifteen. (io)",w:["I"],h:"È la parola più corta dell'inglese.",y:"Io = I, sempre maiuscolo."},
+  {q:"Sara and Tom? ___ are at school.",m:["They","Them","We"],a:0,h:"Sara e Tom = loro, prima del verbo.",y:"Soggetto di loro → They."}
+ ]
+},
+{
+ id:"be", t:"Verbo to be (essere)", s:"am, is, are",
+ ask:"Completa con la forma giusta di to be.",
+ rule:`<p><b>To be</b> = essere. Al presente ha tre forme: <b>am</b>, <b>is</b>, <b>are</b>.</p>
+ <table class="tb"><tr><th>Affermativa</th><th>Breve</th><th>Negativa</th><th>Domanda</th></tr>
+ <tr><td>I am</td><td>I'm</td><td>I'm not</td><td>Am I?</td></tr>
+ <tr><td>you are</td><td>you're</td><td>you aren't</td><td>Are you?</td></tr>
+ <tr><td>he / she / it is</td><td>he's</td><td>he isn't</td><td>Is he?</td></tr>
+ <tr><td>we are</td><td>we're</td><td>we aren't</td><td>Are we?</td></tr>
+ <tr><td>they are</td><td>they're</td><td>they aren't</td><td>Are they?</td></tr></table>
+ <div class="box"><span class="lab">Trucco per non sbagliare</span><b>am</b> solo con I. <b>is</b> con he, she, it e con una persona o una cosa sola (Tom is, the cat is). <b>are</b> con tutto il resto.</div>
+ <p><b>Domanda</b>: il verbo va prima del soggetto. You are → <b>Are you</b>…?</p>
+ <p><b>Risposte brevi</b>: Yes, I am. / No, I'm not. — Yes, she is. / No, she isn't.</p>`,
+ ex:[["I'm fourteen.","Ho quattordici anni."],["She isn't at home.","Lei non è a casa."],["Are you Italian? Yes, I am.","Sei italiana? Sì."],["They're my cousins.","Sono i miei cugini."]],
+ trap:"Nella risposta breve col sì niente forma corta: «Yes, I am», mai «Yes, I'm».",
+ pr:[["am","«em»"],["are","«aa»: la r quasi non si sente"],["is","«iz», la s vibra come una zanzara"],["I'm","«aim»"],["they're","«dhea»"],["isn't","«iznt»"],["aren't","«aant»"]],
+ qs:[
+  {q:"I ___ fourteen.",m:["am","is","are"],a:0,h:"Con I c'è una forma sola.",y:"Con I si usa sempre am."},
+  {q:"My parents ___ at home.",m:["is","are","am"],a:1,h:"Parents sono più persone.",y:"My parents = they → are."},
+  {q:"She ___ my best friend.",w:["is","'s"],h:"She = una persona sola.",y:"Con he, she, it si usa is."},
+  {q:"We ___ tired. (negativo)",w:["aren't","are not","'re not"],h:"Prendi la forma di «we» e aggiungi la negazione.",y:"We are + not = we aren't."},
+  {q:"___ you from Naples?",w:["are"],h:"Nelle domande il verbo va prima del soggetto.",y:"Domanda con you: Are you…?"},
+  {q:"Is Tom your brother? — Yes, he ___.",m:["is","'s","isn't"],a:0,h:"Col sì, niente forma corta.",y:"Risposta breve col sì: Yes, he is."},
+  {q:"Is it cold? — No, it ___.",w:["isn't","is not","'s not"],h:"Risposta breve col no.",y:"No, it isn't."},
+  {q:"The cat ___ under the table.",m:["is","are","am"],a:0,h:"Un gatto solo = it.",y:"The cat = it → is."},
+  {q:"___ not hungry. (io, forma breve)",w:["I'm"],h:"I + am attaccati con l'apostrofo.",y:"I am = I'm."},
+  {q:"___ your friends nice?",m:["Is","Are","Am"],a:1,h:"Friends sono più persone.",y:"Your friends = they → Are."},
+  {q:"Where ___ my keys?",w:["are"],h:"Keys finisce in -s: sono più chiavi.",y:"Keys è plurale → are."},
+  {q:"Laura and I ___ in the same class.",m:["are","is","am"],a:0,h:"Laura e io = noi.",y:"Laura and I = we → are."}
+ ]
+},
+{
+ id:"art", t:"Articoli a, an, the", s:"un, uno, una, il, la…",
+ ask:"Scegli o scrivi l'articolo giusto.",
+ rule:`<p><b>a / an</b> = un, uno, una. Si usano solo con una cosa sola.</p>
+ <table class="tb"><tr><th>Quando</th><th>Esempi</th></tr>
+ <tr><td><b>a</b> + suono di consonante</td><td>a book, a dog, a university</td></tr>
+ <tr><td><b>an</b> + suono di vocale</td><td>an apple, an egg, an hour</td></tr></table>
+ <div class="box"><span class="lab">Trucco</span>Decide il suono iniziale. <i>University</i> si legge «iuniversiti» → <b>a</b> university. <i>Hour</i> si legge «aua», la h è muta → <b>an</b> hour.</div>
+ <p><b>the</b> = il, lo, la, i, gli, le. È uguale per maschile, femminile, singolare e plurale.</p>
+ <p>Con i <b>mestieri</b> metti sempre a/an: Lei è medico = She's <b>a</b> doctor.</p>`,
+ ex:[["I've got a cat and an old bike.","Ho un gatto e una bici vecchia."],["The sun is hot.","Il sole è caldo."],["My mum is a teacher.","Mia mamma è insegnante."]],
+ trap:"In italiano dici «è medico», in inglese serve l'articolo: He's a doctor.",
+ pr:[["a","una «e» leggerissima"],["an","«en»"],["the book","davanti a consonante «dhe»"],["the apple","davanti a vocale «dhi»"]],
+ qs:[
+  {q:"I've got ___ orange.",m:["a","an"],a:1,h:"Orange comincia con una vocale.",y:"Suono di vocale → an orange."},
+  {q:"She's got ___ cat.",m:["a","an"],a:0,h:"Cat comincia con una consonante.",y:"Suono di consonante → a cat."},
+  {q:"It's ___ umbrella.",m:["a","an"],a:1,h:"Umbrella comincia con la u, che qui si legge «a».",y:"Suono di vocale → an umbrella."},
+  {q:"He's ___ university student.",m:["a","an"],a:0,h:"Come si legge university all'inizio?",y:"University si legge «iuniversiti»: suono di consonante → a."},
+  {q:"It's ___ hour from Naples.",m:["a","an"],a:1,h:"In hour la h non si legge.",y:"Hour si legge «aua»: suono di vocale → an."},
+  {q:"My mum is ___ teacher.",w:["a"],h:"Con i mestieri serve l'articolo un/una.",y:"Mestiere → a teacher."},
+  {q:"Can you close ___ door, please? (la porta)",w:["the"],h:"La porta: articolo determinativo.",y:"Il, la, lo… = the."},
+  {q:"___ sun is hot today.",m:["A","The","An"],a:1,h:"Di sole ce n'è uno solo.",y:"Una cosa unica e conosciuta → the."},
+  {q:"He's got ___ old bike.",w:["an"],h:"Guarda la parola subito dopo lo spazio: old.",y:"Old comincia con un suono di vocale → an."},
+  {q:"She's ___ actress.",m:["a","an"],a:1,h:"Actress comincia con una vocale.",y:"Suono di vocale → an actress."},
+  {q:"There's ___ apple on the table.",w:["an"],h:"Apple comincia con una vocale.",y:"Suono di vocale → an apple."},
+  {q:"My dad is ___ engineer.",m:["a","an"],a:1,h:"Engineer comincia con una vocale.",y:"Mestiere con suono di vocale → an engineer."}
+ ]
+},
+{
+ id:"plur", t:"Il plurale", s:"books, boxes, babies, children…",
+ ask:"Scrivi il plurale.",
+ rule:`<p>Di solito aggiungi <b>-s</b>: book → book<b>s</b>.</p>
+ <table class="tb"><tr><th>Se la parola finisce con</th><th>Fai così</th></tr>
+ <tr><td>s, ss, sh, ch, x, o</td><td><b>-es</b>: bus → buses, box → boxes, watch → watches, tomato → tomatoes</td></tr>
+ <tr><td>consonante + y</td><td><b>-ies</b>: baby → babies, city → cities</td></tr>
+ <tr><td>vocale + y</td><td>solo <b>-s</b>: boy → boys, day → days</td></tr>
+ <tr><td>f / fe</td><td><b>-ves</b>: knife → knives, leaf → leaves</td></tr></table>
+ <div class="box"><span class="lab">Irregolari da imparare a memoria</span>man → men · woman → women · child → children · person → people · foot → feet · tooth → teeth · mouse → mice · fish → fish · sheep → sheep</div>
+ <div class="box"><span class="lab">I cognomi delle famiglie</span><b>the</b> + cognome + <b>s</b>: the Smiths = la famiglia Smith, the Rossis = la famiglia Rossi.</div>
+ <h3>Nomi che cambiano numero</h3>
+ <p><b>Plurali in inglese</b>, singolari in italiano: people (la gente), the police (la polizia), stairs (la scala). Sempre plurali anche jeans, trousers (pantaloni), glasses (occhiali), scissors (forbici): My jeans <b>are</b> new.</p>
+ <p><b>Singolari in inglese</b>, plurali in italiano: hair (i capelli), news (le notizie), homework (i compiti), information (le informazioni), furniture (i mobili), advice (i consigli). My hair <b>is</b> long.</p>`,
+ ex:[["two boxes","due scatole"],["three children","tre bambini"],["my feet","i miei piedi"],["These people are nice.","Queste persone sono simpatiche."]],
+ trap:"People è già plurale: people are, mai people is.",
+ pr:[["cats","finale «s» secca"],["dogs","finale «z» che vibra"],["buses","«basiz»: una sillaba in più"],["watches","«uòciz»"],["women","«uimin»"]],
+ qs:[
+  {q:"one box, two ___",w:["boxes"],h:"Finisce in x.",y:"Dopo x si aggiunge -es."},
+  {q:"one baby, three ___",w:["babies"],h:"Prima della y c'è una consonante.",y:"Consonante + y → -ies."},
+  {q:"one boy, two ___",w:["boys"],h:"Prima della y c'è una vocale.",y:"Vocale + y → basta la -s."},
+  {q:"one child, four ___",w:["children"],h:"È uno degli irregolari.",y:"Child → children, irregolare."},
+  {q:"one woman, two ___",w:["women"],h:"Irregolare: cambia una lettera in mezzo.",y:"Woman → women."},
+  {q:"one knife, two ___",m:["knifes","knives","knifs"],a:1,h:"Le parole in -fe cambiano finale.",y:"-f/-fe → -ves."},
+  {q:"one watch, two ___",w:["watches"],h:"Finisce in ch.",y:"Dopo ch si aggiunge -es."},
+  {q:"one foot, two ___",m:["foots","feet","feets"],a:1,h:"Irregolare: cambiano le vocali.",y:"Foot → feet."},
+  {q:"one city, five ___",w:["cities"],h:"Prima della y c'è una consonante.",y:"Consonante + y → -ies."},
+  {q:"one person, ten ___",m:["persons","people","peoples"],a:1,h:"È una parola diversa.",y:"Il plurale di uso comune di person è people."},
+  {q:"one tooth, two ___",w:["teeth"],h:"Funziona come foot → feet.",y:"Tooth → teeth."},
+  {q:"These people ___ very nice.",m:["is","are"],a:1,h:"People è già plurale.",y:"People è plurale → are."},
+  {q:"one man, three ___",w:["men"],h:"Irregolare: cambia la vocale.",y:"Man → men."},
+  {q:"one fish, two ___",m:["fishes","fish","fishs"],a:1,h:"Questo animale resta uguale.",y:"Fish al plurale resta fish, come sheep."},
+  {q:"La famiglia Smith = the ___",w:["Smiths"],h:"Cognome + s.",y:"The Smiths = la famiglia Smith."},
+  {q:"My hair ___ long.",m:["is","are"],a:0,h:"Hair in inglese è singolare.",y:"Hair è singolare → is."},
+  {q:"My jeans ___ new.",m:["is","are"],a:1,h:"Jeans è sempre plurale.",y:"Jeans è plurale → are."},
+  {q:"The news ___ good today.",m:["is","are"],a:0,h:"News sembra plurale ma è singolare.",y:"News è singolare → is."},
+  {q:"My homework ___ difficult.",m:["is","are"],a:0,h:"Homework in inglese è singolare.",y:"Homework è singolare → is."},
+  {q:"The police ___ here.",m:["is","are"],a:1,h:"Police in inglese è plurale.",y:"The police è plurale → are."}
+ ]
+},
+{
+ id:"demo", t:"This, that, these, those", s:"questo, quello, questi, quelli",
+ ask:"Scegli o scrivi la parola giusta.",
+ rule:`<table class="tb"><tr><th></th><th>Vicino a te</th><th>Lontano da te</th></tr>
+ <tr><td>una cosa</td><td><b>this</b> (questo, questa)</td><td><b>that</b> (quello, quella)</td></tr>
+ <tr><td>più cose</td><td><b>these</b> (questi, queste)</td><td><b>those</b> (quelli, quelle)</td></tr></table>
+ <p>Dopo <b>this / that</b> il nome è singolare: this book. Dopo <b>these / those</b> il nome è plurale: these books.</p>
+ <div class="box"><span class="lab">Trucco</span>Le parole lunghe vanno con le cose tante: <b>these</b> e <b>those</b> hanno più lettere e servono per il plurale.</div>`,
+ ex:[["This is my phone.","Questo è il mio telefono."],["Is that your house?","Quella è casa tua?"],["These shoes are new.","Queste scarpe sono nuove."],["Look at those birds!","Guarda quegli uccelli!"]],
+ trap:"This e these si somigliano: this ha la i corta, these ha la i lunga e finisce con un suono «z».",
+ pr:[["this","«dhis», i corta"],["these","«dhiiz», i lunga"],["that","«dhet»"],["those","«dhouz»"]],
+ qs:[
+  {q:"___ is my book. (qui, vicino a me)",m:["This","That","These"],a:0,h:"Una cosa sola, vicina.",y:"Singolare e vicino → this."},
+  {q:"Look at ___ birds in the sky!",m:["this","these","those"],a:2,h:"Sono tanti e sono lontani.",y:"Plurale e lontano → those."},
+  {q:"___ shoes are new. (queste)",m:["This","These","Those"],a:1,h:"Più cose, vicine.",y:"Plurale e vicino → these."},
+  {q:"Is ___ your house over there?",m:["this","that","those"],a:1,h:"Over there = laggiù.",y:"Singolare e lontano → that."},
+  {q:"questo telefono = ___ phone",w:["this"],h:"Una cosa sola, vicina.",y:"Questo → this."},
+  {q:"quelle ragazze = ___ girls",w:["those"],h:"Più persone, lontane.",y:"Quelle → those."},
+  {q:"queste mele = ___ apples",w:["these"],h:"Più cose, vicine.",y:"Queste → these."},
+  {q:"quel cane = ___ dog",w:["that"],h:"Una cosa sola, lontana.",y:"Quel → that."},
+  {q:"___ are my friends, Tom and Sara. (qui con me)",m:["This","These","Those"],a:1,h:"Sono due persone, vicine.",y:"Plurale e vicino → These."},
+  {q:"These ___ are expensive. (book)",w:["books"],h:"Dopo these il nome va al plurale.",y:"These + plurale → books."},
+  {q:"What's ___ over there?",m:["this","that","these"],a:1,h:"Over there = laggiù, una cosa.",y:"Singolare e lontano → that."}
+ ]
+},
+{
+ id:"adj", t:"Aggettivi, colori, forme, tempo", s:"a red car, round, It's sunny",
+ ask:"Completa con l'aggettivo giusto.",
+ rule:`<div class="box"><span class="lab">Regola 1</span>L'aggettivo va <b>prima del nome</b>: una macchina rossa = a <b>red car</b>.</div>
+ <div class="box"><span class="lab">Regola 2</span>L'aggettivo <b>non cambia mai</b>: niente maschile, femminile o plurale. a red car, two red cars, an old man, an old woman.</div>
+ <p>Dopo il verbo essere resta uguale: The cars are <b>red</b>.</p>
+ <h3>I colori</h3><p>red rosso · blue blu, azzurro · green verde · yellow giallo · orange arancione · pink rosa · purple viola · brown marrone · black nero · white bianco · grey grigio</p>
+ <h3>Le forme</h3><p>round rotondo · square quadrato · triangular triangolare · rectangular rettangolare · oval ovale</p>
+ <h3>Il tempo atmosferico</h3><p>Si comincia sempre con <b>It's</b>: It's sunny (c'è il sole) · It's cloudy (è nuvoloso) · It's rainy (è piovoso) · It's windy (c'è vento) · It's foggy (c'è nebbia) · It's snowy (nevoso) · It's hot / warm / cold (fa caldo / fa tiepido / fa freddo)</p>`,
+ ex:[["I've got a red bike.","Ho una bici rossa."],["They are nice girls.","Sono ragazze simpatiche."],["The ball is round.","La palla è rotonda."],["It's sunny today.","Oggi c'è il sole."]],
+ trap:"Mai la -s sull'aggettivo: two black cats, mai «two blacks cats».",
+ pr:[["purple","«pöpol»"],["yellow","«ielou»"],["square","«skuea»"],["sunny","«sani»"],["cloudy","«klaudi»"]],
+ qs:[
+  {q:"Ho una macchina rossa = I've got ___.",m:["a red car","a car red","a reds car"],a:0,h:"L'aggettivo va prima del nome.",y:"Aggettivo + nome: a red car."},
+  {q:"Due gatti neri = two ___",m:["black cats","cats black","blacks cats"],a:0,h:"Prima l'aggettivo, e l'aggettivo non cambia.",y:"Two black cats: aggettivo prima e senza -s."},
+  {q:"My shoes are ___. (nere)",w:["black"],h:"Il colore del nero.",y:"Nero = black, uguale anche al plurale."},
+  {q:"She's got ___ eyes. (azzurri)",m:["blue","blues"],a:0,h:"L'aggettivo non prende la -s.",y:"Blue resta uguale anche con eyes."},
+  {q:"A football is ___. (rotondo)",w:["round"],h:"La forma del cerchio.",y:"Rotondo = round."},
+  {q:"This table is ___. (quadrato)",w:["square"],h:"Quattro lati uguali.",y:"Quadrato = square."},
+  {q:"C'è il sole = It's ___.",w:["sunny"],h:"Sun + ny.",y:"C'è il sole → It's sunny."},
+  {q:"È nuvoloso = It's ___.",w:["cloudy"],h:"Cloud = nuvola.",y:"Nuvoloso → cloudy."},
+  {q:"C'è vento = It's ___.",w:["windy"],h:"Wind = vento.",y:"C'è vento → It's windy."},
+  {q:"It's ___ old house.",m:["an","a"],a:0,h:"Guarda la parola subito dopo: old.",y:"Old comincia con una vocale → an old house."},
+  {q:"Il cielo è grigio = The sky is ___.",w:["grey","gray"],h:"Il colore delle nuvole di pioggia.",y:"Grigio = grey."},
+  {q:"They are ___ girls. (simpatiche)",m:["nice","nices"],a:0,h:"L'aggettivo non cambia mai.",y:"Nice resta uguale anche al plurale."},
+  {q:"Fa freddo = It's ___.",w:["cold"],h:"Il contrario di hot.",y:"Fa freddo → It's cold."}
+ ]
+},
+{
+ id:"qw", t:"Le parole per fare domande", s:"who, what, where, when, how…",
+ ask:"Completa la domanda.",
+ rule:`<table class="tb"><tr><th>Inglese</th><th>Italiano</th></tr>
+ <tr><td><b>Who</b></td><td>chi</td></tr><tr><td><b>What</b></td><td>che cosa, quale</td></tr>
+ <tr><td><b>Where</b></td><td>dove</td></tr><tr><td><b>When</b></td><td>quando</td></tr>
+ <tr><td><b>How</b></td><td>come</td></tr><tr><td><b>How old</b></td><td>quanti anni</td></tr>
+ <tr><td><b>What colour</b></td><td>di che colore</td></tr><tr><td><b>What shape</b></td><td>di che forma</td></tr>
+ <tr><td><b>What nationality</b></td><td>di che nazionalità</td></tr></table>
+ <p>Dopo la parola della domanda viene il verbo e poi il soggetto: Where <b>are you</b>…? How old <b>is she</b>?</p>
+ <div class="box"><span class="lab">Domande che si traducono in modo diverso</span>
+ Com'è? = What <b>is</b> it <b>like</b>? (Com'è la tua scuola? = What's your school like?)<br>
+ Di dove sei? = Where <b>are</b> you <b>from</b>?<br>
+ Da dove viene lui? = Where <b>is</b> he <b>from</b>?<br>
+ Quanti anni hai? = How old <b>are</b> you?<br>
+ Come ti chiami? = What's your name?<br>
+ Che tempo fa? = What's the weather like?</div>`,
+ ex:[["Where are you from? I'm from Naples.","Di dove sei? Sono di Napoli."],["How old is your brother?","Quanti anni ha tuo fratello?"],["What's your school like?","Com'è la tua scuola?"],["What colour is your bag?","Di che colore è la tua borsa?"]],
+ trap:"«Com'è?» non si traduce con how. Si dice What's it like?",
+ pr:[["who","«huu»"],["what","«uot»"],["where","«uea»"],["when","«uen»"],["how","«hau»"]],
+ qs:[
+  {q:"___ is your name?",w:["what"],h:"Come ti chiami: in inglese si chiede «che cosa è il tuo nome».",y:"What's your name?"},
+  {q:"___ are you from?",w:["where"],h:"Di dove sei: è una domanda sul posto.",y:"Where are you from?"},
+  {q:"___ old are you?",w:["how"],h:"Quanti anni = ___ old.",y:"How old are you?"},
+  {q:"___ is your birthday?",w:["when"],h:"È una domanda sul giorno.",y:"Quando → When."},
+  {q:"___ is that boy? — He's my brother.",m:["Who","What","Where"],a:0,h:"Chiedi di una persona.",y:"Chi → Who."},
+  {q:"___ are you? — I'm fine, thanks.",m:["How","Who","What"],a:0,h:"Come stai?",y:"Come stai? = How are you?"},
+  {q:"___ colour is your bag?",w:["what"],h:"Di che colore = ___ colour.",y:"What colour…?"},
+  {q:"Com'è la tua scuola? = What ___ your school like?",w:["is","'s"],h:"Ci vuole il verbo essere.",y:"What is your school like?"},
+  {q:"Di dove sei? = Where are you ___?",w:["from"],h:"La parola per «da, provenienza».",y:"Where are you from?"},
+  {q:"___ shape is it? — It's round.",m:["What","How","Who"],a:0,h:"Di che forma = ___ shape.",y:"What shape…?"},
+  {q:"___ nationality is she? — She's French.",m:["What","Where","How"],a:0,h:"Di che nazionalità = ___ nationality.",y:"What nationality…?"},
+  {q:"Che tempo fa? = What's the weather ___?",w:["like"],h:"È la stessa parola di «Com'è?».",y:"What's the weather like?"},
+  {q:"Da dove viene lui? = Where ___ he from?",w:["is","'s"],h:"Ci vuole il verbo essere.",y:"Where is he from?"}
+ ]
+},
+{
+ id:"poss", t:"Possessivi e 's", s:"my, your, his, her… e Tom's",
+ ask:"Completa con il possessivo giusto.",
+ rule:`<table class="tb"><tr><th>Chi possiede</th><th>Possessivo</th></tr>
+ <tr><td>I</td><td><b>my</b> (mio)</td></tr><tr><td>you</td><td><b>your</b> (tuo / vostro)</td></tr>
+ <tr><td>he</td><td><b>his</b> (di lui)</td></tr><tr><td>she</td><td><b>her</b> (di lei)</td></tr>
+ <tr><td>it</td><td><b>its</b> (di cosa o animale)</td></tr><tr><td>we</td><td><b>our</b> (nostro)</td></tr>
+ <tr><td>they</td><td><b>their</b> (loro)</td></tr></table>
+ <p>Va prima del nome e <b>senza articolo</b>: my book (mai «the my book»).</p>
+ <div class="box"><span class="lab">His o her? Il trucco</span>In italiano «suo» e «sua» cambiano in base alla cosa: il suo libro, la sua borsa. In inglese guardi solo <b>la persona che possiede</b>. Fatti la domanda: <b>di chi è?</b> Di un maschio → <b>his</b>. Di una femmina → <b>her</b>.<br>Il libro di Marco = his book · la borsa di Marco = his bag<br>Il libro di Anna = her book · la borsa di Anna = her bag</div>
+ <p><b>Genitivo sassone</b> (di qualcuno): chi possiede + <b>'s</b> + cosa. La bici di Tom = <b>Tom's</b> bike. La borsa di Mary = <b>Mary's</b> bag. La camera di mia sorella = my <b>sister's</b> room. Se finisce già in -s basta l'apostrofo: my parents<b>'</b> car.</p>`,
+ ex:[["This is Marco and his sister.","Questo è Marco e sua sorella."],["Anna loves her dog.","Anna ama il suo cane."],["Tom's bike is red.","La bici di Tom è rossa."],["Their house is big.","La loro casa è grande."]],
+ trap:"its (di esso) e it's (= it is) sono diversi. their, there e they're si pronunciano uguale ma si scrivono diversi.",
+ pr:[["my","«mai»"],["your","«ior»"],["his","«hiz», h soffiata"],["her","«hö», vocale chiusa e corta"],["our","«aua»"],["their","«dhea», uguale a there"]],
+ qs:[
+  {q:"This is Marco and this is ___ sister.",m:["his","her","its"],a:0,h:"La sorella è di Marco, cioè di lui.",y:"Di lui → his."},
+  {q:"Anna loves ___ dog.",m:["his","her","their"],a:1,h:"Il cane è di Anna, cioè di lei.",y:"Di lei → her."},
+  {q:"We've got a new car. ___ car is red.",w:["our"],h:"La macchina è di noi.",y:"We → our."},
+  {q:"They live in Rome. ___ house is big.",w:["their"],h:"La casa è di loro.",y:"They → their."},
+  {q:"The dog is in ___ bed.",m:["its","it's"],a:0,h:"It's vuol dire «it is».",y:"Di esso (il cane) → its, senza apostrofo."},
+  {q:"I've got a sister. ___ name is Giulia.",w:["her"],h:"Il nome è della sorella, cioè di lei.",y:"Di lei → her."},
+  {q:"La bici di Tom = ___ bike",w:["tom's"],h:"Chi possiede + apostrofo + s.",y:"Genitivo sassone: Tom's bike."},
+  {q:"La macchina dei miei genitori = my ___ car",m:["parent's","parents'","parents"],a:1,h:"Parents finisce già in -s.",y:"Parola plurale in -s → solo apostrofo: parents'."},
+  {q:"Is this ___ pen? (tua)",w:["your"],h:"Tuo / tua.",y:"You → your."},
+  {q:"I like ___ shoes. (le mie)",m:["my","me","I"],a:0,h:"Prima di un nome.",y:"Mio, mie → my."},
+  {q:"La casa di Sara = ___ house",w:["sara's"],h:"Chi possiede + apostrofo + s.",y:"Genitivo sassone: Sara's house."},
+  {q:"Mr Rossi is ___ teacher. (nostro)",m:["our","us","we"],a:0,h:"Prima di un nome serve il possessivo.",y:"Nostro → our."},
+  {q:"Marco e la sua borsa = Marco and ___ bag",m:["his","her"],a:0,h:"Di chi è la borsa? Di Marco.",y:"La borsa è di un maschio → his. La parola «borsa» non conta."},
+  {q:"Sara e il suo libro = Sara and ___ book",m:["his","her"],a:1,h:"Di chi è il libro? Di Sara.",y:"Il libro è di una femmina → her."},
+  {q:"La camera di mia sorella = my ___ room",w:["sister's"],h:"Chi possiede + apostrofo + s.",y:"Genitivo sassone: my sister's room."},
+  {q:"My dad loves ___ car.",w:["his"],h:"Di chi è la macchina?",y:"La macchina è del papà → his."},
+{q:"They call me Bob, but ___ full name is Robert.",m:["my","their","his"],a:0,h:"Chi parla? Io.",y:"Me → il mio nome → my."},
+  {q:"Mr and Mrs Campbell are Scottish, but ___ home is in England.",m:["their","its","our"],a:0,h:"Due persone = loro.",y:"Di loro → their."},
+  {q:"Is that your new science teacher? Yes, ___ name's George Parker.",m:["his","its","her"],a:0,h:"George è un maschio.",y:"Di lui → his."},
+  {q:"The boy with Pamela is ___ boyfriend.",m:["her","his","its"],a:0,h:"Di chi è il ragazzo? Di Pamela.",y:"Di lei → her."},
+  {q:"The car key isn't in ___ usual place.",m:["its","her","his"],a:0,h:"Il posto è della chiave: una cosa.",y:"Di una cosa → its."},
+  {q:"Giulia and Francesca are Italian, but ___ mother is Australian.",m:["their","our","her"],a:0,h:"Due ragazze = loro.",y:"Di loro → their."},
+  {q:"Madonna is a famous singer. ___ real name is Louise Ciccone.",w:["her"],h:"Madonna è una donna.",y:"Di lei → her."},
+  {q:"I'm a student. ___ college is near my house.",w:["my"],h:"Io.",y:"Il mio → my."},
+  {q:"Microsoft is a big company. ___ head office is in Seattle.",w:["its"],h:"Microsoft è una cosa, non una persona.",y:"Di una cosa → its."},
+  {q:"You are very clever students. ___ tests are excellent.",w:["your"],h:"Voi.",y:"Vostri → your."},
+  {q:"A: Is Peter a fisherman? B: No, ___ isn't.",w:["he"],h:"Peter = lui, soggetto.",y:"Soggetto → he."},
+  {q:"A: Who are those people? B: ___'re my parents.",w:["they"],h:"Più persone, soggetto.",y:"They're my parents."},
+  {q:"A: What's ___ phone number? (tuo)",w:["your"],h:"Tuo.",y:"What's your phone number?"}
+ ]
+},
+{
+ id:"there", t:"There is / There are", s:"c'è, ci sono",
+ ask:"Completa con there is / there are.",
+ rule:`<table class="tb"><tr><th></th><th>Una cosa (c'è)</th><th>Più cose (ci sono)</th></tr>
+ <tr><td>+</td><td>There <b>is</b> (there's)</td><td>There <b>are</b></td></tr>
+ <tr><td>−</td><td>There <b>isn't</b></td><td>There <b>aren't</b></td></tr>
+ <tr><td>?</td><td><b>Is</b> there…?</td><td><b>Are</b> there…?</td></tr></table>
+ <p>Risposte brevi: Yes, there is. / No, there isn't. — Yes, there are. / No, there aren't.</p>
+ <div class="box"><span class="lab">Some o any?</span>Al plurale: <b>some</b> nelle frasi affermative (There are some books). <b>any</b> nelle negative e nelle domande (There aren't any books. Are there any books?).</div>`,
+ ex:[["There's a park near my house.","C'è un parco vicino casa mia."],["There are two bathrooms.","Ci sono due bagni."],["Is there a supermarket? No, there isn't.","C'è un supermercato? No."]],
+ trap:"«C'è» si traduce there is. It's a cat vuol dire «è un gatto».",
+ pr:[["there","«dhea», lingua tra i denti"],["there's","«dheaz»"],["there are","«dhear-aa»: qui la r si sente perché dopo c'è una vocale"]],
+ qs:[
+  {q:"___ a park near my house.",m:["There is","There are"],a:0,h:"Un parco = una cosa sola.",y:"Una cosa → There is."},
+  {q:"___ two bathrooms.",m:["There is","There are"],a:1,h:"Due bagni = più cose.",y:"Più cose → There are."},
+  {q:"___ there a supermarket here?",w:["is"],h:"Domanda con una cosa sola.",y:"Is there…? per una cosa."},
+  {q:"There ___ any students in the classroom. (negativo)",w:["aren't","are not"],h:"Students è plurale e la frase è negativa.",y:"Plurale negativo → there aren't."},
+  {q:"Are there any shops? — Yes, there ___.",m:["are","is","'re"],a:0,h:"Col sì niente forma corta.",y:"Yes, there are."},
+  {q:"There ___ a TV in my bedroom. (negativo)",w:["isn't","is not"],h:"Una TV sola, frase negativa.",y:"Singolare negativo → there isn't."},
+  {q:"There are ___ books on the desk.",m:["some","any"],a:0,h:"La frase è affermativa.",y:"Affermativa al plurale → some."},
+  {q:"Are there ___ eggs in the fridge?",m:["some","any"],a:1,h:"È una domanda.",y:"Domanda → any."},
+  {q:"___ there any chairs in the kitchen?",w:["are"],h:"Chairs è plurale.",y:"Domanda al plurale → Are there…?"},
+  {q:"Is there a garden? — No, there ___.",m:["isn't","aren't","not"],a:0,h:"Un giardino solo.",y:"No, there isn't."}
+ ]
+},
+{
+ id:"have", t:"Have got (avere)", s:"have got, has got",
+ ask:"Completa con la forma giusta di have got.",
+ rule:`<p><b>Have got</b> = avere, possedere. Si usa per cose che hai, famiglia, aspetto fisico, malattie.</p>
+ <table class="tb"><tr><th></th><th>I / you / we / they</th><th>he / she / it</th></tr>
+ <tr><td>+</td><td>have got ('ve got)</td><td><b>has</b> got ('s got)</td></tr>
+ <tr><td>−</td><td>haven't got</td><td><b>hasn't</b> got</td></tr>
+ <tr><td>?</td><td>Have you got…?</td><td><b>Has</b> she got…?</td></tr></table>
+ <p><b>Domanda</b>: have/has va prima del soggetto, <b>got dopo</b>: Has Paul got a car?</p>
+ <p><b>Risposte brevi</b> (senza got!): Yes, I have. / No, I haven't. — Yes, she has. / No, she hasn't.</p>
+ <div class="box"><span class="lab">Trucco</span>Lui, lei, esso → <b>has</b>. Tutti gli altri → <b>have</b>. Come is e are per to be.</div>`,
+ ex:[["I've got a brother.","Ho un fratello."],["She's got green eyes.","Lei ha gli occhi verdi."],["Have you got a pen? Yes, I have.","Hai una penna? Sì."],["He hasn't got a car.","Lui non ha la macchina."]],
+ trap:"Nella risposta breve niente got: «Yes, I have», mai «Yes, I have got».",
+ pr:[["have","«hev», a aperta quasi come una e"],["has","«hez»"],["got","«got», o aperta e corta"],["I've got","«aiv got»"],["haven't","«hévnt»"],["hasn't","«héznt»"]],
+ qs:[
+  {q:"My sister ___ got long hair.",m:["have","has"],a:1,h:"My sister = she.",y:"She → has got."},
+  {q:"They ___ got a big house.",w:["have","'ve"],h:"They è plurale.",y:"They → have got."},
+  {q:"He ___ got a car. (negativo)",w:["hasn't","has not"],h:"He, frase negativa.",y:"He → hasn't got."},
+  {q:"___ you got a pen?",w:["have"],h:"Nella domanda il verbo va prima del soggetto.",y:"Domanda con you: Have you got…?"},
+  {q:"Has she got a dog? — Yes, she ___.",w:["has"],h:"Risposta breve, senza got.",y:"Yes, she has."},
+  {q:"Have they got a garden? — No, they ___.",w:["haven't","have not"],h:"Risposta breve col no, senza got.",y:"No, they haven't."},
+  {q:"___ your brother got a phone?",m:["Have","Has"],a:1,h:"Your brother = he.",y:"He → Has… got?"},
+  {q:"Have you got a bike? — Yes, I ___.",m:["have","have got","'ve"],a:0,h:"Nella risposta breve got non c'è.",y:"Yes, I have."},
+  {q:"We ___ got any homework today. (negativo)",w:["haven't","have not"],h:"We, frase negativa.",y:"We → haven't got."},
+  {q:"The house ___ got three bedrooms.",m:["have","has"],a:1,h:"The house = it.",y:"It → has got."},
+  {q:"What ___ Paul got in his bag?",w:["has"],h:"Paul = he.",y:"He → What has Paul got?"},
+  {q:"Phone me this evening. You ___ got my number.",w:["have","'ve"],h:"Soggetto you.",y:"You → have got."}
+ ]
+},
+{
+ id:"s", t:"'s vuol dire is o has?", s:"She's tall / She's got",
+ ask:"Che cosa significa 's in questa frase?",
+ rule:`<p>La <b>'s</b> attaccata a una parola può avere tre significati.</p>
+ <table class="tb"><tr><th>Se dopo c'è…</th><th>'s =</th><th>Esempio</th></tr>
+ <tr><td><b>got</b></td><td><b>has</b></td><td>She's got a cat = She has got</td></tr>
+ <tr><td>un aggettivo, un luogo, a/an…</td><td><b>is</b></td><td>She's tall = She is tall</td></tr>
+ <tr><td>la cosa che appartiene</td><td><b>di</b></td><td>Anna's bag = la borsa di Anna</td></tr></table>
+ <div class="box"><span class="lab">Trucco veloce</span>Cerca <b>got</b> subito dopo. Se c'è → has. Se manca → quasi sempre is.</div>`,
+ ex:[["He's got a new job.","Lui ha un lavoro nuovo."],["He's at school.","Lui è a scuola."],["Anna's bag is red.","La borsa di Anna è rossa."]],
+ trap:"It's (= it is) ha l'apostrofo. Its (di esso) no.",
+ pr:[["she's","«sciiz»"],["it's","«its»"],["Tom's","«tomz»"]],
+ qs:[
+  {q:"He's got a new job.",m:["is","has","di (possesso)"],a:1,h:"Guarda la parola dopo 's.",y:"Dopo c'è got → has."},
+  {q:"It's quite cold today.",m:["is","has","di (possesso)"],a:0,h:"C'è got dopo?",y:"Niente got, dopo c'è un aggettivo → is."},
+  {q:"Martha's afraid of spiders.",m:["is","has","di (possesso)"],a:0,h:"C'è got dopo?",y:"Afraid è un aggettivo → is."},
+  {q:"Sheila's got a sister.",m:["is","has","di (possesso)"],a:1,h:"Guarda la parola dopo 's.",y:"Dopo c'è got → has."},
+  {q:"She's a doctor.",m:["is","has","di (possesso)"],a:0,h:"C'è got dopo?",y:"Lei è un medico → is."},
+  {q:"My dad's got a beard.",m:["is","has","di (possesso)"],a:1,h:"Guarda la parola dopo 's.",y:"Dopo c'è got → has."},
+  {q:"Tom's in the garden.",m:["is","has","di (possesso)"],a:0,h:"Dice dove si trova Tom.",y:"Tom è in giardino → is."},
+  {q:"There's a cat on the sofa.",m:["is","has","di (possesso)"],a:0,h:"There's = c'è.",y:"There's = there is."},
+  {q:"It's got four legs.",m:["is","has","di (possesso)"],a:1,h:"Guarda la parola dopo 's.",y:"Dopo c'è got → has."},
+  {q:"Anna's bag is red.",m:["is","has","di (possesso)"],a:2,h:"Dopo 's c'è una cosa: di chi è?",y:"La borsa di Anna → genitivo sassone."},
+  {q:"Who's got my pen?",m:["is","has","di (possesso)"],a:1,h:"Guarda la parola dopo 's.",y:"Dopo c'è got → has."},
+  {q:"What's your name?",m:["is","has","di (possesso)"],a:0,h:"Come si chiede il nome?",y:"What is your name? → is."}
+ ]
+},
+{
+ id:"hb", t:"Have o be?", s:"Ho freddo = I'm cold",
+ ask:"Have got oppure be?",
+ rule:`<p>In italiano diciamo «ho» anche quando l'inglese usa <b>be</b>.</p>
+ <table class="tb"><tr><th>Italiano</th><th>Inglese (be)</th></tr>
+ <tr><td>ho 14 anni</td><td>I'm 14</td></tr><tr><td>ho freddo / caldo</td><td>I'm cold / hot</td></tr>
+ <tr><td>ho fame / sete</td><td>I'm hungry / thirsty</td></tr><tr><td>ho paura</td><td>I'm afraid / scared</td></tr>
+ <tr><td>ho ragione / torto</td><td>I'm right / wrong</td></tr><tr><td>ho fretta</td><td>I'm in a hurry</td></tr>
+ <tr><td>ho sonno</td><td>I'm sleepy</td></tr></table>
+ <p><b>Have got</b> invece per cose che hai, famiglia, aspetto, malattie: I've got a dog, a brother, brown eyes, a cold (il raffreddore), a headache (mal di testa).</p>`,
+ ex:[["I'm cold.","Ho freddo."],["I've got a cold.","Ho il raffreddore."],["How old are you? I'm fourteen.","Quanti anni hai? Ne ho quattordici."]],
+ trap:"I'm cold = ho freddo. I've got a cold = ho il raffreddore.",
+ pr:[["hungry","«hangri»"],["thirsty","«thöösti»: soffio con la lingua tra i denti"],["afraid","«afreid»"]],
+ qs:[
+  {q:"I ___ fourteen. (ho 14 anni)",w:["am","'m"],h:"L'età si dice con to be.",y:"Età → be: I am fourteen."},
+  {q:"Ho fame = I ___ hungry.",m:["am","have got"],a:0,h:"Fame è una sensazione.",y:"Sensazioni → be: I'm hungry."},
+  {q:"Michael ___ a cold.",m:["is","has got"],a:1,h:"A cold qui è il raffreddore.",y:"Malattie → have got."},
+  {q:"We ___ cold.",m:["are","have got"],a:0,h:"Qui cold è il freddo che sentiamo.",y:"Sensazione → be: we're cold."},
+  {q:"She ___ short curly hair.",m:["is","has got"],a:1,h:"Aspetto fisico.",y:"Aspetto fisico → has got."},
+  {q:"Ho paura dei ragni = I ___ afraid of spiders.",m:["am","have got"],a:0,h:"La paura è una sensazione.",y:"Ho paura → I'm afraid."},
+  {q:"My brother ___ a headache.",m:["is","has got"],a:1,h:"Headache = mal di testa.",y:"Malattie e dolori → has got."},
+  {q:"Hai ragione! = You ___ right!",m:["are","have got"],a:0,h:"Avere ragione si dice con to be.",y:"Ho ragione → I'm right."},
+  {q:"Ho sete = I ___ thirsty.",w:["am","'m"],h:"Sensazione.",y:"Ho sete → I'm thirsty."},
+  {q:"Ho fretta = I ___ in a hurry.",w:["am","'m"],h:"Si dice con to be.",y:"Ho fretta → I'm in a hurry."},
+  {q:"Ho un gatto = I ___ a cat.",w:["have got","'ve got"],h:"Una cosa che possiedi: due parole.",y:"Possesso → have got."},
+  {q:"Quanti anni hai? = How old ___ you?",m:["are","have"],a:0,h:"L'età si dice con to be.",y:"How old are you?"}
+ ]
+},
+{
+ id:"tags", t:"Domandine e anche io", s:"question tags, so / neither",
+ ask:"Completa la domandina o la risposta.",
+ rule:`<p><b>Question tag</b> = la domandina in fondo, come «vero?», «no?».</p>
+ <table class="tb"><tr><th>Frase</th><th>Domandina</th></tr>
+ <tr><td>affermativa</td><td><b>negativa</b>: You've got a guitar, <b>haven't you</b>?</td></tr>
+ <tr><td>negativa</td><td><b>affermativa</b>: He hasn't got a job, <b>has he</b>?</td></tr></table>
+ <p>Nella domandina usa lo stesso verbo della frase e un pronome (she, he, they…). Con to be: She's nice, <b>isn't she</b>?</p>
+ <div class="box"><span class="lab">So e neither</span><b>So</b> = anche. <b>Neither</b> = neanche. Dopo metti il verbo (have, has, am, is, are) e poi il soggetto.<br>I've got a dog. — <b>So have I</b>.<br>I haven't got a car. — <b>Neither have I</b>. (dopo neither il verbo è affermativo)</div>`,
+ ex:[["You've got a guitar, haven't you?","Hai una chitarra, vero?"],["David hasn't got a job, has he?","David non ha un lavoro, vero?"],["I'm hungry. So am I.","Ho fame. Anche io."],["I haven't got a car. Neither have I.","Non ho la macchina. Neanche io."]],
+ trap:"Dopo neither il verbo è affermativo: Neither have I, mai «Neither haven't I».",
+ pr:[["neither","«naidha» in inglese britannico, «niidha» in americano"],["haven't you","«hévnciu»: le parole si attaccano"]],
+ qs:[
+  {q:"They've got a very large flat, ___?",w:["haven't they"],h:"Frase affermativa → domandina negativa. Verbo + pronome.",y:"Affermativa con have → haven't they?"},
+  {q:"She's got a violin, ___?",w:["hasn't she"],h:"She's got = she has got. Domandina negativa.",y:"Has → hasn't she?"},
+  {q:"David hasn't got a job, ___?",w:["has he"],h:"Frase negativa → domandina affermativa.",y:"Negativa → has he?"},
+  {q:"You're tired, ___?",w:["aren't you"],h:"You're = you are. Domandina negativa.",y:"Are → aren't you?"},
+  {q:"It isn't cold, ___?",w:["is it"],h:"Frase negativa → domandina affermativa.",y:"Isn't → is it?"},
+  {q:"A: I've got a cat. B: So ___ I.",w:["have"],h:"Usa lo stesso verbo della prima frase.",y:"I've got → So have I."},
+  {q:"A: Tom has got a temperature. B: So ___ Bill.",w:["has"],h:"Bill = he.",y:"Has → So has Bill."},
+  {q:"A: I haven't got a saxophone. B: Neither ___ I.",w:["have"],h:"Dopo neither il verbo è affermativo.",y:"Neither have I."},
+  {q:"A: I'm hungry. B: So ___ I.",w:["am"],h:"I'm = I am.",y:"So am I."},
+  {q:"A: She isn't at school. B: Neither ___ Marco.",w:["is"],h:"Marco = he. Verbo affermativo.",y:"Neither is Marco."},
+  {q:"A: We haven't got a car. B: ___ have we.",m:["So","Neither"],a:1,h:"La prima frase è negativa.",y:"Negativa → Neither have we."},
+  {q:"Your mum is a doctor, ___?",m:["isn't she","is she","hasn't she"],a:0,h:"Frase affermativa con is.",y:"Is → isn't she?"}
+ ]
+},
+{
+ id:"ptime", t:"Preposizioni di tempo", s:"at, on, in",
+ ask:"Completa con at, on oppure in.",
+ rule:`<table class="tb"><tr><th>Preposizione</th><th>Quando</th><th>Esempi</th></tr>
+ <tr><td><b>at</b></td><td>ore precise e momenti</td><td>at 8 o'clock, at night, at the weekend, at Christmas</td></tr>
+ <tr><td><b>on</b></td><td>giorni e date</td><td>on Monday, on 5th May, on my birthday, on Sunday morning</td></tr>
+ <tr><td><b>in</b></td><td>mesi, anni, stagioni, parti del giorno</td><td>in July, in 2026, in summer, in the morning</td></tr></table>
+ <div class="box"><span class="lab">Trucco della piramide</span>Dal più piccolo al più grande: <b>at</b> per l'ora (un punto), <b>on</b> per il giorno, <b>in</b> per periodi lunghi (mesi, anni, stagioni).</div>`,
+ ex:[["I get up at 7 o'clock.","Mi alzo alle 7."],["My birthday is on Friday.","Il mio compleanno è venerdì."],["We go to the beach in summer.","Andiamo al mare d'estate."],["I study in the afternoon.","Studio il pomeriggio."]],
+ trap:"In the morning, ma at night. E se c'è un giorno davanti vince on: on Sunday morning.",
+ pr:[["at","«et»"],["on","«on»"],["in","«in»"],["o'clock","«oklok»"]],
+ qs:[
+  {q:"My birthday is ___ Monday.",w:["on"],h:"È un giorno della settimana.",y:"Giorni → on."},
+  {q:"School starts ___ 8 o'clock.",w:["at"],h:"È un'ora precisa.",y:"Ore → at."},
+  {q:"We go on holiday ___ July.",w:["in"],h:"È un mese.",y:"Mesi → in."},
+  {q:"I study ___ the afternoon.",m:["in","on","at"],a:0,h:"Parte del giorno.",y:"In the morning / afternoon / evening."},
+  {q:"I sleep ___ night.",m:["at","in","on"],a:0,h:"Night è l'eccezione delle parti del giorno.",y:"Si dice at night."},
+  {q:"It's hot ___ summer.",w:["in"],h:"È una stagione.",y:"Stagioni → in."},
+  {q:"We go to Paris ___ 2027.",w:["in"],h:"È un anno.",y:"Anni → in."},
+  {q:"We have a party ___ my birthday.",m:["on","in","at"],a:0,h:"Il compleanno è un giorno.",y:"Un giorno preciso → on."},
+  {q:"I play football ___ the weekend.",w:["at","on"],h:"Gli inglesi dicono at, gli americani on.",y:"At the weekend (inglese britannico)."},
+  {q:"We open presents ___ Christmas.",m:["at","on","in"],a:0,h:"Le feste come periodo: Natale, Pasqua.",y:"At Christmas, at Easter."},
+  {q:"I go swimming ___ Sunday morning.",m:["on","in","at"],a:0,h:"C'è un giorno: vince lui.",y:"Giorno + parte del giorno → on."},
+  {q:"Christmas is ___ 25th December.",w:["on"],h:"È una data.",y:"Date → on."}
+ ]
+},
+{
+ id:"pplace", t:"Preposizioni di luogo e movimento", s:"in, on, at, to, from, for, with, about",
+ ask:"Completa con la preposizione giusta.",
+ rule:`<h3>Luogo</h3>
+ <table class="tb"><tr><th></th><th>Significa</th><th>Esempi</th></tr>
+ <tr><td><b>in</b></td><td>dentro</td><td>in the box, in the kitchen, in Rome, in Italy</td></tr>
+ <tr><td><b>on</b></td><td>sopra, appoggiato</td><td>on the table, on the wall, on the first floor</td></tr>
+ <tr><td><b>at</b></td><td>in un punto, in un posto dove fai qualcosa</td><td>at home, at school, at the bus stop, at work</td></tr></table>
+ <p>Altre: <b>under</b> sotto · <b>next to</b> accanto · <b>behind</b> dietro · <b>in front of</b> davanti · <b>between</b> tra · <b>opposite</b> di fronte · <b>near</b> vicino</p>
+ <h3>Movimento e altre</h3>
+ <p><b>to</b> verso (I go to school) · <b>from</b> da, provenienza (I'm from Naples) · <b>for</b> per (a present for you) · <b>with</b> con (with my friends) · <b>about</b> su, che parla di (a book about animals)</p>
+ <div class="box"><span class="lab">Espressioni fisse da imparare così</span>on the left (a sinistra) · on the right (a destra) · in the middle (al centro) · at home · in bed · on TV · on the phone · in the photo · by bus, by car · on foot (a piedi) · go home (senza to!)</div>`,
+ ex:[["The book is on the table.","Il libro è sul tavolo."],["I'm at home.","Sono a casa."],["The bathroom is on the left.","Il bagno è a sinistra."],["I go to school by bus.","Vado a scuola in autobus."]],
+ trap:"Go home si dice senza to: I go home, mai «I go to home».",
+ pr:[["about","«abaut»"],["behind","«bihaind»"],["between","«bituiin»"],["opposite","«opposit»"]],
+ qs:[
+  {q:"The book is ___ the table.",w:["on"],h:"Il libro è appoggiato sopra.",y:"Sopra, appoggiato → on."},
+  {q:"My mum is ___ the kitchen.",w:["in"],h:"È dentro una stanza.",y:"Dentro → in."},
+  {q:"I'm ___ home.",w:["at"],h:"Espressione fissa: a casa.",y:"At home."},
+  {q:"I live ___ Naples.",w:["in"],h:"Città e nazioni.",y:"Città → in."},
+  {q:"The bathroom is ___ the left.",w:["on"],h:"Espressione fissa: a sinistra.",y:"On the left."},
+  {q:"I'm ___ Naples. (sono di Napoli)",w:["from"],h:"Provenienza.",y:"Provenienza → from."},
+  {q:"This present is ___ you.",w:["for"],h:"Per te.",y:"Per → for."},
+  {q:"I go ___ school every day.",w:["to"],h:"Movimento verso un posto.",y:"Movimento verso → to."},
+  {q:"I go to the cinema ___ my friends.",w:["with"],h:"Con.",y:"Con → with."},
+  {q:"It's a film ___ animals.",w:["about"],h:"Un film che parla di.",y:"Che parla di → about."},
+  {q:"The cat is ___ the bed. (sotto)",m:["under","on","in"],a:0,h:"Sotto.",y:"Sotto → under."},
+  {q:"There's a poster ___ the wall.",m:["on","in","at"],a:0,h:"Appeso alla parete.",y:"Sulla parete → on the wall."},
+  {q:"My favourite programme is ___ TV.",m:["on","in","at"],a:0,h:"Espressione fissa.",y:"On TV."},
+  {q:"I go to school ___ bus.",m:["by","with","on"],a:0,h:"Con i mezzi di trasporto.",y:"By bus, by car, by train."},
+  {q:"I go ___ home at 2 o'clock.",m:["to","(niente)","at"],a:1,h:"Home è speciale dopo go.",y:"Go home, senza preposizione."},
+  {q:"Tom is ___ bed. He's sleeping.",w:["in"],h:"Espressione fissa: a letto.",y:"In bed."}
+ ]
+},
+{
+ id:"count", t:"Numerabili e non numerabili", s:"a chair / some bread, a piece of",
+ ask:"Scegli la risposta giusta.",
+ rule:`<table class="tb"><tr><th>Numerabili</th><th>Non numerabili</th></tr>
+ <tr><td>si possono contare: chair, egg, desk, sandwich</td><td>sostanze e cose astratte: sugar, bread, water, milk, meat, cheese, love, luck, health</td></tr>
+ <tr><td>hanno il plurale: two chairs</td><td>niente plurale</td></tr>
+ <tr><td>a / an al singolare: a chair</td><td>niente a / an e niente numeri</td></tr>
+ <tr><td>some, any, no al plurale</td><td>some, any, no: some bread</td></tr></table>
+ <div class="box"><span class="lab">Non numerabili in inglese, attenzione!</span>advice (consigli) · furniture (mobili) · fruit (frutta) · information (informazioni) · luggage (bagagli) · news (notizie) · money (soldi) · hair (capelli) · spaghetti · homework (compiti) · housework (faccende di casa)<br>Il verbo va al singolare: The news <b>is</b> good. My hair <b>is</b> long.</div>
+ <div class="box"><span class="lab">Per contarli</span><b>a piece of</b> / two pieces of: a piece of advice (un consiglio), a piece of furniture (un mobile), a piece of information (un'informazione).</div>`,
+ ex:[["I need some information.","Ho bisogno di informazioni."],["It's a very good piece of advice.","È un ottimo consiglio."],["The spaghetti is delicious!","Gli spaghetti sono buonissimi!"],["We've got a lot of homework.","Abbiamo molti compiti."]],
+ trap:"Mai «an information», «an advice» o «homeworks». Si dice some information, a piece of advice, homework.",
+ pr:[["furniture","«föniciö»"],["luggage","«laghig»"],["advice","«advais»"],["information","«infomeiscion»"]],
+ qs:[
+  {q:"flour",m:["numerabile","non numerabile"],a:1,ask:"Numerabile o non numerabile?",h:"Flour è la farina: si può contare?",y:"La farina è una sostanza: non numerabile."},
+  {q:"egg",m:["numerabile","non numerabile"],a:0,ask:"Numerabile o non numerabile?",h:"Puoi dire one egg, two eggs?",y:"Le uova si contano: numerabile."},
+  {q:"bread",m:["numerabile","non numerabile"],a:1,ask:"Numerabile o non numerabile?",h:"Il pane come sostanza.",y:"Bread è non numerabile: si dice some bread o a loaf of bread."},
+  {q:"sandwich",m:["numerabile","non numerabile"],a:0,ask:"Numerabile o non numerabile?",h:"Puoi dire two sandwiches?",y:"Numerabile: a sandwich, two sandwiches."},
+  {q:"luggage",m:["numerabile","non numerabile"],a:1,ask:"Numerabile o non numerabile?",h:"È nella lista speciale.",y:"Luggage è non numerabile: a piece of luggage."},
+  {q:"happiness",m:["numerabile","non numerabile"],a:1,ask:"Numerabile o non numerabile?",h:"È una cosa astratta.",y:"Le cose astratte (happiness, love, luck) sono non numerabili."},
+  {q:"I need ___ information.",m:["an","some"],a:1,h:"Information non si conta.",y:"Non numerabile → some information."},
+  {q:"Information ___ very important.",m:["is","are"],a:0,h:"I non numerabili vogliono il verbo al singolare.",y:"Information → is."},
+  {q:"I've only got ___ luggage.",m:["a","a piece of"],a:1,h:"Luggage non vuole a.",y:"Per contarlo: a piece of luggage."},
+  {q:"Can I give you ___ advice?",m:["an","some"],a:1,h:"Advice è non numerabile.",y:"Some advice."},
+  {q:"It's a very good ___.",m:["advice","piece of advice"],a:1,h:"C'è a davanti.",y:"A + non numerabile non va: a piece of advice."},
+  {q:"We've got a lot of ___ to do.",m:["homework","homeworks"],a:0,h:"Homework non ha il plurale.",y:"Homework è non numerabile: niente -s."},
+  {q:"Mandy's got beautiful long ___.",m:["hair","hairs"],a:0,h:"I capelli in inglese sono singolari.",y:"Hair è non numerabile."},
+  {q:"The spaghetti ___ delicious!",m:["is","are"],a:0,h:"Spaghetti è nella lista dei non numerabili.",y:"Spaghetti → is."},
+  {q:"___ the furniture in your flat new?",m:["Is","Are"],a:0,h:"Furniture è non numerabile.",y:"Furniture → is."},
+  {q:"un consiglio = a ___ of advice",w:["piece"],h:"Un pezzo di…",y:"A piece of advice."},
+{q:"meat",m:["numerabile","non numerabile"],a:1,ask:"Numerabile o non numerabile?",h:"Puoi dire two meats?",y:"Meat è una sostanza: non numerabile."},
+  {q:"desk",m:["numerabile","non numerabile"],a:0,ask:"Numerabile o non numerabile?",h:"Puoi dire two desks?",y:"Desk si conta: a desk, two desks."},
+  {q:"water",m:["numerabile","non numerabile"],a:1,ask:"Numerabile o non numerabile?",h:"Puoi dire two waters?",y:"I liquidi sono non numerabili."},
+  {q:"butter",m:["numerabile","non numerabile"],a:1,ask:"Numerabile o non numerabile?",h:"Puoi dire two butters?",y:"Il burro è una sostanza: non numerabile."},
+  {q:"silver",m:["numerabile","non numerabile"],a:1,ask:"Numerabile o non numerabile?",h:"Puoi dire two silvers?",y:"I metalli (silver, gold) sono non numerabili."},
+  {q:"chair",m:["numerabile","non numerabile"],a:0,ask:"Numerabile o non numerabile?",h:"Puoi dire two chairs?",y:"Chair si conta: numerabile."},
+  {q:"toothpaste",m:["numerabile","non numerabile"],a:1,ask:"Numerabile o non numerabile?",h:"Puoi dire two toothpastes?",y:"Il dentifricio è una sostanza: non numerabile."},
+  {q:"fork",m:["numerabile","non numerabile"],a:0,ask:"Numerabile o non numerabile?",h:"Puoi dire two forks?",y:"Fork si conta: numerabile."},
+  {q:"petrol",m:["numerabile","non numerabile"],a:1,ask:"Numerabile o non numerabile?",h:"Puoi dire two petrols?",y:"La benzina è un liquido: non numerabile."},
+  {q:"cheese",m:["numerabile","non numerabile"],a:1,ask:"Numerabile o non numerabile?",h:"Puoi dire two cheeses?",y:"Il formaggio come sostanza è non numerabile."},
+  {q:"sugar",m:["numerabile","non numerabile"],a:1,ask:"Numerabile o non numerabile?",h:"Puoi dire two sugars?",y:"Lo zucchero è una sostanza: non numerabile."},
+  {q:"bottle",m:["numerabile","non numerabile"],a:0,ask:"Numerabile o non numerabile?",h:"Puoi dire two bottles?",y:"Bottle si conta: numerabile."},
+  {q:"love",m:["numerabile","non numerabile"],a:1,ask:"Numerabile o non numerabile?",h:"Puoi dire two loves?",y:"Love è una cosa astratta: non numerabile."},
+  {q:"exam",m:["numerabile","non numerabile"],a:0,ask:"Numerabile o non numerabile?",h:"Puoi dire two exams?",y:"Exam si conta: numerabile."},
+  {q:"gold",m:["numerabile","non numerabile"],a:1,ask:"Numerabile o non numerabile?",h:"Puoi dire two golds?",y:"I metalli sono non numerabili."},
+  {q:"health",m:["numerabile","non numerabile"],a:1,ask:"Numerabile o non numerabile?",h:"Puoi dire two healths?",y:"Health è astratta: non numerabile."},
+  {q:"patience",m:["numerabile","non numerabile"],a:1,ask:"Numerabile o non numerabile?",h:"Puoi dire two patiences?",y:"Patience è astratta: non numerabile."},
+  {q:"bicycle",m:["numerabile","non numerabile"],a:0,ask:"Numerabile o non numerabile?",h:"Puoi dire two bicycles?",y:"Bicycle si conta: numerabile."},
+  {q:"apple",m:["numerabile","non numerabile"],a:0,ask:"Numerabile o non numerabile?",h:"Puoi dire two apples?",y:"Apple si conta: numerabile."},
+  {q:"advice",m:["numerabile","non numerabile"],a:1,ask:"Numerabile o non numerabile?",h:"Puoi dire two advices?",y:"Advice è nella lista speciale: non numerabile."},
+  {q:"My luggage ___ in the hotel hall.",m:["is","are"],a:0,h:"Luggage è non numerabile: verbo al singolare.",y:"Luggage → is."},
+  {q:"There is ___ in their sitting room.",m:["a nice piece of furniture","a nice furniture"],a:0,h:"Furniture non vuole a.",y:"A piece of furniture = un mobile."},
+  {q:"The news ___ good.",m:["isn't","aren't"],a:0,h:"News sembra plurale ma è singolare.",y:"News → isn't."},
+  {q:"There is some ___ in the e-mail I've just got from Jerry.",m:["terrible news","long journey","newspaper"],a:0,h:"Some va con i non numerabili.",y:"Some + news (non numerabile)."},
+  {q:"Why have you got such a ___? You're only going away for two days!",m:["heavy suitcase","heavy luggage"],a:0,h:"Dopo c'è a: serve una parola che si conta.",y:"Suitcase (valigia) si conta, luggage no."}
+ ]
+},
+{
+ id:"someany", t:"Some, any, no", s:"un po' di, nessuno, niente",
+ ask:"Completa con some, any, no oppure a/an.",
+ rule:`<table class="tb"><tr><th></th><th>Quando</th><th>Esempio</th></tr>
+ <tr><td><b>some</b></td><td>frasi affermative<br>offerte e richieste</td><td>We've got some meat.<br>Would you like some tea?</td></tr>
+ <tr><td><b>any</b></td><td>frasi negative e domande</td><td>We haven't got any vegetables.<br>Have we got any jam?</td></tr>
+ <tr><td><b>no</b></td><td>= not any, con il verbo affermativo</td><td>There's no milk = There isn't any milk.</td></tr></table>
+ <p>Con un numerabile singolare usa <b>a / an</b>: There's a jar of jam.</p>
+ <div class="box"><span class="lab">Trucco</span>Nella frase c'è già <b>not</b> (isn't, haven't)? → <b>any</b>. È una domanda? → <b>any</b>. Offri qualcosa (Would you like…)? → <b>some</b>.</div>`,
+ ex:[["We've got some cheese.","Abbiamo un po' di formaggio."],["Have we got any eggs?","Abbiamo delle uova?"],["There's no bread.","Non c'è pane."],["Would you like some water?","Vuoi un po' d'acqua?"]],
+ trap:"Con no il verbo resta affermativo: There's no wine. Mai «There isn't no wine».",
+ pr:[["some","«sam»"],["any","«eni»"],["no","«nou»"]],
+ qs:[
+  {q:"Have we got ___ jam?",w:["any"],h:"È una domanda.",y:"Domanda → any."},
+  {q:"Yes, there's ___ jar of jam in the cupboard.",w:["a"],h:"Jar si conta ed è singolare.",y:"Numerabile singolare → a jar."},
+  {q:"We've got ___ meat.",w:["some"],h:"Frase affermativa.",y:"Affermativa → some."},
+  {q:"We haven't got ___ vegetables.",w:["any"],h:"Nella frase c'è già haven't.",y:"Negativa → any."},
+  {q:"Are there ___ good films on TV tonight?",w:["any"],h:"È una domanda.",y:"Domanda → any."},
+  {q:"We need ___ bread for dinner.",w:["some"],h:"Frase affermativa.",y:"Affermativa → some."},
+  {q:"There's ___ wine left. (non c'è più vino)",m:["no","any","some"],a:0,h:"Il verbo è affermativo (there's).",y:"Verbo affermativo + niente → no."},
+  {q:"Why don't you buy ___ bottle of wine?",m:["a","some","any"],a:0,h:"Bottle è singolare e si conta.",y:"A bottle."},
+  {q:"Would you like ___ tea?",m:["some","any"],a:0,h:"È un'offerta.",y:"Nelle offerte con Would you like si usa some."},
+  {q:"We haven't got any fruit. = We've got ___ fruit.",w:["no"],h:"Il verbo ora è affermativo.",y:"Haven't got any = have got no."},
+  {q:"The petrol tank is empty. = We haven't ___ petrol.",w:["got any"],h:"Due parole: il verbo che manca e la parola delle negative.",y:"We haven't got any petrol."},
+  {q:"The box of chocolates is empty. = There ___ chocolates in the box.",w:["are no","aren't any","are not any"],h:"Chocolates è plurale.",y:"There are no chocolates / There aren't any chocolates."},
+  {q:"Metti in ordine: Non c'è latte.",ask:"Tocca le parole nell'ordine giusto.",o:["isn't","milk","There","any"],w:["There isn't any milk"],h:"Comincia con There.",y:"There isn't any milk."},
+{q:"Has Jack got ___ brothers or sisters?",w:["any"],h:"È una domanda.",y:"Domanda → any."},
+  {q:"No, he hasn't. He is ___ only child.",w:["an"],h:"Guarda la parola dopo: only.",y:"Only comincia con una vocale → an."},
+  {q:"We haven't got any vegetables. Can you buy ___?",w:["some"],h:"Chiedi di comprarne un po'.",y:"Richiesta → some."},
+  {q:"Let's go to the baker's to buy ___ bread.",m:["some","any"],a:0,h:"Frase affermativa.",y:"Affermativa → some."},
+  {q:"Have we got ___ wine?",w:["any"],h:"È una domanda.",y:"Domanda → any."},
+  {q:"Yes, there's ___ good film on BBC2.",w:["a"],h:"Film si conta, ed è uno.",y:"A good film."}
+ ]
+},
+{
+ id:"cont", t:"Quantità e contenitori", s:"a bar of, a loaf of, a cup of…",
+ ask:"Scegli la parola giusta.",
+ rule:`<h3>Quantità</h3><p>a <b>bar</b> of chocolate (tavoletta) · a <b>piece</b> of cheese (pezzo) · a <b>loaf</b> of bread (pagnotta) · a <b>slice</b> of bread (fetta) · a <b>litre</b> of water · a <b>kilo</b> of sugar · 50 <b>grams</b> of butter · <b>half a kilo</b> of meat · a <b>pint</b> of beer · a <b>dozen</b> eggs (una dozzina, senza of!)</p>
+ <h3>Contenitori</h3><p>a <b>glass</b> of wine (bicchiere) · a <b>cup</b> of tea (tazza) · a <b>bottle</b> of wine (bottiglia) · a <b>carton</b> of milk (cartone) · a <b>bowl</b> of soup (scodella) · a <b>tube</b> of mayonnaise (tubetto) · a <b>jar</b> of jam (barattolo di vetro) · a <b>tin</b> of tuna (scatoletta) · a <b>can</b> of coke (lattina) · a <b>packet</b> of crisps (pacchetto) · a <b>box</b> of chocolates (scatola) · a <b>bag</b> of sugar (sacchetto)</p>
+ <div class="box"><span class="lab">Trucco</span>Immagina l'oggetto: il latte sta nel cartone, il tonno nella scatoletta, la marmellata nel barattolo. Al plurale cambia solo il contenitore: two <b>cans</b> of coke, two <b>loaves</b> of bread.</div>`,
+ ex:[["a loaf of bread","una pagnotta"],["a carton of milk","un cartone di latte"],["a dozen eggs","una dozzina di uova"],["I'd like a bar of chocolate.","Vorrei una tavoletta di cioccolato."]],
+ trap:"A dozen eggs, senza of. E crisps sono le patatine in busta.",
+ pr:[["loaf","«louf»"],["carton","«kaatn»"],["bowl","«boul»"],["jar","«giaa»"],["dozen","«dazn»"]],
+ qs:[
+  {q:"a ___ of bread (pagnotta)",m:["loaf","bar","tube"],a:0,h:"Pagnotta.",y:"A loaf of bread."},
+  {q:"a ___ of chocolate (tavoletta)",m:["bar","slice","carton"],a:0,h:"Tavoletta.",y:"A bar of chocolate."},
+  {q:"a ___ of milk (cartone)",m:["carton","tin","jar"],a:0,h:"Il cartone.",y:"A carton of milk."},
+  {q:"a ___ of jam (barattolo)",m:["jar","packet","glass"],a:0,h:"Barattolo di vetro.",y:"A jar of jam."},
+  {q:"a ___ of tuna (scatoletta)",m:["tin","bowl","cup"],a:0,h:"Scatoletta di metallo.",y:"A tin of tuna."},
+  {q:"a ___ of crisps (pacchetto)",m:["packet","bottle","slice"],a:0,h:"Pacchetto.",y:"A packet of crisps."},
+  {q:"a ___ of mayonnaise (tubetto)",m:["tube","loaf","pint"],a:0,h:"Tubetto.",y:"A tube of mayonnaise."},
+  {q:"a ___ eggs",m:["dozen","dozen of"],a:0,h:"Con dozen niente of.",y:"A dozen eggs."},
+  {q:"two ___ of coke (lattine)",m:["cans","cups","loaves"],a:0,h:"Lattine.",y:"Two cans of coke."},
+  {q:"a ___ of tea (tazza)",w:["cup"],h:"Tazza.",y:"A cup of tea."},
+  {q:"a ___ of soup (scodella)",w:["bowl"],h:"Scodella.",y:"A bowl of soup."},
+  {q:"a ___ of wine (bottiglia)",w:["bottle"],h:"Bottiglia.",y:"A bottle of wine."},
+  {q:"a ___ of chocolates (scatola)",w:["box"],h:"Scatola.",y:"A box of chocolates."},
+  {q:"a glass of ___",m:["wine","beer","cheese","coke"],a:2,noSay:true,ask:"Trova l'intruso: quale parola NON va?",h:"Cosa non si beve?",y:"Il formaggio non sta in un bicchiere."},
+  {q:"a bottle of ___",m:["water","wine","bread","vinegar"],a:2,noSay:true,ask:"Trova l'intruso: quale parola NON va?",h:"Cosa non è liquido?",y:"Il pane non sta in una bottiglia."},
+  {q:"a slice of ___",m:["cake","bread","watermelon","butter"],a:3,noSay:true,ask:"Trova l'intruso: quale parola NON va?",h:"Cosa non si taglia a fette?",y:"Il burro non si taglia a fette."},
+  {q:"a jar of ___",m:["jam","marmalade","potatoes","honey"],a:2,noSay:true,ask:"Trova l'intruso: quale parola NON va?",h:"Cosa non si mette in un barattolo?",y:"Le patate non stanno in un barattolo."},
+  {q:"a litre of ___",m:["fruit","milk","water","wine"],a:0,noSay:true,ask:"Trova l'intruso: quale parola NON va?",h:"I litri sono per i liquidi.",y:"La frutta non si misura a litri."},
+  {q:"a kilo of ___",m:["peaches","peas","tomatoes","milk"],a:3,noSay:true,ask:"Trova l'intruso: quale parola NON va?",h:"Cosa si misura in litri?",y:"Il latte si misura in litri."},
+  {q:"a box of ___",m:["biscuits","chocolates","toothpaste"],a:2,noSay:true,ask:"Trova l'intruso: quale parola NON va?",h:"Cosa sta in un tubetto?",y:"Il dentifricio sta in un tube."},
+{q:"___ of peeled tomatoes",m:["a tin","a loaf","a dozen"],a:0,h:"I pelati stanno in una scatoletta.",y:"A tin of peeled tomatoes."},
+  {q:"___ of cheese",m:["a piece","a dozen","a tube"],a:0,h:"Un pezzo.",y:"A piece of cheese."},
+  {q:"Metti in ordine: Vorrei una tavoletta di cioccolato.",ask:"Tocca le parole nell'ordine giusto.",o:["bar","like","of","I'd","chocolate","a"],w:["I'd like a bar of chocolate"],h:"Comincia con I'd like.",y:"I'd like a bar of chocolate."},
+  {q:"a cup of ___",m:["tea","coffee","hot chocolate","meat"],a:3,noSay:true,ask:"Trova l'intruso: quale parola NON va?",h:"Cosa non si beve?",y:"La carne non sta in una tazza."},
+  {q:"a bar of ___",m:["chocolate","bread","soap"],a:1,noSay:true,ask:"Trova l'intruso: quale parola NON va?",h:"Il pane è a loaf.",y:"Il pane non si compra a tavolette: a loaf of bread."},
+  {q:"a bag of ___",m:["sugar","butter","flour","crisps"],a:1,noSay:true,ask:"Trova l'intruso: quale parola NON va?",h:"Cosa non sta in un sacchetto?",y:"Il burro non si vende in un sacchetto."}
+ ]
+},
+{
+ id:"howmuch", t:"How much / How many", s:"quanto, quanti",
+ ask:"Completa con much oppure many.",
+ rule:`<table class="tb"><tr><th></th><th>Con</th><th>Esempio</th></tr>
+ <tr><td><b>How much…?</b><br>quanto / quanta</td><td>non numerabili (singolare)</td><td>How much cheese have we got?</td></tr>
+ <tr><td><b>How many…?</b><br>quanti / quante</td><td>numerabili al plurale</td><td>How many eggs have we got?</td></tr></table>
+ <div class="box"><span class="lab">Trucco</span>Guarda la parola dopo: finisce in -s (eggs, oranges)? → <b>many</b>. È una sostanza o è nella lista speciale (money, homework, hair)? → <b>much</b>.<br>Per il prezzo: <b>How much is it?</b> = Quanto costa?</div>`,
+ ex:[["How much milk is there?","Quanto latte c'è?"],["How many oranges would you like?","Quante arance vorrebbe?"],["How much is that?","Quanto costa?"]],
+ trap:"How much money (non numerabile), how many children (plurale irregolare, ma si contano).",
+ pr:[["how much","«hau mac»"],["how many","«hau meni»"]],
+ qs:[
+  {q:"How ___ cheese have we got?",m:["much","many"],a:0,h:"Cheese si conta?",y:"Cheese è non numerabile → much."},
+  {q:"How ___ eggs have we got?",m:["much","many"],a:1,h:"Eggs finisce in -s.",y:"Plurale → many."},
+  {q:"How ___ oranges would you like?",w:["many"],h:"Oranges è plurale.",y:"How many oranges."},
+  {q:"How ___ milk is there?",w:["much"],h:"Il latte non si conta.",y:"How much milk."},
+  {q:"How ___ children have they got?",m:["much","many"],a:1,h:"I bambini si contano.",y:"Children è plurale → many."},
+  {q:"How ___ money have you got?",m:["much","many"],a:0,h:"Money è nella lista speciale.",y:"Money è non numerabile → much."},
+  {q:"How ___ is that? — £4.30, please.",w:["much"],h:"Si chiede il prezzo.",y:"Prezzo → How much is that?"},
+  {q:"How ___ people are there?",w:["many"],h:"People è plurale.",y:"How many people."},
+  {q:"How ___ sugar is there?",w:["much"],h:"Lo zucchero non si conta.",y:"How much sugar."},
+  {q:"How ___ bedrooms has the villa got?",w:["many"],h:"Bedrooms è plurale.",y:"How many bedrooms."},
+  {q:"How ___ homework have you got?",w:["much"],h:"Homework è non numerabile.",y:"How much homework."},
+  {q:"Metti in ordine: Quanti fratelli hai?",ask:"Tocca le parole nell'ordine giusto.",o:["have","brothers","How","got?","you","many"],w:["How many brothers have you got?"],h:"Comincia con How many.",y:"How many brothers have you got?"}
+ ]
+},
+{
+ id:"whose", t:"Whose o who's?", s:"di chi è? / chi è?",
+ ask:"Whose oppure who's?",
+ rule:`<table class="tb"><tr><th></th><th>Significa</th><th>Esempio</th></tr>
+ <tr><td><b>Whose…?</b></td><td>Di chi…?</td><td>Whose laptop is this? — It's Tom's.</td></tr>
+ <tr><td><b>Who's…?</b></td><td>Chi è…? (who is)</td><td>Who's that boy? — He's my brother.</td></tr></table>
+ <div class="box"><span class="lab">Trucco</span>Si pronunciano uguali! Prova a sostituire con <b>who is</b>: se la frase ha senso → who's. Se dopo c'è una cosa da possedere (laptop, book, gloves) → whose.</div>
+ <p>Risposte: Whose book is this? — It's Mary's. / Whose shoes are these? — They're David's.</p>`,
+ ex:[["Whose rucksack is this? It's Susan's.","Di chi è questo zaino? È di Susan."],["Who's that girl? That's Susan.","Chi è quella ragazza? È Susan."],["Whose gloves are these? They're Tom's.","Di chi sono questi guanti? Sono di Tom."]],
+ trap:"Whose e who's si dicono uguali, «huuz». Cambia solo il significato.",
+ pr:[["whose","«huuz»"],["who's","«huuz», uguale!"]],
+ qs:[
+  {q:"___ rucksack is this? — It's Susan's.",m:["Whose","Who's"],a:0,h:"Si chiede di chi è lo zaino.",y:"Di chi → Whose."},
+  {q:"___ that woman over there? — She's my mother.",m:["Whose","Who's"],a:1,h:"Prova a dire «Who is that woman».",y:"Chi è → Who's."},
+  {q:"___ gloves are these? — They're Tom's.",m:["Whose","Who's"],a:0,h:"Dopo c'è una cosa: gloves.",y:"Di chi → Whose."},
+  {q:"___ your cousin? Is it Kevin?",m:["Whose","Who's"],a:1,h:"Prova con who is.",y:"Chi è tuo cugino → Who's."},
+  {q:"___ umbrella is this?",m:["Whose","Who's"],a:0,h:"Dopo c'è una cosa: umbrella.",y:"Di chi → Whose."},
+  {q:"___ that boy? Isn't he your new classmate?",m:["Whose","Who's"],a:1,h:"Prova con who is.",y:"Chi è → Who's."},
+  {q:"Di chi è questo libro? = ___ book is this?",w:["whose"],h:"Di chi.",y:"Whose book is this?"},
+  {q:"Chi è quel ragazzo? = ___ that boy?",w:["who's","who is"],h:"Chi è.",y:"Who's that boy?"},
+  {q:"Whose camera is this? — ___ Paul's.",m:["It's","Its","They're"],a:0,h:"Una cosa sola: it is.",y:"It's Paul's."},
+  {q:"Whose shoes are these? — ___ David's.",m:["They're","It's","There"],a:0,h:"Shoes è plurale.",y:"They're David's."}
+ ]
+},
+{
+ id:"gen", t:"Genitivo sassone e doppio genitivo", s:"Mary's, the boys', a friend of mine",
+ ask:"Scegli o scrivi la forma giusta.",
+ rule:`<table class="tb"><tr><th>Possessore</th><th>Come si fa</th><th>Esempio</th></tr>
+ <tr><td>singolare</td><td>+ <b>'s</b></td><td>Mary's bedroom</td></tr>
+ <tr><td>singolare in -s</td><td>+ <b>'s</b> o solo <b>'</b></td><td>Charles's / Charles' bedroom</td></tr>
+ <tr><td>plurale in -s</td><td>solo <b>'</b></td><td>the boys' bedroom (dei ragazzi)</td></tr>
+ <tr><td>plurale irregolare</td><td>+ <b>'s</b></td><td>the children's bedroom</td></tr>
+ <tr><td>una cosa di due persone insieme</td><td>'s solo all'ultimo</td><td>Tom and Carol's car</td></tr>
+ <tr><td>cose separate</td><td>'s a tutti e due</td><td>Tom's and Carol's shoes</td></tr></table>
+ <p>Si usa per <b>persone e animali</b>. Per gli oggetti si usa <b>of</b>: the handle of the door.</p>
+ <p>Si può togliere la cosa quando si capisce: Whose shoes are these? — They're <b>David's</b>. E con i negozi: at the greengrocer's (dal fruttivendolo), at the baker's (dal panettiere), at the butcher's (dal macellaio).</p>
+ <div class="box"><span class="lab">Doppio genitivo</span>un'amica di mia madre = a friend of my <b>mother's</b><br>un mio amico = a friend of <b>mine</b><br>due amiche di mia sorella = two friends of my <b>sister's</b></div>`,
+ ex:[["This is my brother's rucksack.","Questo è lo zaino di mio fratello."],["the children's bedroom","la camera dei bambini"],["She's a friend of mine.","È una mia amica."],["I'm going to the greengrocer's.","Vado dal fruttivendolo."]],
+ trap:"Con gli oggetti niente 's: the handle of the door, mai «the door's handle».",
+ pr:[["Charles's","«ciaalziz»"],["boys'","«boiz»: l'apostrofo non si sente"],["children's","«cildrenz»"]],
+ qs:[
+  {q:"la camera di Mary = ___ bedroom",w:["mary's"],h:"Possessore + 's.",y:"Mary's bedroom."},
+  {q:"la camera dei ragazzi = the ___ bedroom",m:["boys'","boy's","boys's"],a:0,h:"Boys è plurale e finisce in -s.",y:"Plurale in -s → solo apostrofo: boys'."},
+  {q:"la camera dei bambini = the ___ bedroom",m:["children's","childrens'","children'"],a:0,h:"Children è un plurale irregolare.",y:"Plurale irregolare → children's."},
+  {q:"l'auto di Tom e Carol (una sola, di tutti e due) = ___ car",m:["Tom and Carol's","Tom's and Carol's"],a:0,h:"L'auto è una e la dividono.",y:"Cosa in comune → 's solo all'ultimo."},
+  {q:"le scarpe di Tom e quelle di Carol = ___ shoes",m:["Tom's and Carol's","Tom and Carol's"],a:0,h:"Ognuno ha le sue scarpe.",y:"Cose separate → 's a tutti e due."},
+  {q:"la maniglia della porta = ___",m:["the handle of the door","the door's handle"],a:0,h:"La porta è un oggetto.",y:"Con gli oggetti si usa of."},
+  {q:"un'amica di mia madre = a friend of ___",m:["my mother's","my mother"],a:0,h:"Doppio genitivo: serve 's anche qui.",y:"A friend of my mother's."},
+  {q:"un mio amico = a friend of ___",w:["mine"],h:"Pronome possessivo di io.",y:"A friend of mine."},
+  {q:"Is that Barbara's rucksack? (Susan) — No, it's ___.",m:["Susan's","Susan","of Susan"],a:0,h:"Di Susan.",y:"No, it's Susan's."},
+  {q:"Vado dal fruttivendolo = I'm going to the ___.",w:["greengrocer's"],h:"Il negozio: il nome del negoziante + 's.",y:"To the greengrocer's (shop)."},
+  {q:"What can you buy at the ___? — Bread.",m:["baker's","butcher's","florist's"],a:0,h:"Chi fa il pane?",y:"Il panettiere = baker → at the baker's."},
+  {q:"What can you buy at the ___? — Meat.",m:["butcher's","baker's","newsagent's"],a:0,h:"Chi vende la carne?",y:"Il macellaio = butcher → at the butcher's."},
+  {q:"Metti in ordine: Questa è la macchina di Kevin.",ask:"Tocca le parole nell'ordine giusto.",o:["car","This","Kevin's","is"],w:["This is Kevin's car"],h:"Comincia con This.",y:"This is Kevin's car."},
+  {q:"This is Kevin's car. = This is ___ car.",w:["his"],h:"Kevin è un maschio.",y:"Kevin's car = his car."},
+  {q:"That is Pam and Kate's house. = That is ___ house.",w:["their"],h:"Pam e Kate = loro.",y:"Their house."},
+{q:"Metti in ordine: Quella è la sorella di Frank.",ask:"Tocca le parole nell'ordine giusto.",o:["sister","That","Frank's","is"],w:["That is Frank's sister"],h:"Comincia con That.",y:"That is Frank's sister."},
+  {q:"Metti in ordine: Quelli sono i colleghi di mia madre.",ask:"Tocca le parole nell'ordine giusto.",o:["colleagues","are","mother's","Those","my"],w:["Those are my mother's colleagues"],h:"Comincia con Those.",y:"Those are my mother's colleagues."},
+  {q:"That is Frank's sister. = That is ___ sister.",w:["his"],h:"Frank è un maschio.",y:"Frank's = his."},
+  {q:"These are George's pens. = These are ___ pens.",w:["his"],h:"George è un maschio.",y:"George's = his."},
+  {q:"Those are the children's toys. = Those are ___ toys.",w:["their"],h:"I bambini = loro.",y:"The children's = their."},
+  {q:"What can you buy at the florist's?",m:["Flowers and plants","Meat","Bread"],a:0,h:"Florist viene da flower.",y:"Dal fioraio: flowers and plants."},
+  {q:"What can you buy at the newsagent's?",m:["Newspapers and magazines","Fruit and vegetables","Meat"],a:0,h:"News = notizie.",y:"Dal giornalaio: newspapers and magazines."},
+  {q:"What can you buy at the greengrocer's?",m:["Fruit and vegetables","Bread","Newspapers"],a:0,h:"Green = verde.",y:"Dal fruttivendolo: fruit and vegetables."}
+ ]
+},
+{
+ id:"possp", t:"Pronomi possessivi", s:"mine, yours, his, hers, ours, theirs",
+ ask:"Completa con il pronome possessivo.",
+ rule:`<table class="tb"><tr><th>Aggettivo (+ nome)</th><th>Pronome (da solo)</th><th>Italiano</th></tr>
+ <tr><td>my</td><td><b>mine</b></td><td>(il) mio</td></tr><tr><td>your</td><td><b>yours</b></td><td>(il) tuo</td></tr>
+ <tr><td>his</td><td><b>his</b></td><td>(il) suo, di lui</td></tr><tr><td>her</td><td><b>hers</b></td><td>(il) suo, di lei</td></tr>
+ <tr><td>our</td><td><b>ours</b></td><td>(il) nostro</td></tr><tr><td>your</td><td><b>yours</b></td><td>(il) vostro</td></tr>
+ <tr><td>their</td><td><b>theirs</b></td><td>(il) loro</td></tr></table>
+ <div class="box"><span class="lab">Trucco</span>C'è un nome dopo? → aggettivo: This is <b>my</b> book. Nessun nome dopo? → pronome: This book is <b>mine</b>. Il pronome non ha mai l'articolo davanti.</div>`,
+ ex:[["This house is ours.","Questa casa è nostra."],["Is this pen yours?","Questa penna è tua?"],["This camper is theirs.","Questo camper è loro."]],
+ trap:"Mai «the mine» o «mine book». Si dice my book / it's mine.",
+ pr:[["mine","«main»"],["yours","«iorz»"],["hers","«höz»"],["ours","«auaz»"],["theirs","«dheaz»"]],
+ qs:[
+  {q:"This is our house. = This house is ___.",w:["ours"],h:"Our diventa…",y:"Our → ours."},
+  {q:"This is my umbrella. = This umbrella is ___.",w:["mine"],h:"My diventa…",y:"My → mine."},
+  {q:"These are their scooters. = These scooters are ___.",w:["theirs"],h:"Their diventa…",y:"Their → theirs."},
+  {q:"That isn't her rucksack. = That rucksack isn't ___.",w:["hers"],h:"Her diventa…",y:"Her → hers."},
+  {q:"That is his exercise book. = That exercise book is ___.",w:["his"],h:"His resta uguale.",y:"His → his."},
+  {q:"Those are your CDs. = Those CDs are ___.",w:["yours"],h:"Your diventa…",y:"Your → yours."},
+  {q:"Is this Tom's phone? — Yes, it's ___.",m:["his","him","he's"],a:0,h:"Di Tom = di lui, senza nome dopo.",y:"Yes, it's his."},
+  {q:"This is my dog and that cat is ___ too.",m:["mine","my","me"],a:0,h:"Dopo non c'è nessun nome.",y:"Pronome → mine."},
+  {q:"Are these Bill's and Jane's jackets? — No, they aren't ___.",m:["theirs","their","them"],a:0,h:"Di loro, senza nome dopo.",y:"No, they aren't theirs."},
+  {q:"This cottage is ___ and we like it very much.",m:["ours","our","us"],a:0,h:"Dopo non c'è nessun nome.",y:"Nostro, da solo → ours."},
+  {q:"This is ___ book.",m:["my","mine"],a:0,h:"Dopo c'è un nome: book.",y:"Prima del nome → aggettivo my."},
+  {q:"Metti in ordine: Questa bici è sua (di lei).",ask:"Tocca le parole nell'ordine giusto.",o:["is","hers","bike","This"],w:["This bike is hers"],h:"Comincia con This.",y:"This bike is hers."},
+{q:"Is that your shop? — Yes, it's ___.",w:["ours"],h:"Our shop → ?",y:"Our → ours."},
+  {q:"Are those your gloves? — Yes, they're ___.",w:["mine"],h:"My gloves → ?",y:"My → mine."},
+  {q:"Is this Tom's new mobile phone? — Yes, it's ___.",w:["his"],h:"Tom → di lui.",y:"His resta uguale."},
+  {q:"Aren't these Anna's keys? — Yes, they're ___.",w:["hers"],h:"Anna → di lei, senza nome dopo.",y:"Her → hers."}
+ ]
+},
+{
+ id:"would", t:"Would you like / Would you rather", s:"vorresti? preferiresti?",
+ ask:"Scegli o scrivi la risposta giusta.",
+ rule:`<table class="tb"><tr><th>Inglese</th><th>Italiano</th><th>Risposta</th></tr>
+ <tr><td><b>Would you like</b> some tea?</td><td>Vuoi / ti va del tè?</td><td>Yes, please. / No, thanks.</td></tr>
+ <tr><td><b>I'd like</b> some oranges.</td><td>Vorrei delle arance.</td><td>I'd = I would</td></tr>
+ <tr><td><b>Would you rather</b> have tea <b>or</b> coffee?</td><td>Preferiresti tè o caffè?</td><td><b>I'd rather</b> have tea.</td></tr></table>
+ <div class="box"><span class="lab">Trucco</span>Dopo <b>would rather</b> metti il verbo semplice, senza to: I'd rather <b>stay</b> at home. <b>I'd like</b> (vorrei, adesso) è diverso da <b>I like</b> (mi piace, sempre).</div>`,
+ ex:[["Would you like some water? Yes, please.","Vuoi dell'acqua? Sì, grazie."],["I'd like a bar of chocolate.","Vorrei una tavoletta di cioccolato."],["Would you rather go to the beach or to the mountains?","Preferiresti andare al mare o in montagna?"],["I'd rather go to the beach.","Preferirei andare al mare."]],
+ trap:"I'd rather stay, mai «I'd rather to stay».",
+ pr:[["would","«uud», la l non si legge"],["I'd like","«aid laik»"],["rather","«raadha»"]],
+ qs:[
+  {q:"Would you like some cherries? — ___",m:["Yes, please.","Yes, I like."],a:0,h:"Si risponde a un'offerta.",y:"A un'offerta si risponde Yes, please o No, thanks."},
+  {q:"Would you rather have tea or coffee? — ___",m:["I'd rather have tea.","I rather tea.","I'd rather to have tea."],a:0,h:"I'd rather + verbo senza to.",y:"I'd rather have tea."},
+  {q:"Vorrei un panino = I'd ___ a sandwich.",w:["like"],h:"I would like = vorrei.",y:"I'd like a sandwich."},
+  {q:"Preferiresti un gatto o un cane? = Would you ___ have a cat or a dog?",w:["rather"],h:"La parola di «preferiresti».",y:"Would you rather…?"},
+  {q:"I'd rather ___ at home.",m:["stay","to stay","staying"],a:0,h:"Dopo would rather il verbo è semplice.",y:"I'd rather stay."},
+  {q:"In «I'd like», I'd vuol dire ___",m:["I would","I did"],a:0,noSay:true,h:"Vorrei.",y:"I'd like = I would like."},
+  {q:"___ you like some water?",w:["would"],h:"Ti va…?",y:"Would you like…?"},
+  {q:"What would you like, madam? — ___",m:["I'd like some oranges, please.","I like oranges."],a:0,h:"Ti chiede cosa vuoi adesso.",y:"Would like → I'd like. «I like» vuol dire che ti piacciono in generale."},
+  {q:"Metti in ordine: Preferiresti leggere o guardare la TV?",ask:"Tocca le parole nell'ordine giusto.",o:["rather","read","Would","or","you","watch","TV?"],w:["Would you rather read or watch TV?"],h:"Comincia con Would you.",y:"Would you rather read or watch TV?"}
+ ]
+},
+{
+ id:"rev", t:"Ripasso: be e have got", s:"il dialogo di Bob e Susan",
+ ask:"Completa con be o have got. Usa la forma contratta quando puoi.",
+ rule:`<table class="tb"><tr><th>Be (essere)</th><th>Have got (avere)</th></tr>
+ <tr><td>I'm / you're / he's / it's / we're / they're</td><td>I've got / you've got / he's got / it's got / they've got</td></tr>
+ <tr><td>negativa: isn't / aren't / I'm not</td><td>negativa: haven't got / hasn't got</td></tr>
+ <tr><td>domanda: Is it…? Are you…?</td><td>domanda: Has it got…? Have they got…?</td></tr>
+ <tr><td>interrogativo-negativa: Isn't it…? Aren't you…?</td><td>interrogativo-negativa: Hasn't she got…? Haven't you got…?</td></tr></table>
+ <div class="box"><span class="lab">Trucco</span>C'è got nella frase o una cosa che si possiede? → <b>have</b>. Si parla di come è qualcosa, dove si trova, età, freddo, paura? → <b>be</b>.</div>
+ <p>L'<b>interrogativo-negativa</b> è la domanda con not: <b>Aren't</b> you afraid of dogs? = Non hai paura dei cani?</p>`,
+ ex:[["I'm cold now.","Ho freddo adesso."],["It's got nine rooms.","Ha nove stanze."],["Aren't you afraid of dogs?","Non hai paura dei cani?"],["Is there central heating?","C'è il riscaldamento?"]],
+ trap:"It's può essere it is (It's big) oppure it has (It's got a garden). Guarda se dopo c'è got.",
+ pr:[["aren't you","«aanciu»"],["hasn't she","«hezntscii»"]],
+ qs:[
+  {q:"I haven't got a coat with me and I ___ cold now.",w:["'m","am"],h:"Ho freddo = sono freddo.",y:"I'm cold."},
+  {q:"I hope it ___ very cold in the mountains today. (negativo)",w:["isn't","is not","'s not"],h:"Il tempo si dice con be.",y:"It isn't cold."},
+  {q:"___ there central heating in their house?",w:["is"],h:"C'è…? in una domanda.",y:"Is there…?"},
+  {q:"Of course there ___.",w:["is"],h:"Risposta: c'è.",y:"There is."},
+  {q:"It ___ a very comfortable house.",w:["'s","is"],h:"Descrive com'è la casa.",y:"It's a comfortable house."},
+  {q:"___ it got a garden?",w:["has"],h:"Dopo c'è got.",y:"Has it got…?"},
+  {q:"Yes, it ___.",w:["has"],h:"Risposta breve a «Has it got», senza got.",y:"Yes, it has."},
+  {q:"It ___ very big, but it's nice. (negativo)",w:["isn't","is not","'s not"],h:"Descrive com'è.",y:"It isn't very big."},
+  {q:"___ it a big house?",w:["is"],h:"Domanda su com'è.",y:"Is it a big house?"},
+  {q:"It ___ nine rooms altogether.",w:["'s got","has got"],h:"Possesso: due parole.",y:"It's got / has got nine rooms."},
+  {q:"Wow! ___ it really got nine rooms?",w:["has"],h:"Dopo c'è got.",y:"Has it really got…?"},
+  {q:"They ___ a big family. (hanno)",w:["'ve got","have got"],h:"Avere una famiglia: due parole.",y:"They've got a big family."},
+  {q:"How many children ___ they got?",w:["have"],h:"Domanda con they.",y:"How many children have they got?"},
+  {q:"___ you afraid of dogs? (Non hai paura…?)",w:["aren't"],h:"Domanda con be e con la negazione.",y:"Interrogativo-negativa: Aren't you…?"},
+  {q:"No, I ___.",w:["'m not","am not"],h:"Risposta breve negativa con be.",y:"No, I'm not."},
+  {q:"___ Claire got anybody to help her?",w:["has"],h:"Dopo c'è got, Claire = she.",y:"Has Claire got…?"},
+  {q:"No, she ___.",w:["hasn't","has not"],h:"Risposta breve negativa con have.",y:"No, she hasn't."},
+  {q:"Well, here we ___.",w:["are"],h:"We + be.",y:"Here we are = eccoci."},
+  {q:"Mary's got ___ hair.",m:["straight","slim"],a:0,h:"Slim si usa per il corpo.",y:"Straight hair = capelli lisci. Slim = magra."},
+  {q:"Melina is ___.",m:["Greek","Grecian"],a:0,h:"La nazionalità.",y:"Greca = Greek."},
+  {q:"My sister ___ got a mobile phone.",m:["hasn't","haven't"],a:0,h:"My sister = she.",y:"She → hasn't."},
+  {q:"Is ___ bag yours?",m:["this","these"],a:0,h:"Bag è singolare.",y:"Singolare → this."},
+  {q:"The plural of 'lady' is ___.",m:["ladies","ladyes"],a:0,h:"Consonante + y.",y:"Consonante + y → -ies."},
+  {q:"We use ___ to talk about plurals.",m:["there are","there is"],a:0,h:"Plurale.",y:"There are per il plurale."},
+  {q:"We say 'I ___ fourteen years old.'",m:["am","have"],a:0,h:"L'età si dice con be.",y:"I am fourteen."}
+ ]
+},
+{
+ id:"dial", t:"Dialoghi: cosa viene dopo?", s:"capire la domanda e rispondere",
+ ask:"Leggi il dialogo e scegli la battuta che viene dopo.",
+ rule:`<p>Nei mini-dialoghi la prima cosa da fare è capire <b>che cosa ti chiede</b> la battuta prima.</p>
+ <table class="tb"><tr><th>Se senti…</th><th>Ti chiede…</th><th>Rispondi con…</th></tr>
+ <tr><td>Can I help you? / What would you like?</td><td>cosa vuoi</td><td>I'd like some…, please.</td></tr>
+ <tr><td>How many…? / How much…?</td><td>quanti / quanto</td><td>un numero o una quantità: Two kilos. Half a kilo.</td></tr>
+ <tr><td>How much is that?</td><td>il prezzo</td><td>£4.30, please.</td></tr>
+ <tr><td>Would you like…?</td><td>un'offerta</td><td>Yes, please. / No, thanks.</td></tr>
+ <tr><td>Anything else?</td><td>se vuoi altro</td><td>I'd like… too. / No, that's all.</td></tr>
+ <tr><td>Is that all?</td><td>se hai finito</td><td>Yes, that's all.</td></tr>
+ <tr><td>Have you got…? / Is it…?</td><td>sì o no</td><td>risposta breve con lo stesso verbo: Yes, I have. / No, it isn't.</td></tr>
+ <tr><td>…, isn't it?</td><td>se sei d'accordo</td><td>Yes, it is. / Yes, beautiful.</td></tr></table>
+ <div class="box"><span class="lab">Trucco</span>Cerca il <b>verbo</b> della domanda e riusalo nella risposta: <b>Has</b> she got…? → Yes, she <b>has</b>. <b>Are</b> you…? → No, I'm <b>not</b>.</div>`,
+ ex:[["Can I help you? Yes, I'd like some fruit, please.","Posso aiutarla? Sì, vorrei della frutta."],["How many oranges would you like? Two kilos.","Quante arance vuole? Due chili."],["Is that all? Yes, that's all. How much is that?","È tutto? Sì. Quanto costa?"]],
+ trap:"Alla domanda con have got si risponde con have: Has she got…? → Yes, she has. Con be si risponde con be: Is she…? → Yes, she is.",
+ pr:[["Can I help you?","«ken ai help iu»"],["Anything else?","«enithing els»"],["That's all.","«dhets ool»"]],
+ qs:[
+  {ctx:["M: Good morning. Can I help you?"],q:"E: ___",m:["Yes, I'd like some fruit, please.","How much is that?","Goodbye."],a:0,h:"Ti offre aiuto: di' cosa vuoi.",y:"Can I help you? → di' cosa vuoi comprare."},
+  {ctx:["M: What would you like, madam?"],q:"E: ___",m:["I'd like some oranges, please.","Two kilos.","Yes, that's all."],a:0,h:"What = che cosa.",y:"What would you like? chiede che cosa vuoi."},
+  {ctx:["E: I'd like some oranges, please.","M: How many oranges would you like?"],q:"E: ___",m:["Two kilos.","I'd like some oranges.","No, thanks."],a:0,h:"How many chiede una quantità.",y:"How many → rispondi con una quantità."},
+  {ctx:["M: Anything else?"],q:"E: ___",m:["I'd like some strawberries, too.","Two kilos.","Goodbye."],a:0,h:"Anything else? = Altro?",y:"Anything else? → aggiungi un'altra cosa."},
+  {ctx:["M: How many strawberries would you like?"],q:"E: ___",m:["Half a kilo, please.","Yes, please.","They're mine."],a:0,h:"Chiede quante.",y:"How many → Half a kilo."},
+  {ctx:["M: We've got some very good cherries. Would you like some cherries too?"],q:"E: ___",m:["No, thanks. No cherries. We've got some.","Half a kilo of oranges.","How much is that?"],a:0,h:"Would you like è un'offerta.",y:"A un'offerta: Yes, please / No, thanks."},
+  {ctx:["M: So, two kilos of oranges and half a kilo of strawberries. Is that all?"],q:"E: ___",m:["Yes, that's all. How much is that?","Yes, I'd like some fruit.","Good morning."],a:0,h:"Is that all? = È tutto?",y:"Is that all? → Yes, that's all."},
+  {ctx:["E: How much is that?"],q:"M: ___",m:["£4.30, please.","Two kilos.","Yes, it is."],a:0,h:"How much is that? chiede il prezzo.",y:"Prezzo → £4.30."},
+  {ctx:["M: £4.30, please. Lovely day, isn't it?"],q:"E: ___",m:["Yes, beautiful. Thank you very much. Goodbye.","No, thanks.","Two kilos."],a:0,h:"Isn't it? chiede se sei d'accordo.",y:"Lovely day, isn't it? → Yes, beautiful."},
+  {ctx:["A: Has she got any cousins?"],q:"B: ___",m:["Yes, she has.","Yes, she is.","Yes, she's got."],a:0,h:"Il verbo della domanda è has.",y:"Has she got…? → Yes, she has."},
+  {ctx:["A: Whose camera is this? Is it your camera, Paul?"],q:"B: ___",m:["No, it isn't. It must be John's.","Yes, it's mine camera.","No, he isn't."],a:0,h:"Is it…? → si risponde con it.",y:"No, it isn't. It's John's."},
+  {ctx:["A: Who are those people over there?"],q:"B: ___",m:["They're my parents.","They're mine.","It's my parents."],a:0,h:"Who = chi. Sono più persone.",y:"Who are…? → They're my parents."},
+  {ctx:["A: Are you afraid of dogs?"],q:"B: ___",m:["No, I'm not.","No, I haven't.","No, I amn't."],a:0,h:"Il verbo della domanda è are.",y:"Are you…? → No, I'm not."},
+  {ctx:["A: Have you got much free time?"],q:"B: ___",m:["No, I haven't. I've got a lot of homework.","No, I'm not.","Yes, I'm."],a:0,h:"Il verbo della domanda è have.",y:"Have you got…? → No, I haven't."},
+  {ctx:["A: Would you rather go to the cinema or to the park?"],q:"B: ___",m:["I'd rather go to the cinema.","Yes, please.","I'd like."],a:0,h:"Ti chiede di scegliere tra due cose.",y:"Would you rather…or…? → I'd rather + una delle due."},
+  {ctx:["A: What's the matter with Mary? Has she got a headache?"],q:"B: ___",m:["I don't think so. I think she's got stomachache.","No, she isn't.","Yes, she is."],a:0,h:"Ha chiesto con has got.",y:"Si parla di malattie con have got: she's got stomachache."},
+  {ctx:["A: Have we got any jam?"],q:"B: ___",m:["Yes, there's a jar of jam in the cupboard.","Yes, there are some jam.","Yes, we've got a jam."],a:0,h:"Jam non si conta: serve un contenitore.",y:"A jar of jam."},
+  {ctx:["A: Is that Alan's mother?"],q:"B: ___",m:["Yes, it is. Her name's Sue.","Yes, he is.","Yes, she's."],a:0,h:"Is that…? → si risponde con it.",y:"Is that…? → Yes, it is."},
+{ctx:["A: What's the matter with Bob? Has he got a temperature?"],q:"B: ___",m:["I don't think so. I think he's got a sore throat.","No, he isn't.","Yes, he is."],a:0,h:"Ha chiesto con has got.",y:"Malattie → have got: he's got a sore throat."},
+  {ctx:["A: Whose shoes are these?"],q:"B: ___",m:["They're David's.","It's David.","Who's David."],a:0,h:"Shoes è plurale. Whose = di chi.",y:"They're David's."}
+ ]
+}
+];
+
+const SONGS = [
+ {q:"We ___ the Champions",m:["are","is","am"],a:0,by:"Queen",y:"We → are."},
+ {q:"You'___ Got a Friend in Me",m:["ve","s","re"],a:0,by:"Randy Newman (Toy Story)",y:"You have got → You've got."},
+ {q:"It'___ My Life",m:["s","re","m"],a:0,by:"Bon Jovi",y:"It is → It's."},
+ {q:"There ___ a Light That Never Goes Out",m:["is","are"],a:0,by:"The Smiths",y:"Una luce sola → there is."},
+ {q:"Just the Way You ___",m:["are","is","am"],a:0,by:"Bruno Mars",y:"You → are."},
+ {q:"I'___ Yours",m:["m","s","re"],a:0,by:"Jason Mraz",y:"I am → I'm."},
+ {q:"This ___ Me",m:["is","are","am"],a:0,by:"dal film The Greatest Showman",y:"This (una cosa sola) → is."},
+ {q:"You'___ Beautiful",m:["re","s","m"],a:0,by:"James Blunt",y:"You are → You're."},
+ {q:"That'___ What I Like",m:["s","re"],a:0,by:"Bruno Mars",y:"That is → That's."},
+ {q:"Shape of ___",m:["you","your"],a:0,by:"Ed Sheeran",y:"Dopo of serve il complemento → you."},
+ {q:"All of ___",m:["me","I","my"],a:0,by:"John Legend",y:"Dopo of serve il complemento di io → me."},
+ {q:"Let ___ Go",m:["her","she"],a:0,by:"Passenger",y:"Dopo il verbo serve il complemento → her."},
+ {q:"Count on ___",m:["me","I"],a:0,by:"Bruno Mars",y:"Dopo on serve il complemento → me."},
+ {q:"Stay With ___",m:["me","I","my"],a:0,by:"Sam Smith",y:"Dopo with serve il complemento → me."},
+ {q:"Save ___ Tears",m:["your","you"],a:0,by:"The Weeknd",y:"Prima di un nome (tears) serve il possessivo → your."},
+ {q:"We ___ Young",m:["are","is"],a:0,by:"fun.",y:"We → are."},
+ {q:"Someone Like ___",m:["you","your"],a:0,by:"Adele",y:"Dopo like serve il complemento → you."},
+ {q:"___ This Love",m:["Is","Are","Am"],a:0,by:"Bob Marley",y:"Domanda: il verbo va prima. This → is."},
+ {q:"We ___ Family",m:["are","is"],a:0,by:"Sister Sledge",y:"We → are."},
+ {q:"Our ___",m:["Song","Songs"],a:0,by:"Taylor Swift",y:"Our = nostro. La canzone è una sola → Song."},
+ {q:"___ Is the Love?",m:["Where","When","Who"],a:0,by:"Black Eyed Peas",y:"Dov'è l'amore? Dove → Where."},
+ {q:"What ___ Love",m:["Is","Are"],a:0,by:"Haddaway",y:"Love è una cosa sola → is."},
+ {q:"___ the End",m:["In","On","At"],a:0,by:"Linkin Park",y:"Alla fine = in the end."},
+ {q:"___ the Floor",m:["On","In","At"],a:0,by:"Jennifer Lopez",y:"Sul pavimento, appoggiati → on."},
+ {q:"___",m:["Purple Rain","Rain Purple"],a:0,by:"Prince",y:"L'aggettivo (purple, viola) va prima del nome."},
+ {q:"___ Submarine",m:["Yellow","Yellows"],a:0,by:"The Beatles",y:"L'aggettivo non prende mai la -s."},
+ {q:"Who ___ You",m:["Are","Is"],a:0,by:"The Who",y:"You → are."},
+ {q:"Under ___",m:["Pressure","Pressures"],a:0,by:"Queen e David Bowie",y:"Under = sotto: una preposizione di luogo che vale anche per le sensazioni."}
+];
+
+const PRON_TIPS = [
+ {t:"La h si sente sempre",d:"Soffia come quando appanni un vetro: have, his, hair. Fanno eccezione poche parole come hour e honest, dove la h è muta.",w:["have","his","hair","hello"]},
+ {t:"Th: la lingua tra i denti",d:"Metti la punta della lingua tra i denti. In think, three, thank you esce solo aria. In the, this, they, there la voce vibra. Evita di dire «t» o «d».",w:["think","three","the","this","they"]},
+ {t:"La e finale è muta",d:"Name si legge «neim», five «faiv», have «hev». Quella e in fondo serve solo a cambiare il suono della vocale prima.",w:["name","five","have","home"]},
+ {t:"La w si legge «u»",d:"We «uii», what «uot», white «uait».",w:["we","what","white","window"]},
+ {t:"La s finale: tre suoni",d:"Dopo p, t, k, f è una «s» secca (cats). Dopo vocali e altre consonanti vibra come una «z» (dogs, boys). Dopo s, sh, ch, x diventa «iz» e aggiunge una sillaba (boxes, watches).",w:["cats","dogs","boxes","watches"]},
+ {t:"Stesso suono, scrittura diversa",d:"their, there, they're si dicono tutte «dhea». Its e it's si dicono «its». Capisci quale scrivere dal significato.",w:["their","there","they're"]},
+ {t:"Le parole si attaccano",d:"Nel parlato veloce le parole corte si appoggiano alla successiva: I've got a → «aivgotta», isn't it → «izntit». Per capire le canzoni ascolta i pezzi, non le parole singole.",w:["I've got a dog","isn't it","have you got"]},
+ {t:"La i di I, my, five",d:"La lettera i spesso si legge «ai»: I, my, nice, five, time.",w:["I","my","nice","time"]}
+];
+
+/* =========================================================
+   STATO E MEMORIA
+   ========================================================= */
+const KEY="inglese-facile-v1";
+let S={pts:0,streak:0,last:"",stars:{},weak:{},ok:{},tests:[],slow:false};
+const COMPITO={title:"Compito del 4 dicembre",date:"2026-12-04",
+  topics:["count","someany","cont","howmuch","rev","have","be","hb","s","tags","poss","whose","gen","possp","would","dial"]};
+try{const raw=localStorage.getItem(KEY); if(raw) S=Object.assign(S,JSON.parse(raw));}catch(e){}
+S.ok=S.ok||{}; S.tests=S.tests||[]; S.sres=S.sres||{}; S.sdone=S.sdone||{};
+const SCHEDE=["count","someany","cont","howmuch","rev","have","hb","s","tags","poss","whose","gen","possp","would","dial"];
+function save(){try{localStorage.setItem(KEY,JSON.stringify(S));}catch(e){}}
+
+const ALLQ=[];
+TOPICS.forEach(tp=>tp.qs.forEach((q,i)=>{q.id=tp.id+"-"+i;q.tp=tp.id;q.n=i+1;ALLQ.push(q);}));
+const QBYID=Object.fromEntries(ALLQ.map(q=>[q.id,q]));
+const TBYID=Object.fromEntries(TOPICS.map(t=>[t.id,t]));
+
+/* vocabolario: parole che hanno senso negli esercizi */
+const VOCAB=new Set();
+function addWords(s){norm(s).split(/[^a-z']+/).forEach(w=>{w=w.replace(/^'+|'+$/g,"");if(w)VOCAB.add(w);});}
+ALLQ.forEach(q=>{addWords(q.q);(q.w||[]).forEach(addWords);(q.m||[]).forEach(addWords);});
+("i you he she it we they me him her us them my your his its our their mine yours a an the am is are was were be not isn't aren't have has had got haven't hasn't do does don't doesn't some any there here this that these those so neither too yes no and or but of in on at to for with from what who where how why which whose s m re ve d ll").split(" ").forEach(w=>VOCAB.add(w));
+
+function norm(s){
+  return String(s).toLowerCase().replace(/[’‘`´]/g,"'").replace(/\s+/g," ").trim().replace(/[.!?,;:]+$/,"").trim();
+}
+function cmp(s){return norm(s).replace(/^'+/,"");}
+function inVocab(v){
+  return norm(v).split(" ").every(w=>{const x=w.replace(/^'+|'+$/g,"");return !x||VOCAB.has(x)||VOCAB.has(x.replace(/'/g,""));});
+}
+function esc(s){return String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;");}
+function shuffle(a){a=a.slice();for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]];}return a;}
+function today(){const d=new Date();return d.getFullYear()+"-"+(d.getMonth()+1)+"-"+d.getDate();}
+function yesterday(){const d=new Date();d.setDate(d.getDate()-1);return d.getFullYear()+"-"+(d.getMonth()+1)+"-"+d.getDate();}
+function weakCount(){return Object.keys(S.weak).filter(k=>QBYID[k]).length;}
+
+/* =========================================================
+   VOCE (solo se il telefono ha una voce inglese decente)
+   ========================================================= */
+let VOICE=null;
+const BAD=/albert|bad news|bahh|bells|boing|bubbles|cellos|deranged|good news|hysterical|jester|organ|superstar|trinoids|whisper|wobble|zarvox|fred|junior|ralph|kathy|princess|grandma|grandpa|eddy|flo\b|reed|rocko|sandy|shelley|novelty/i;
+function pickVoice(){
+  if(!("speechSynthesis" in window)) return null;
+  const vs=speechSynthesis.getVoices().filter(v=>/^en([-_]|$)/i.test(v.lang)&&!BAD.test(v.name));
+  if(!vs.length) return null;
+  const sc=v=>{let s=0;
+    if(/premium|enhanced|natural|neural|avanzat|migliorat/i.test(v.name)) s+=5;
+    if(/en[-_]gb/i.test(v.lang)) s+=3;
+    if(/daniel|serena|kate|arthur|martha|libby|sonia|ryan|google uk english/i.test(v.name)) s+=3;
+    if(/samantha|ava|allison|google us english|joelle|nathan/i.test(v.name)) s+=2;
+    if(/en[-_](us|au|ie)/i.test(v.lang)) s+=1;
+    return s;};
+  return vs.sort((a,b)=>sc(b)-sc(a))[0];
+}
+function initVoice(){const v=pickVoice(); if(v){VOICE=v;document.body.classList.remove("novoice");}}
+if("speechSynthesis" in window){initVoice();speechSynthesis.onvoiceschanged=initVoice;setTimeout(initVoice,600);setTimeout(initVoice,1800);}
+function say(t){
+  if(!VOICE) return;
+  try{speechSynthesis.cancel();const u=new SpeechSynthesisUtterance(t);u.voice=VOICE;u.lang=VOICE.lang;u.rate=S.slow?0.62:0.9;speechSynthesis.speak(u);}catch(e){}
+}
+document.addEventListener("click",e=>{const b=e.target.closest("[data-say]");if(b){e.preventDefault();say(b.dataset.say);}});
+function sayBtn(t,label){if(!t) return "";return `<button class="say" data-say="${esc(t)}">🔊 ${label||"Ascolta"}</button>`;}
+
+/* frase completa da leggere ad alta voce */
+function answerText(q){return q.m?q.m[q.a]:q.w[0];}
+function spoken(q){
+  if(q.noSay) return "";
+  if(q.o) return q.w[0];
+  if(q.ctx) return answerText(q);
+  if(q.tp!=="s"&&!q.q.includes("___")) return q.q;
+  return fullSentence(q);
+}
+function shown(q){
+  if(q.ctx) return q.ctx[q.ctx.length-1]+" → "+answerText(q);
+  if(q.o) return q.w[0];
+  if(q.noSay||(q.tp!=="s"&&!q.q.includes("___"))) return q.q.replace("___","…")+" → "+answerText(q);
+  return fullSentence(q);
+}
+function fullSentence(q){
+  let s=q.q;
+  if(q.tp==="s") return s;
+  s=s.replace("___",answerText(q));
+  s=s.replace(/\([^)]*\)/g,"");
+  if(s.includes("=")) s=s.split("=")[1];
+  s=s.replace(/\b[AB]: /g,"").replace(/\s+([?.!,])/g,"$1").replace(/\s+/g," ").trim();
+  s=s.charAt(0).toUpperCase()+s.slice(1);
+  return s.replace(/([.?!] )([a-z])/g,(m,a,b)=>a+b.toUpperCase());
+}
+function showQ(q){
+  const s=esc(q.q).replace("___",'<span class="gap">…</span>');
+  const d=q.ctx?`<div class="dlg">${q.ctx.map(l=>`<div>${esc(l).replace(/^([A-Z]): /,"<b>$1:</b> ")}</div>`).join("")}</div>`:"";
+  return d+s.replace(/^([A-Z]): /,"<b>$1:</b> ");
+}
+const EASY={
+ count:"Chiediti: posso dire «uno, due, tre…» con questa parola? Le sedie sì (one chair, two chairs). L'acqua no: puoi contare le bottiglie d'acqua, l'acqua da sola resta una massa unica. Le parole che non si contano non hanno mai la -s e non vogliono a/an.",
+ someany:"Some è il «un po' di» delle frasi normali: We've got some milk. Appena la frase diventa negativa o una domanda, some si trasforma in any. No invece è già una negazione da sola, quindi il verbo resta positivo.",
+ cont:"In inglese per dire una quantità di una cosa che non si conta usi il contenitore + of: una tazza di tè = a cup of tea. Immagina di andare al supermercato: il latte lo prendi nel cartone, il tonno nella scatoletta, la marmellata nel barattolo.",
+ howmuch:"Much e many vogliono dire tutti e due «quanto». Many va con le cose che conti una per una (eggs, people), much con quelle che misuri (milk, money). Se la parola dopo finisce in -s, quasi sempre è many.",
+ rev:"Be e have got sono i due verbi più importanti finora. Be dice com'è qualcosa o dove si trova (It's big, I'm cold). Have got dice cosa hai (It's got a garden). Quando vedi got, sai che c'è have.",
+ have:"Have got è il nostro «avere». Lui, lei, esso usano has; tutti gli altri have. Nelle domande have/has salta davanti, got resta dopo. Nella risposta breve got sparisce: Yes, I have.",
+ hb:"Molte frasi che in italiano dicono «ho» in inglese dicono «sono»: ho fame = sono affamata = I'm hungry. Funziona così per età, fame, sete, freddo, caldo, paura e fretta. Have got resta per le cose che possiedi o le malattie.",
+ s:"La 's attaccata è come un'abbreviazione che nasconde una parola. Per scoprirla guarda subito dopo: se c'è got è has, altrimenti è is. Se dopo c'è un oggetto e prima un nome di persona, è il «di» del genitivo.",
+ tags:"La question tag è il «vero?» che mettiamo in fondo alla frase. Funziona come uno specchio: frase positiva, domandina negativa; frase negativa, domandina positiva. So vuol dire «anche io», neither «neanche io».",
+ poss:"Il possessivo dipende solo dal proprietario. In italiano «suo libro» e «sua borsa» cambiano per la cosa; in inglese il libro e la borsa di Marco sono tutti e due his, perché Marco è un maschio. Chiediti sempre: di chi è?",
+ whose:"Whose e who's si dicono uguali, ma whose chiede il proprietario (di chi?) e who's chiede la persona (chi è?). Prova a dire who is al posto della parola: se la frase regge, è who's.",
+ gen:"Il genitivo sassone è il modo inglese di dire «di qualcuno»: si mette prima il proprietario con 's e poi la cosa, al contrario dell'italiano. La bici di Tom diventa Tom's bike. Funziona per persone e animali, per gli oggetti si usa of.",
+ possp:"I pronomi possessivi sono i possessivi «da soli», quando la cosa l'hai già nominata. This is my book → This book is mine. Quasi tutti si fanno aggiungendo una s: yours, hers, ours, theirs. L'unico strano è mine.",
+ would:"Would rende la frase più gentile, come il condizionale italiano. I like = mi piace (sempre); I'd like = vorrei (adesso). Would you rather…or…? ti chiede di scegliere tra due cose: rispondi con I'd rather e la cosa che preferisci.",
+ dial:"Prima di guardare le risposte, rileggi la domanda e chiediti cosa vuole sapere: una cosa, una quantità, un prezzo, un sì o un no? Poi scegli la risposta che risponde proprio a quello. Se la domanda usa has, la risposta usa has; se usa is, risponde con is."
+};
+
+/* esempio svolto mostrato sopra ogni esercizio */
+const EXQ={
+ pron:["___ is my sister.","She is my sister."],
+ be:["My friends ___ nice.","My friends are nice."],
+ art:["I've got ___ apple.","I've got an apple."],
+ plur:["one bus, two ___","two buses"],
+ demo:["___ is my pen. (qui, vicino)","This is my pen."],
+ adj:["Una casa grande = ___","a big house"],
+ qw:["___ are you from?","Where are you from?"],
+ poss:["Marco loves ___ dog.","Marco loves his dog."],
+ there:["___ two cats in the garden.","There are two cats in the garden."],
+ have:["She ___ got a brother.","She has got a brother."],
+ s:["She's got a cat. Che cosa significa 's?","has (dopo c'è got)"],
+ hb:["Ho caldo = I ___ hot.","I am hot."],
+ tags:["You've got a guitar, ___?","haven't you?"],
+ ptime:["I go to school ___ Monday.","on Monday"],
+ pplace:["The pen is ___ the desk. (sopra)","on the desk"],
+ count:["I need ___ advice.","I need some advice."],
+ someany:["Have you got ___ sisters?","Have you got any sisters?"],
+ cont:["a ___ of bread (fetta)","a slice of bread"],
+ howmuch:["How ___ apples are there?","How many apples are there?"],
+ whose:["___ bag is this? — It's Anna's.","Whose bag is this?"],
+ gen:["la bici di Tom = ___ bike","Tom's bike"],
+ possp:["This is my pen. = This pen is ___.","mine"],
+ would:["Vorrei un tè = I'd ___ a tea.","I'd like a tea."],
+ rev:["I haven't got a car. (0) It ___ cold today.","It's cold today."]
+};
+function exFor(q){
+  if(q.e) return q.e;
+  if(q.o) return ["Metti in ordine: got / I've / dog / a","I've got a dog"];
+  if(q.ctx) return ["A: Have you got a pet?  B: ___","Yes, I have. I've got a cat."];
+  if((q.ask||"").includes("intruso")) return ["a carton of … milk / orange juice / bacon","intruso: bacon (la pancetta non sta in un cartone)"];
+  if((q.ask||"").includes("Numerabile")) return ["beer","non numerabile (U): è un liquido, non si conta"];
+  if(q.q.includes("=")&&/^[A-Z][^=]*\. = /.test(q.q)&&q.tp==="someany") return ["We haven't got any milk. = We've got ___ milk.","no"];
+  if(q.tp==="gen"&&/^(This|That|These|Those) .* = /.test(q.q)) return ["This is Tom's bike. = This is ___ bike.","his"];
+  return EXQ[q.tp]||null;
+}
+function exBox(q){
+  const e=exFor(q); if(!e) return "";
+  return `<div class="exb"><span class="lab">Esempio</span>${esc(e[0]).replace("___",'<span class="gapx">…</span>')}<br><span class="exa">→ ${esc(e[1])}</span></div>`;
+}
+/* parole da mettere in ordine */
+let TB=null;
+function tilesHTML(q){
+  TB={words:shuffle(q.o),built:[]};
+  return `<div class="built" id="built"><span class="muted">Tocca le parole qui sotto</span></div><div class="tiles" id="tiles"></div>`;
+}
+function drawTiles(){
+  const b=document.getElementById("built"), t=document.getElementById("tiles"); if(!b) return;
+  b.innerHTML=TB.built.length?TB.built.map((i,k)=>`<button class="tw on" onclick="tileDel(${k})">${esc(TB.words[i])}</button>`).join(""):'<span class="muted">Tocca le parole qui sotto</span>';
+  t.innerHTML=TB.words.map((w,i)=>`<button class="tw" ${TB.built.includes(i)?"disabled":""} onclick="tileAdd(${i})">${esc(w)}</button>`).join("");
+}
+function tileAdd(i){if(TB.locked)return;TB.built.push(i);drawTiles();}
+function tileDel(k){if(TB.locked)return;TB.built.splice(k,1);drawTiles();}
+function tilesValue(){return TB.built.map(i=>TB.words[i]).join(" ");}
+
+/* =========================================================
+   SCHERMATE
+   ========================================================= */
+const app=document.getElementById("app"), hdr=document.getElementById("hdr"), sheet=document.getElementById("sheet");
+function topbar(big){
+  hdr.style.display=big?"block":"none";
+  if(big) hdr.innerHTML=`<div class="kick">Inglese facile</div><h1>Le regole e il gioco</h1><p>Ripassa, allenati e preparati alla verifica.</p>
+  <div class="stats"><span class="pill">🔥 ${S.streak} ${S.streak===1?"giorno":"giorni"} di fila</span><span class="pill">⭐ ${S.pts} punti</span></div>`;
+  window.scrollTo(0,0);
+}
+function stars(n){n=n||0;return "★".repeat(n)+"☆".repeat(3-n);}
+
+function home(){
+  topbar(true);
+  const wc=weakCount();
+  app.innerHTML=`
+  ${daysLeft()>=0?`<button class="big comp" onclick="compitoPage()"><b>📌 ${COMPITO.title}</b><span>${dlText()} · pronta al ${readiness(COMPITO.topics)}%</span></button>`:""}
+  <button class="big" onclick="startDaily()"><b>Allenamento di oggi</b><span>8 domande, 5 minuti${daysLeft()>=0?", sugli argomenti del compito":""}</span></button>
+  <div class="grid">
+    <button class="tile" onclick="rulesList()"><b>📖 Le regole</b><span>Da consultare anche per i compiti</span></button>
+    <button class="tile" onclick="topicsList()"><b>✏️ Allenati</b><span>Scegli un argomento</span></button>
+    <button class="tile" onclick="startWeak()"><b>🔁 I miei errori</b><span>${wc?wc+" domande da sistemare":"Per ora nessuno"}</span></button>
+    <button class="tile" onclick="songIntro()"><b>🎵 Le canzoni</b><span>Completa i titoli famosi</span></button>
+    <button class="tile" onclick="testSetup()"><b>📝 Prova di verifica</b><span>Senza aiuti, come in classe</span></button>
+    <button class="tile" onclick="pronPage()"><b>🗣️ Pronuncia</b><span>I trucchi per leggere bene</span></button>
+  </div>
+  <div class="card" style="margin-top:14px">
+    <div class="toggle"><div><b>Voce lenta</b><br><small class="muted">Per sentire meglio ogni parola</small></div><button class="sw ${S.slow?"on":""}" onclick="S.slow=!S.slow;save();this.classList.toggle('on');say('Hello! How are you?')"></button></div>
+    <p class="muted" style="margin:10px 0 0"><small>${VOICE?"Voce inglese: "+esc(VOICE.name)+".":"Su questo telefono non trovo una voce inglese, per questo i pulsanti Ascolta non compaiono."} Per una voce più naturale su iPhone: Impostazioni → Accessibilità → Contenuto letto ad alta voce → Voci → Inglese, e scarica una voce «Avanzata».</small></p>
+    <div class="row"><button class="link" onclick="resetAsk(this)">Ricomincia da zero</button></div><div id="rst"></div>
+  </div>`;
+}
+
+function resetAsk(){
+  document.getElementById("rst").innerHTML=`<div class="fb hint"><b>Vuoi cancellare tutti i progressi?</b>Punti, stelline, giorni di fila ed errori tornano a zero.<div class="row"><button class="btn" onclick="doReset()">Sì, ricomincia</button><button class="btn ghost" onclick="document.getElementById('rst').innerHTML=''">No</button></div></div>`;
+}
+function doReset(){S={pts:0,streak:0,last:"",stars:{},weak:{},ok:{},tests:[],sres:{},sdone:{},slow:S.slow};save();home();}
+
+/* ---------- compito ---------- */
+function daysLeft(){
+  const t=new Date(); t.setHours(0,0,0,0);
+  const d=new Date(COMPITO.date+"T00:00:00");
+  return Math.round((d-t)/86400000);
+}
+function dlText(){const n=daysLeft();return n===0?"è oggi!":n===1?"manca 1 giorno":"mancano "+n+" giorni";}
+function readiness(ids){
+  const qs=ALLQ.filter(q=>ids.includes(q.tp)); if(!qs.length) return 0;
+  return Math.round(qs.filter(q=>S.ok[q.id]&&!S.weak[q.id]).length/qs.length*100);
+}
+function compitoPage(){
+  topbar(false);
+  const lastT=S.tests.filter(t=>t.scope==="compito").slice(-1)[0];
+  app.innerHTML=`<button class="back" onclick="home()">‹ Indietro</button><h2>${COMPITO.title}</h2>
+  <div class="card" style="display:flex;justify-content:space-between;gap:14px;align-items:center">
+    <div><div class="cd">${Math.max(daysLeft(),0)}</div><small class="muted">${daysLeft()===0?"il compito è oggi":daysLeft()===1?"giorno al compito":"giorni al compito"}</small></div>
+    <div style="flex:1"><b>Sei pronta al ${readiness(COMPITO.topics)}%</b><div class="bar"><i style="width:${readiness(COMPITO.topics)}%"></i></div>
+    <small class="muted">${lastT?"Ultima simulazione: "+(lastT.n?lastT.ok+" giuste su "+lastT.n:"fatta")+" ("+fmtD(lastT.d)+")":"Nessuna simulazione ancora"}</small></div>
+  </div>
+  <button class="big" style="background:#e4eee8" onclick="schedePage()"><b>📒 Le schede</b><span>Esercizi in ordine, dalla scheda 1 alla 15</span></button>
+  <button class="big" onclick="startCompito()"><b>Allenamento compito</b><span>8 domande, partendo da quelle che sbagli di più</span></button>
+  <div class="grid">
+    <button class="tile" onclick="startTopic('dial')"><b>💬 Dialoghi</b><span>Cosa viene dopo?</span></button>
+    <button class="tile" onclick="testCompito()"><b>📝 Simulazione</b><span>15 domande come in classe, senza aiuti</span></button>
+  </div>
+  <h3>Argomenti del compito</h3><p class="muted" style="margin-top:0"><small>Tocca un argomento per leggere la regola e allenarti.</small></p>
+  <div class="list">${COMPITO.topics.map(id=>{const t=TBYID[id],r=readiness([id]);return `<button onclick="rulePage('${id}')"><span style="flex:1"><b>${t.t}</b><span class="sub">${esc(t.s)}</span><div class="bar"><i style="width:${r}%"></i></div></span><span class="stars">${r}%</span></button>`;}).join("")}</div>
+  <button class="btn wide" onclick="sendReport()">📤 Manda i progressi su WhatsApp</button>
+  <div id="rep"></div>`;
+}
+function fmtD(d){const a=d.split("-");return a[2]+"/"+a[1];}
+function reportText(){
+  const lastT=S.tests.filter(t=>t.scope==="compito").slice(-1)[0];
+  const weak=Object.keys(S.weak).filter(k=>QBYID[k]&&COMPITO.topics.includes(QBYID[k].tp)).sort((a,b)=>S.weak[b]-S.weak[a]).slice(0,5);
+  const d=new Date();
+  let t="📘 Inglese: i miei progressi ("+d.getDate()+"/"+(d.getMonth()+1)+")\n";
+  t+=COMPITO.title+": pronta al "+readiness(COMPITO.topics)+"%\n";
+  t+="Giorni di fila: "+S.streak+" · Punti: "+S.pts+"\n";
+  t+=lastT?"Ultima simulazione: "+(lastT.n?lastT.ok+" giuste su "+lastT.n:"fatta")+" ("+fmtD(lastT.d)+")\n":"Simulazione: non ancora fatta\n";
+  t+="\nArgomenti:\n"+COMPITO.topics.map(id=>"• "+TBYID[id].t+": "+readiness([id])+"%").join("\n");
+  if(weak.length) t+="\n\nDove sbaglio di più:\n"+weak.map(k=>"– "+shown(QBYID[k])).join("\n");
+  return t;
+}
+function sendReport(){
+  const t=reportText();
+  if(navigator.share){navigator.share({text:t}).catch(()=>{});return;}
+  window.open("https://wa.me/?text="+encodeURIComponent(t),"_blank");
+}
+
+/* ---------- schede ---------- */
+function schedePage(){
+  topbar(false);
+  app.innerHTML=`<button class="back" onclick="compitoPage()">‹ Compito</button><h2>Le schede</h2>
+  <p class="muted">Ogni scheda ha il numero della regola sul foglio. Gli esercizi sono sempre nello stesso ordine.</p>
+  <div class="list">${SCHEDE.map((id,k)=>{const t=TBYID[id],n=t.qs.length,r=S.sres[id]||0;
+    return `<button onclick="schedaMenu('${id}')"><span style="flex:1"><b>Scheda ${k+1} · ${t.t}</b><span class="sub">${n} esercizi${S.sdone[id]?" · ✅ finita":r?" · arrivata all'es. "+(r+1):""}</span><div class="bar"><i style="width:${S.sdone[id]?100:Math.round(r/n*100)}%"></i></div></span><span>›</span></button>`;}).join("")}</div>`;
+}
+function schedaMenu(id){
+  const k=SCHEDE.indexOf(id)+1, t=TBYID[id], r=S.sres[id]||0;
+  topbar(false);
+  app.innerHTML=`<button class="back" onclick="schedePage()">‹ Le schede</button><h2>Scheda ${k} · ${t.t}</h2>
+  <div class="card"><p>${t.qs.length} esercizi. Se hai dubbi, prima rileggi la regola.</p>
+  <div class="row">${r?`<button class="btn" onclick="startScheda('${id}',${r})">Riprendi dall'esercizio ${r+1}</button>`:""}
+  <button class="btn ${r?"ghost":""}" onclick="startScheda('${id}',0)">${r?"Ricomincia da capo":"Inizia la scheda"}</button>
+  <button class="btn ghost" onclick="rulePage('${id}')">Leggi la regola</button></div></div>`;
+}
+function startScheda(id,from){
+  const qs=TBYID[id].qs.slice(from);
+  begin("scheda",qs,id);
+}
+
+/* ---------- regole ---------- */
+function rulesList(){
+  topbar(false);
+  app.innerHTML=`<button class="back" onclick="home()">‹ Indietro</button><h2>Le regole</h2><p class="muted">Tocca un argomento per leggere la regola.</p>
+  <div class="list">${TOPICS.map(t=>`<button onclick="rulePage('${t.id}')"><span><b>${t.t}</b><span class="sub">${esc(t.s)}</span></span><span>›</span></button>`).join("")}</div>`;
+}
+function ruleHTML(t){
+  return `${EASY[t.id]?`<div class="box warn"><span class="lab">In parole semplici</span>${esc(EASY[t.id])}</div>`:""}<div class="card">${t.rule}</div>
+  <div class="card"><h3 style="margin-top:0">Esempi</h3>${t.ex.map(e=>`<div class="ex"><span>${esc(e[0])}<span class="it">${esc(e[1])}</span></span>${sayBtn(e[0])}</div>`).join("")}</div>
+  <div class="box warn"><span class="lab">Attenzione all'errore tipico</span>${esc(t.trap)}</div>
+  <div class="card"><h3 style="margin-top:0">Come si pronuncia</h3>${t.pr.map(p=>`<div class="ex"><span><b>${esc(p[0])}</b><span class="it">${esc(p[1])}</span></span>${sayBtn(p[0])}</div>`).join("")}</div>`;
+}
+function rulePage(id){
+  const t=TBYID[id]; topbar(false);
+  app.innerHTML=`<button class="back" onclick="rulesList()">‹ Tutte le regole</button><h2>${t.t}</h2>${ruleHTML(t)}
+  <button class="btn wide" onclick="startTopic('${id}')">Allenati su questo</button>`;
+}
+function openSheet(id){
+  const t=TBYID[id];
+  sheet.innerHTML=`<div class="sheet" onclick="if(event.target===this)closeSheet()"><div class="in"><button class="btn ghost close" onclick="closeSheet()">Chiudi</button><h2>${t.t}</h2>${ruleHTML(t)}</div></div>`;
+}
+function closeSheet(){sheet.innerHTML="";}
+
+/* ---------- argomenti ---------- */
+function topicsList(){
+  topbar(false);
+  app.innerHTML=`<button class="back" onclick="home()">‹ Indietro</button><h2>Allenati</h2><p class="muted">8 domande per volta. Le stelline mostrano il tuo risultato migliore.</p>
+  <div class="list">${TOPICS.map(t=>`<button onclick="startTopic('${t.id}')"><span><b>${t.t}</b><span class="sub">${esc(t.s)}</span></span><span class="stars">${stars(S.stars[t.id])}</span></button>`).join("")}</div>`;
+}
+
+/* =========================================================
+   ALLENAMENTO
+   ========================================================= */
+let R=null; // sessione in corso
+
+function pickFrom(pool,n){
+  const weak=shuffle(pool.filter(q=>S.weak[q.id]));
+  const rest=shuffle(pool.filter(q=>!S.weak[q.id]));
+  return weak.slice(0,Math.ceil(n/2)).concat(rest).concat(weak.slice(Math.ceil(n/2))).slice(0,n);
+}
+function startTopic(id){begin("topic",pickFrom(TBYID[id].qs,8),id);}
+function compitoPool(){return ALLQ.filter(q=>COMPITO.topics.includes(q.tp));}
+function smartPick(pool,n){
+  const weak=shuffle(pool.filter(q=>S.weak[q.id])).slice(0,Math.ceil(n/2));
+  const fresh=shuffle(pool.filter(q=>!weak.includes(q)&&!S.ok[q.id]));
+  const done=shuffle(pool.filter(q=>!weak.includes(q)&&S.ok[q.id]));
+  return shuffle(weak.concat(fresh,done).slice(0,n));
+}
+function startDaily(){
+  begin("daily",smartPick(daysLeft()>=0?compitoPool():ALLQ,8));
+}
+function startCompito(){begin("compito",smartPick(compitoPool(),8));}
+function startWeak(){
+  const w=shuffle(ALLQ.filter(q=>S.weak[q.id])).slice(0,8);
+  if(!w.length){topbar(false);app.innerHTML=`<button class="back" onclick="home()">‹ Indietro</button><div class="card"><h2>Nessun errore da sistemare</h2><p>Quando sbagli una domanda, finisce qui e la ritrovi finché non la azzecchi. Per ora sei a posto.</p><button class="btn" onclick="startDaily()">Fai l'allenamento di oggi</button></div>`;return;}
+  begin("weak",w);
+}
+function begin(mode,qs,topic){
+  R={mode,topic,queue:qs.map(q=>({q,again:false})),i:0,pts:0,max:qs.length*10,log:[]};
+  if(mode==="scheda") R.scheda=SCHEDE.indexOf(topic)+1;
+  renderQ();
+}
+
+function renderQ(){
+  topbar(false); closeSheet();
+  const it=R.queue[R.i], q=it.q, tp=TBYID[q.tp];
+  R.tries=0; R.seen=new Set(); R.done=false;
+  const total=R.queue.length;
+  app.innerHTML=`<button class="back" onclick="quitAsk()">‹ Esci</button>
+  <div class="qtop"><span>${R.i+1} / ${total}</span><span>⭐ ${R.pts}</span></div>
+  <div class="prog"><i style="width:${(R.i/total)*100}%"></i></div>
+  <div class="card">
+    <div class="qtop"><span>${R.mode==="scheda"?`Scheda ${R.scheda} · Esercizio ${q.n}`:tp.t}</span>${it.again?'<span>torna per ripasso</span>':""}</div>
+    <p class="ask">${esc(q.ask||tp.ask)}</p>
+    ${exBox(q)}
+    <div class="q">${showQ(q)}</div>
+    ${q.m?`<div class="opts">${shuffle(q.m.map((o,k)=>[o,k])).map(([o,k])=>`<button class="opt" data-k="${k}" onclick="pickOpt(${k})">${esc(o)}</button>`).join("")}</div>`
+      :q.o?`${tilesHTML(q)}<div class="row"><button class="btn" id="chk" onclick="checkW(tilesValue(),true)">Controlla</button></div><div class="tries" id="tries"><i></i><i></i><i></i></div>`
+      :`<input class="ans" id="ans" autocomplete="off" autocapitalize="off" autocorrect="off" spellcheck="false" placeholder="Scrivi qui" enterkeyhint="done">
+        <div class="row"><button class="btn" id="chk" onclick="checkW()">Controlla</button></div>
+        <div class="tries" id="tries"><i></i><i></i><i></i></div>`}
+    <div id="fb"></div>
+    <div class="row" style="justify-content:space-between;align-items:center"><button class="link" onclick="openSheet('${q.tp}')">Rivedi la regola</button><span id="next"></span></div>
+  </div>`;
+  const inp=document.getElementById("ans");
+  if(inp){inp.addEventListener("keydown",e=>{if(e.key==="Enter"){e.preventDefault();checkW();}});setTimeout(()=>inp.focus(),80);}
+  if(q.o) drawTiles();
+}
+function fb(cls,html){document.getElementById("fb").innerHTML=`<div class="fb ${cls}">${html}</div>`;}
+function hint2(q){
+  const a=q.w[0];
+  const first=a[0]==="'"?a.slice(0,2):a[0];
+  return `Inizia con «${esc(first)}» ed è lunga ${a.replace(/ /g,"").length} caratteri${a.includes(" ")?" (sono "+a.split(" ").length+" parole)":""}.`;
+}
+function checkW(val,isTiles){
+  if(R.done) return;
+  const it=R.queue[R.i], q=it.q, inp=document.getElementById("ans"), v=norm(isTiles?val:inp.value);
+  if(isTiles&&TB.built.length<TB.words.length){fb("info","<b>Usa tutte le parole.</b>Ne mancano ancora "+(TB.words.length-TB.built.length)+".");return;}
+  if(!v) return;
+  if(R.seen.has(cmp(v))){fb("info","<b>Questa l'hai già provata.</b>Cambia risposta e riprova.");return;}
+  if(!isTiles&&!inVocab(v)){fb("info","<b>Questa risposta non c'entra.</b>Rileggi la frase, pensa alla regola e scrivi una parola vera. Questo tentativo non conta.");return;}
+  R.seen.add(cmp(v));
+  if(q.w.some(a=>cmp(a)===cmp(v))){ succeed([10,6,3][R.tries]); return; }
+  R.tries++;
+  document.querySelectorAll("#tries i").forEach((d,k)=>d.classList.toggle("used",k<R.tries));
+  if(inp) inp.select();
+  if(R.tries===1) fb("hint",`<b>Non ancora.</b>Ricorda: ${esc(q.h)}`);
+  else if(R.tries===2) fb("hint",`<b>Ci sei quasi.</b>Ricorda: ${esc(q.h)} ${hint2(q)}`);
+  else reveal();
+}
+function pickOpt(k){
+  if(R.done) return;
+  const it=R.queue[R.i], q=it.q, b=document.querySelector(`.opt[data-k="${k}"]`);
+  if(k===q.a){b.classList.add("right");succeed(R.tries===0?10:4);return;}
+  R.tries++; b.classList.add("wrong"); b.disabled=true;
+  const left=document.querySelectorAll(".opt:not(:disabled)").length;
+  if(left<=1||R.tries>=2) reveal();
+  else fb("hint",`<b>Non ancora.</b>Ricorda: ${esc(q.h)}`);
+}
+function lock(){R.done=true;if(TB)TB.locked=true;document.querySelectorAll(".tw").forEach(b=>b.disabled=true);document.querySelectorAll(".opt").forEach(b=>b.disabled=true);const i=document.getElementById("ans");if(i)i.disabled=true;const c=document.getElementById("chk");if(c)c.style.display="none";}
+function succeed(p){
+  const it=R.queue[R.i], q=it.q; lock();
+  if(q.m) document.querySelector(`.opt[data-k="${q.a}"]`).classList.add("right");
+  const gained=it.again?0:p; R.pts+=gained;
+  if(S.weak[q.id]){S.weak[q.id]--; if(S.weak[q.id]<=0) delete S.weak[q.id];}
+  if(R.tries<=1) S.ok[q.id]=1;
+  save();
+  if(R.tries>0||it.again) R.log.push({q,ok:true});
+  const praise=["Giusto!","Perfetto!","Esatto!","Brava!"][Math.floor(Math.random()*4)];
+  fb("ok",`<b>${praise}${gained?" +"+gained:""}</b>${esc(q.y)}<div class="row">${sayBtn(spoken(q),"Ascolta la frase")}</div>`);
+  nextBtn();
+}
+function reveal(){
+  const it=R.queue[R.i], q=it.q; lock();
+  if(q.m) document.querySelector(`.opt[data-k="${q.a}"]`).classList.add("right");
+  S.weak[q.id]=(S.weak[q.id]||0)+2; delete S.ok[q.id]; save();
+  R.log.push({q,ok:false});
+  if(!it.again) R.queue.push({q,again:true});
+  fb("no",`<b>La risposta giusta è: ${esc(answerText(q))}</b>${esc(q.y)}<br><small>Questa domanda torna alla fine, così la rifai.</small><div class="row">${sayBtn(spoken(q),"Ascolta la frase")}</div>`);
+  nextBtn();
+}
+function nextBtn(){document.getElementById("next").innerHTML=`<button class="btn" onclick="nextQ()">Avanti ›</button>`;}
+function nextQ(){
+  if(R.mode==="scheda"&&!R.queue[R.i].again){S.sres[R.topic]=R.queue[R.i].q.n%TBYID[R.topic].qs.length;save();}
+  R.i++; if(R.i<R.queue.length) renderQ(); else finish();
+}
+function quitAsk(){
+  fb("info",`<b>Vuoi uscire?</b>I punti di questa partita non vengono salvati.<div class="row"><button class="btn ghost" onclick="home()">Esci</button><button class="btn" onclick="document.getElementById('fb').innerHTML=''">Continuo</button></div>`);
+}
+function bumpStreak(){
+  const t=today(); if(S.last===t) return;
+  S.streak=(S.last===yesterday())?S.streak+1:1; S.last=t;
+}
+function finish(){
+  if(R.mode==="scheda"){S.sdone[R.topic]=1;S.sres[R.topic]=0;}
+  S.pts+=R.pts; bumpStreak();
+  const pct=R.pts/R.max;
+  let st=pct>=.9?3:pct>=.7?2:pct>=.45?1:0;
+  if((R.mode==="topic"||R.mode==="scheda")&&st>(S.stars[R.topic]||0)) S.stars[R.topic]=st;
+  save(); topbar(false);
+  const msg=pct>=.9?"Fantastico, questa parte la sai!":pct>=.7?"Molto bene, ancora un paio di giri e la sai.":pct>=.45?"Stai imparando: rifallo domani e vedrai la differenza.":"Rileggi la regola con calma e riprova: la seconda volta va meglio.";
+  app.innerHTML=`<div class="card" style="text-align:center"><p class="muted" style="margin:0">Hai fatto</p><div class="score">${R.pts}</div><p class="muted" style="margin:0 0 6px">punti su ${R.max}</p>
+  ${R.mode==="topic"?`<div class="stars" style="font-size:28px;margin:0">${stars(st)}</div>`:""}<p>${msg}</p></div>
+  ${R.log.length?`<div class="card"><h3 style="margin-top:0">Da ricordare</h3>${R.log.filter((l,k,a)=>!l.ok&&a.findIndex(x=>!x.ok&&x.q.id===l.q.id)===k).map(l=>`<div class="res"><b>${esc(shown(l.q))}</b><br><span class="muted">${esc(l.q.y)}</span></div>`).join("")||'<p class="muted">Hai recuperato tutti gli errori. Ottimo.</p>'}</div>`:""}
+  <div class="row"><button class="btn" onclick="${R.mode==="topic"?`startTopic('${R.topic}')`:R.mode==="weak"?"startWeak()":R.mode==="compito"?"startCompito()":R.mode==="scheda"?"schedePage()":"startDaily()"}">${R.mode==="scheda"?"Torna alle schede":"Ancora una"}</button><button class="btn ghost" onclick="home()">Home</button></div>`;
+}
+
+/* =========================================================
+   CANZONI
+   ========================================================= */
+let G=null;
+function songIntro(){
+  topbar(false);
+  app.innerHTML=`<button class="back" onclick="home()">‹ Indietro</button><h2>Il gioco delle canzoni</h2>
+  <div class="card"><p>Ti mostro il titolo di una canzone famosa con un pezzo mancante. Scegli la parola giusta usando le regole che conosci.</p>
+  <p>Dopo ogni risposta puoi cercare la canzone su YouTube: ascolta il ritornello e prova a sentire il titolo cantato. Le parole nel canto si attaccano tra loro, è un ottimo allenamento per l'orecchio.</p>
+  <button class="btn wide" onclick="songStart()">Gioca (8 canzoni)</button></div>`;
+}
+function songStart(){G={list:shuffle(SONGS).slice(0,8),i:0,pts:0};songQ();}
+function songQ(){
+  topbar(false);
+  const s=G.list[G.i]; G.tries=0; G.done=false;
+  app.innerHTML=`<button class="back" onclick="home()">‹ Esci</button>
+  <div class="qtop"><span>${G.i+1} / ${G.list.length}</span><span>⭐ ${G.pts}</span></div>
+  <div class="prog"><i style="width:${(G.i/G.list.length)*100}%"></i></div>
+  <div class="card song"><p class="ask">Completa il titolo</p>
+  <div class="ttl">${esc(s.q).replace("___",'<span class="gap">…</span>')}</div><div class="by">${esc(s.by)}</div>
+  <div class="opts">${shuffle(s.m.map((o,k)=>[o,k])).map(([o,k])=>`<button class="opt" data-k="${k}" onclick="songPick(${k})">${esc(o)}</button>`).join("")}</div>
+  <div id="fb"></div><div class="row" style="justify-content:flex-end"><span id="next"></span></div></div>`;
+}
+function songPick(k){
+  if(G.done) return;
+  const s=G.list[G.i], b=document.querySelector(`.opt[data-k="${k}"]`);
+  if(k!==s.a){
+    G.tries++; b.classList.add("wrong"); b.disabled=true;
+    if(document.querySelectorAll(".opt:not(:disabled)").length>1){fb("hint","<b>Non ancora.</b>Pensa alla regola e riprova.");return;}
+  }
+  G.done=true; document.querySelectorAll(".opt").forEach(x=>x.disabled=true);
+  document.querySelector(`.opt[data-k="${s.a}"]`).classList.add("right");
+  const ins=/'___/.test(s.q)?s.m[s.a]:s.m[s.a].charAt(0).toUpperCase()+s.m[s.a].slice(1); const title=s.q.replace("___",ins); const p=G.tries===0?10:G.tries===1?4:0; G.pts+=p;
+  const url="https://www.youtube.com/results?search_query="+encodeURIComponent(title+" "+s.by.replace(/^dal film /,""));
+  fb(p?"ok":"no",`<b>${p?"Giusto! +"+p:"Era: "+esc(s.m[s.a])}</b>«${esc(title)}». ${esc(s.y)}<div class="row">${sayBtn(title,"Ascolta il titolo")}</div><a class="yt" href="${url}" target="_blank" rel="noopener">Cerca la canzone su YouTube ›</a>`);
+  document.getElementById("next").innerHTML=`<button class="btn" onclick="G.i++;G.i<G.list.length?songQ():songEnd()">Avanti ›</button>`;
+}
+function songEnd(){
+  S.pts+=G.pts; bumpStreak(); save(); topbar(false);
+  app.innerHTML=`<div class="card" style="text-align:center"><p class="muted" style="margin:0">Canzoni</p><div class="score">${G.pts}</div><p class="muted">punti su ${G.list.length*10}</p></div>
+  <div class="row"><button class="btn" onclick="songStart()">Altre canzoni</button><button class="btn ghost" onclick="home()">Home</button></div>`;
+}
+
+/* =========================================================
+   PROVA DI VERIFICA
+   ========================================================= */
+let T=null, testSel=new Set(TOPICS.map(t=>t.id));
+function testSetup(){
+  topbar(false);
+  app.innerHTML=`<button class="back" onclick="home()">‹ Indietro</button><h2>Prova di verifica</h2>
+  <div class="card"><p>12 domande, come in classe: niente aiuti e un solo tentativo. Alla fine vedi la correzione con il perché di ogni risposta.</p>
+  <p class="muted" style="margin-bottom:0">Scegli gli argomenti della verifica:</p>
+  <div class="chips">${TOPICS.map(t=>`<button class="chip ${testSel.has(t.id)?"on":""}" onclick="toggleSel('${t.id}',this)">${t.t}</button>`).join("")}</div>
+  <button class="btn wide" onclick="testStart()">Inizia la prova</button></div>`;
+}
+function toggleSel(id,el){testSel.has(id)?testSel.delete(id):testSel.add(id);el.classList.toggle("on");}
+function testStart(){
+  if(!testSel.size){alertBox("Scegli almeno un argomento.");return;}
+  const pool=ALLQ.filter(q=>testSel.has(q.tp));
+  T={qs:shuffle(pool).slice(0,12),i:0,ans:[],scope:"libera"};
+  testQ();
+}
+function testCompito(){
+  const pool=compitoPool(), by={};
+  pool.forEach(q=>(by[q.tp]=by[q.tp]||[]).push(q));
+  let qs=[]; Object.values(by).forEach(a=>qs.push(shuffle(a)[0]));
+  qs=shuffle(qs).slice(0,15);
+  T={qs,i:0,ans:[],scope:"compito"};
+  testQ();
+}
+function alertBox(t){const d=document.createElement("div");d.className="fb hint";d.textContent=t;app.querySelector(".card").appendChild(d);setTimeout(()=>d.remove(),2500);}
+function testQ(){
+  topbar(false);
+  const q=T.qs[T.i], tp=TBYID[q.tp];
+  app.innerHTML=`<div class="qtop"><span>Domanda ${T.i+1} di ${T.qs.length}</span><span>Verifica</span></div>
+  <div class="prog"><i style="width:${(T.i/T.qs.length)*100}%"></i></div>
+  <div class="card"><p class="ask">${esc(q.ask||tp.ask)}</p>${exBox(q)}<div class="q">${showQ(q)}</div>
+  ${q.m?`<div class="opts">${shuffle(q.m.map((o,k)=>[o,k])).map(([o,k])=>`<button class="opt" onclick="testAns(${k})">${esc(o)}</button>`).join("")}</div>`
+   :q.o?`${tilesHTML(q)}<div class="row"><button class="btn" onclick="testAns()">Avanti ›</button></div>`
+   :`<input class="ans" id="ans" autocomplete="off" autocapitalize="off" autocorrect="off" spellcheck="false" placeholder="Scrivi qui" enterkeyhint="done"><div class="row"><button class="btn" onclick="testAns()">Avanti ›</button></div>`}
+  </div>`;
+  const inp=document.getElementById("ans");
+  if(inp){inp.addEventListener("keydown",e=>{if(e.key==="Enter"){e.preventDefault();testAns();}});setTimeout(()=>inp.focus(),80);}
+  if(q.o) drawTiles();
+}
+function testAns(k){
+  const q=T.qs[T.i]; let given, ok;
+  if(q.m){given=q.m[k]; ok=k===q.a;}
+  else if(q.o){if(TB.built.length<TB.words.length) return; given=tilesValue(); ok=q.w.some(a=>cmp(a)===cmp(given));}
+  else{given=document.getElementById("ans").value.trim(); if(!given) return; ok=q.w.some(a=>cmp(a)===cmp(given));}
+  T.ans.push({q,given,ok});
+  T.i++; T.i<T.qs.length?testQ():testEnd();
+}
+function testEnd(){
+  const ok=T.ans.filter(a=>a.ok).length, n=T.ans.length;
+  T.ans.forEach(a=>{if(!a.ok){S.weak[a.q.id]=(S.weak[a.q.id]||0)+2;delete S.ok[a.q.id];}else S.ok[a.q.id]=1;});
+  S.tests.push({d:today(),ok,n,scope:T.scope}); S.tests=S.tests.slice(-20);
+  bumpStreak(); save(); topbar(false);
+  const msg=ok===n?"Tutte giuste, bravissima!":ok/n>=.7?"Molto bene! Guarda la correzione qui sotto: ti mancano pochi dettagli.":"Ogni prova ti allena. Le domande sbagliate sono in «I miei errori»: sistemale con calma e poi rifai la prova.";
+  app.innerHTML=`<div class="card" style="text-align:center"><p class="muted" style="margin:0">Risposte giuste</p><div class="score">${ok}</div><p class="muted" style="margin:0">su ${n} domande</p><p>${msg}</p></div>
+  <div class="card"><h3 style="margin-top:0">Correzione</h3>${T.ans.map(a=>`<div class="res">${a.ok?"✅":"❌"} <b>${esc(shown(a.q))}</b>${a.ok?"":`<br><span class="muted">Hai risposto: «${esc(a.given)}». ${esc(a.q.y)}</span>`}</div>`).join("")}</div>
+  <div class="row"><button class="btn" onclick="${T.scope==="compito"?"testCompito()":"testSetup()"}">Rifai la prova</button><button class="btn ghost" onclick="startWeak()">Sistema gli errori</button><button class="btn ghost" onclick="home()">Home</button></div>`;
+}
+
+/* =========================================================
+   PRONUNCIA
+   ========================================================= */
+function pronPage(){
+  topbar(false);
+  app.innerHTML=`<button class="back" onclick="home()">‹ Indietro</button><h2>I trucchi della pronuncia</h2>
+  <p class="muted">Le parole tra «» sono un aiuto per leggere: il suono vero lo senti con Ascolta.</p>
+  ${PRON_TIPS.map(p=>`<div class="card"><h3 style="margin-top:0">${esc(p.t)}</h3><p>${esc(p.d)}</p><div class="row">${p.w.map(w=>sayBtn(w,esc(w))).join("")}</div></div>`).join("")}`;
+}
+
+home();
+</script>
+</body>
+</html>
