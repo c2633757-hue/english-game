@@ -1300,7 +1300,6 @@ function topbar(big){
 function stars(n){n=n||0;return "★".repeat(n)+"☆".repeat(3-n);}
 
 function home(){
-  if(!S.unl){lockScreen();return;}
   topbar(true);
   const wc=weakCount();
   app.innerHTML=`
