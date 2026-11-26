@@ -4,6 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Inglese facile</title>
+<meta name="robots" content="noindex,nofollow">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-title" content="Inglese facile">
@@ -111,6 +112,17 @@ input.ans:focus{border-color:var(--green2)}
 .exb .lab{display:block;font-weight:700;font-size:12.5px;letter-spacing:.06em;text-transform:uppercase;color:#8a6a12}
 .exb .exa{color:var(--ok);font-weight:700}
 .gapx{display:inline-block;min-width:34px;border-bottom:2px solid #b9ab6a;text-align:center}
+.wpop{position:fixed;left:12px;right:12px;bottom:16px;z-index:50;background:#1d2a33;color:#fff;border-radius:16px;padding:12px 14px;box-shadow:0 8px 30px rgba(0,0,0,.25);display:flex;gap:10px;align-items:center;font-size:16px}
+.wpop b{font-size:18px}.wpop .say{background:#2f5d52;color:#fff;border-color:#2f5d52}
+.dfl{display:flex;gap:8px;align-items:flex-start;padding:5px 0;font-size:16.5px}
+.dfl .sp{flex:none;font-weight:800;color:var(--green);min-width:22px}
+.slot{flex:1;text-align:left;background:#fff;border:2px dashed #c9d1cb;border-radius:12px;padding:8px 10px;font-size:16px;min-height:42px}
+.slot.sel{border-color:var(--green2);border-style:solid;background:var(--okbg)}
+.slot.full{border-style:solid}
+.slot.right{border-color:var(--ok);background:var(--okbg)}.slot.wrong{border-color:var(--no);background:var(--nobg)}
+.bank{display:grid;gap:8px;margin-top:12px}.bank button{text-align:left;background:var(--pale);border:1px solid #d3ddd6;border-radius:12px;padding:10px 12px;font-size:16px}
+.bank button:disabled{opacity:.3}
+.lock{max-width:460px;margin:40px auto;text-align:center}.lock .code{font-family:Georgia,serif;font-size:40px;letter-spacing:.12em;color:var(--green);margin:8px 0}
 small{font-size:13.5px}
 </style>
 </head>
@@ -118,6 +130,7 @@ small{font-size:13.5px}
 <header class="top" id="hdr"></header>
 <main id="app"></main>
 <div id="sheet"></div>
+<div class="wpop" id="wpop" style="display:none"></div>
 
 <script>
 /* =========================================================
@@ -942,7 +955,22 @@ const TOPICS = [
   {ctx:["A: Have we got any jam?"],q:"B: ___",m:["Yes, there's a jar of jam in the cupboard.","Yes, there are some jam.","Yes, we've got a jam."],a:0,h:"Jam non si conta: serve un contenitore.",y:"A jar of jam."},
   {ctx:["A: Is that Alan's mother?"],q:"B: ___",m:["Yes, it is. Her name's Sue.","Yes, he is.","Yes, she's."],a:0,h:"Is that…? → si risponde con it.",y:"Is that…? → Yes, it is."},
 {ctx:["A: What's the matter with Bob? Has he got a temperature?"],q:"B: ___",m:["I don't think so. I think he's got a sore throat.","No, he isn't.","Yes, he is."],a:0,h:"Ha chiesto con has got.",y:"Malattie → have got: he's got a sore throat."},
-  {ctx:["A: Whose shoes are these?"],q:"B: ___",m:["They're David's.","It's David.","Who's David."],a:0,h:"Shoes è plurale. Whose = di chi.",y:"They're David's."}
+  {ctx:["A: Whose shoes are these?"],q:"B: ___",m:["They're David's.","It's David.","Who's David."],a:0,h:"Shoes è plurale. Whose = di chi.",y:"They're David's."},
+{df:true,ask:"Tocca uno spazio, poi la battuta giusta. Le battute dell'altra persona sono già scritte.",q:"Dal fruttivendolo",lines:[["M","Good morning. Can I help you?"],["E",0],["M","What would you like, madam?"],["E",1],["M","How many oranges would you like?"],["E",2],["M","Anything else?"],["E",3],["M","How many strawberries would you like?"],["E",4],["M","Half a kilo of strawberries. We've also got some very good cherries. Would you like some cherries too?"],["E",5],["M","So, two kilos of oranges and half a kilo of strawberries. Is that all?"],["E",6],["M","£4.30, please. Lovely day, isn't it?"],["E",7],["M","Goodbye."]],
+   bank:["Yes, I'd like some fruit, please.","I'd like some oranges, please.","Two kilos.","I'd like some strawberries, too.","Half a kilo, please.","No, thanks. No cherries. We've got some.","Yes, that's all. How much is that?","Yes, beautiful. Thank you very much. Goodbye."],
+   h:"Leggi cosa chiede il fruttivendolo subito prima di ogni spazio: cosa vuoi? quanti? altro? è tutto?",y:"Ogni battuta risponde alla domanda di prima: What would you like → la cosa; How many → la quantità; Is that all → Yes, that's all."},
+  {df:true,ask:"Tocca uno spazio, poi la battuta giusta. Le battute dell'altra persona sono già scritte.",q:"Al bar",lines:[["W","Hello! What would you like?"],["S",0],["W","Would you like some milk?"],["S",1],["W","Would you like anything to eat?"],["S",2],["W","Sorry, we haven't got any cakes today. We've got some sandwiches."],["S",3],["W","Anything else?"],["S",4],["W","£5.50, please."],["S",5]],
+   bank:["I'd like a cup of tea, please.","Yes, please. Just a little.","Have you got any cakes?","OK, I'd like a cheese sandwich, please.","No, thanks. How much is that?","Here you are. Thank you!"],
+   h:"Would you like…? è un'offerta: si risponde Yes, please o No, thanks. Dopo il prezzo si paga: Here you are.",y:"What would you like → cosa vuoi; Would you like some milk → Yes, please; anything to eat → chiedi le torte; niente torte → prendi il panino; Anything else → No, thanks; prezzo → Here you are."},
+  {df:true,ask:"Tocca uno spazio, poi la battuta giusta. Le battute dell'altra persona sono già scritte.",q:"Di chi è?",lines:[["A","Whose bag is this?"],["B",0],["A","Is it Sara's?"],["B",1],["A","Look! There's a name on it: Tom."],["B",2],["A","And whose gloves are these?"],["B",3]],
+   bank:["I don't know. It isn't mine.","No, it isn't hers. Her bag is red.","So it's his! Tom is in my class.","They're Anna's and Luca's."],
+   h:"Whose = di chi. Guarda i nomi: Sara → hers, Tom → his.",y:"Isn't mine = non è mia; Sara → hers; Tom → his; gloves è plurale → They're Anna's and Luca's."},
+  {df:true,ask:"Tocca uno spazio, poi la battuta giusta. Le battute dell'altra persona sono già scritte.",q:"Al negozio",lines:[["S","Good afternoon. Can I help you?"],["C",0],["S","Here you are. Anything else?"],["C",1],["S","Yes, we have. How many eggs would you like?"],["C",2],["S","And would you like some bread?"],["C",3],["S","That's £4.20."],["C",4]],
+   bank:["Yes. I'd like a carton of milk, please.","Have you got any eggs?","A dozen, please.","Yes, a loaf of bread, please. How much is that?","Here you are. Goodbye!"],
+   h:"Yes, we have risponde a una domanda con have got. How many vuole una quantità.",y:"Il latte → a carton of milk; Yes, we have → prima c'era Have you got…?; How many → A dozen; dopo il prezzo → Here you are."},
+  {df:true,ask:"Tocca uno spazio, poi la battuta giusta. Le battute dell'altra persona sono già scritte.",q:"Hai fratelli?",lines:[["A","Have you got any brothers or sisters?"],["B",0],["A","How old is he?"],["B",1],["A","Has he got a girlfriend?"],["B",2],["A","Is he nice?"],["B",3]],
+   bank:["Yes, I have. I've got a brother.","He's sixteen.","No, he hasn't. But he's got a lot of friends!","Yes, he is. He's very funny."],
+   h:"Usa lo stesso verbo della domanda: Have you got → I have; How old is → He's; Has he got → he hasn't; Is he → he is.",y:"Have → Yes, I have; How old → He's sixteen; Has he got → No, he hasn't; Is he → Yes, he is."}
  ]
 }
 ];
@@ -1053,8 +1081,9 @@ document.addEventListener("click",e=>{const b=e.target.closest("[data-say]");if(
 function sayBtn(t,label){if(!t) return "";return `<button class="say" data-say="${esc(t)}">🔊 ${label||"Ascolta"}</button>`;}
 
 /* frase completa da leggere ad alta voce */
-function answerText(q){return q.m?q.m[q.a]:q.w[0];}
+function answerText(q){return q.df?"vedi il dialogo completo":q.m?q.m[q.a]:q.w[0];}
 function spoken(q){
+  if(q.df) return dfSpeech(q);
   if(q.noSay) return "";
   if(q.o) return q.w[0];
   if(q.ctx) return answerText(q);
@@ -1062,6 +1091,7 @@ function spoken(q){
   return fullSentence(q);
 }
 function shown(q){
+  if(q.df) return "Dialogo «"+q.q+"»";
   if(q.ctx) return q.ctx[q.ctx.length-1]+" → "+answerText(q);
   if(q.o) return q.w[0];
   if(q.noSay||(q.tp!=="s"&&!q.q.includes("___"))) return q.q.replace("___","…")+" → "+answerText(q);
@@ -1078,6 +1108,7 @@ function fullSentence(q){
   return s.replace(/([.?!] )([a-z])/g,(m,a,b)=>a+b.toUpperCase());
 }
 function showQ(q){
+  if(q.df) return `<b>${esc(q.q)}</b>`;
   const s=esc(q.q).replace("___",'<span class="gap">…</span>');
   const d=q.ctx?`<div class="dlg">${q.ctx.map(l=>`<div>${esc(l).replace(/^([A-Z]): /,"<b>$1:</b> ")}</div>`).join("")}</div>`:"";
   return d+s.replace(/^([A-Z]): /,"<b>$1:</b> ");
@@ -1130,6 +1161,7 @@ const EXQ={
 function exFor(q){
   if(q.e) return q.e;
   if(q.o) return ["Metti in ordine: got / I've / dog / a","I've got a dog"];
+  if(q.df) return ["A: Have you got a pen?  B: (1) …   Frasi: «Here you are.» «Yes, I have.»","(1) Yes, I have."];
   if(q.ctx) return ["A: Have you got a pet?  B: ___","Yes, I have. I've got a cat."];
   if((q.ask||"").includes("intruso")) return ["a carton of … milk / orange juice / bacon","intruso: bacon (la pancetta non sta in un cartone)"];
   if((q.ask||"").includes("Numerabile")) return ["beer","non numerabile (U): è un liquido, non si conta"];
@@ -1141,6 +1173,103 @@ function exBox(q){
   const e=exFor(q); if(!e) return "";
   return `<div class="exb"><span class="lab">Esempio</span>${esc(e[0]).replace("___",'<span class="gapx">…</span>')}<br><span class="exa">→ ${esc(e[1])}</span></div>`;
 }
+/* ---------- dizionario al tocco ---------- */
+const DICT={"a": "un, uno, una", "about": "su, riguardo a, che parla di", "actress": "attrice", "advice": "consiglio, consigli", "afraid": "spaventato; be afraid of = avere paura di", "afternoon": "pomeriggio", "all": "tutto, tutti", "altogether": "in tutto", "am": "sono (io)", "an": "un, uno, una (davanti a vocale)", "and": "e", "animals": "animali", "any": "qualche, alcuno (in domande e negative)", "anybody": "qualcuno (in domande), nessuno (in negative)", "anything": "qualcosa (in domande), niente (in negative)", "apple": "mela", "apples": "mele", "are": "sei, siamo, siete, sono", "aren't": "non sei, non siamo, non siete, non sono", "at": "a, in (un punto preciso)", "australian": "australiano", "away": "via, lontano", "baby": "bambino piccolo, neonato", "babies": "bambini piccoli, neonati", "bag": "borsa, sacchetto", "baker": "panettiere", "ball": "palla", "bar": "tavoletta, barretta", "bathroom": "bagno", "bathrooms": "bagni", "be": "essere", "beach": "spiaggia, mare", "beard": "barba", "beautiful": "bellissimo", "bed": "letto", "bedroom": "camera da letto", "bedrooms": "camere da letto", "beer": "birra", "behind": "dietro", "best": "migliore", "between": "tra, in mezzo a", "bicycle": "bicicletta", "big": "grande", "bike": "bici", "birds": "uccelli", "birthday": "compleanno", "biscuits": "biscotti", "black": "nero", "blue": "blu, azzurro", "book": "libro", "books": "libri", "bottle": "bottiglia", "bowl": "scodella, ciotola", "box": "scatola", "boxes": "scatole", "boy": "ragazzo", "boyfriend": "fidanzato", "boys": "ragazzi", "bread": "pane", "brother": "fratello", "brothers": "fratelli", "brown": "marrone", "bus": "autobus", "buses": "autobus (plurale)", "but": "ma", "butcher": "macellaio", "butter": "burro", "buy": "comprare", "by": "con (mezzi di trasporto), da", "cake": "torta", "call": "chiamare", "camera": "macchina fotografica", "camper": "camper", "can": "potere; lattina", "can't": "non posso, non puoi…", "cans": "lattine", "car": "macchina, auto", "cars": "macchine", "carton": "cartone", "cat": "gatto", "cats": "gatti", "cds": "cd", "central": "centrale", "central heating": "riscaldamento", "chair": "sedia", "chairs": "sedie", "champions": "campioni", "cheese": "formaggio", "cherries": "ciliegie", "child": "bambino", "children": "bambini", "chocolate": "cioccolato", "chocolates": "cioccolatini", "christmas": "Natale", "cinema": "cinema", "cities": "città (plurale)", "city": "città", "class": "classe, lezione", "classmate": "compagno di classe", "classroom": "aula", "clever": "bravo, intelligente", "close": "chiudere", "cloudy": "nuvoloso", "coat": "cappotto", "coffee": "caffè", "coke": "coca-cola", "cold": "freddo; raffreddore", "colleagues": "colleghi", "college": "scuola, istituto", "colour": "colore", "comfortable": "comodo", "company": "azienda, compagnia", "cottage": "casetta di campagna", "count": "contare", "course": "corso; of course = certo", "cousin": "cugino, cugina", "cousins": "cugini", "crisps": "patatine in busta", "cup": "tazza", "cupboard": "credenza, armadietto", "cups": "tazze", "curly": "riccio", "dad": "papà", "day": "giorno", "days": "giorni", "december": "dicembre", "delicious": "buonissimo", "desk": "scrivania, banco", "did": "passato di do", "difficult": "difficile", "dinner": "cena", "do": "fare", "doctor": "medico", "dog": "cane", "dogs": "cani", "don't": "non (+ verbo)", "door": "porta", "dozen": "dozzina", "egg": "uovo", "eggs": "uova", "else": "altro; anything else? = altro?", "empty": "vuoto", "end": "fine", "engineer": "ingegnere", "england": "Inghilterra", "evening": "sera", "every": "ogni", "exam": "esame", "excellent": "ottimo", "exercise": "esercizio", "exercise book": "quaderno", "expensive": "costoso, caro", "eyes": "occhi", "family": "famiglia", "famous": "famoso", "favourite": "preferito", "feet": "piedi", "fifteen": "quindici", "film": "film", "films": "film (plurale)", "fine": "bene", "first": "primo", "fish": "pesce, pesci", "fisherman": "pescatore", "five": "cinque", "flat": "appartamento", "floor": "piano; pavimento", "florist": "fioraio", "flour": "farina", "flowers": "fiori", "foot": "piede", "football": "calcio, pallone", "for": "per", "fork": "forchetta", "four": "quattro", "fourteen": "quattordici", "free": "libero", "free time": "tempo libero", "french": "francese", "friday": "venerdì", "fridge": "frigorifero", "friend": "amico, amica", "friends": "amici", "from": "da (provenienza)", "fruit": "frutta", "full": "pieno, completo", "funny": "divertente, buffo", "furniture": "mobili", "garden": "giardino", "get": "prendere, ottenere", "girl": "ragazza", "girls": "ragazze", "give": "dare", "glass": "bicchiere", "gloves": "guanti", "go": "andare", "goes": "va", "going": "andando", "gold": "oro", "good": "buono, bravo", "goodbye": "arrivederci", "got": "(con have) avere", "gray": "grigio", "greek": "greco", "green": "verde", "greengrocer": "fruttivendolo", "grey": "grigio", "guitar": "chitarra", "hair": "capelli", "half": "metà, mezzo", "hall": "ingresso, sala", "handle": "maniglia", "happiness": "felicità", "has": "ha (lui, lei, esso)", "hasn't": "non ha", "have": "avere", "haven't": "non ho, non hai, non abbiamo…", "he": "lui", "he's": "lui è / lui ha (con got)", "head": "testa", "head office": "sede centrale", "headache": "mal di testa", "health": "salute", "heating": "riscaldamento", "heavy": "pesante", "hello": "ciao, salve", "help": "aiutare, aiuto", "her": "lei (complemento); suo, sua (di lei)", "here": "qui", "here we are": "eccoci", "hers": "suo, sua (di lei, da solo)", "him": "lui (complemento)", "his": "suo, sua (di lui)", "holiday": "vacanza", "home": "casa", "homework": "compiti per casa", "honey": "miele", "hope": "sperare", "hot": "caldo", "hotel": "albergo", "hour": "ora", "house": "casa", "how": "come", "how much": "quanto", "how many": "quanti", "how old": "quanti anni", "hungry": "affamato; I'm hungry = ho fame", "hurry": "fretta; in a hurry = di fretta", "i": "io", "i'd": "io vorrei / io preferirei (I would)", "i'm": "io sono", "i've": "io ho", "important": "importante", "in": "in, dentro", "information": "informazioni", "is": "è", "isn't": "non è", "it": "esso, essa (cosa o animale)", "it's": "è / ha (con got)", "italian": "italiano", "its": "suo, sua (di una cosa o animale)", "jackets": "giacche", "jam": "marmellata", "jar": "barattolo di vetro", "jeans": "jeans", "job": "lavoro", "journey": "viaggio", "july": "luglio", "just": "appena, solo", "key": "chiave", "keys": "chiavi", "kilo": "chilo", "kilos": "chili", "kitchen": "cucina", "knife": "coltello", "knives": "coltelli", "lady": "signora", "ladies": "signore", "large": "grande", "left": "sinistra; left = rimasto", "legs": "gambe", "let": "lasciare", "let's": "facciamo…, andiamo…", "life": "vita", "light": "luce", "like": "piacere; come (simile a)", "litre": "litro", "live": "vivere, abitare", "loaf": "pagnotta", "loaves": "pagnotte", "long": "lungo", "look": "guardare; look at = guarda", "lot": "a lot of = molto, tanti", "love": "amore; amare", "lovely": "bello, delizioso", "loves": "ama", "luggage": "bagagli", "madam": "signora", "magazines": "riviste", "mail": "posta", "man": "uomo", "many": "molti, tanti", "marmalade": "marmellata di agrumi", "matter": "what's the matter? = cosa c'è che non va?", "mayonnaise": "maionese", "me": "me, mi", "meat": "carne", "men": "uomini", "milk": "latte", "mine": "mio, mia (da solo)", "mobile phone": "cellulare", "mobile": "cellulare", "monday": "lunedì", "money": "soldi", "morning": "mattina", "mother": "madre", "mountains": "montagne", "mr": "signor", "mrs": "signora", "much": "molto", "mum": "mamma", "must": "dovere", "my": "mio, mia, miei, mie", "name": "nome", "naples": "Napoli", "nationality": "nazionalità", "near": "vicino a", "need": "avere bisogno di", "neither": "neanche, nemmeno", "never": "mai", "new": "nuovo", "news": "notizie, notizia", "newsagent": "giornalaio", "newspaper": "giornale", "newspapers": "giornali", "nice": "bello, simpatico", "night": "notte", "nine": "nove", "no": "no; nessuno, niente", "not": "non", "now": "adesso", "number": "numero", "o'clock": "in punto (ore)", "of": "di", "office": "ufficio", "old": "vecchio; how old = quanti anni", "on": "su, sopra; di (giorni)", "one": "uno", "only": "solo, soltanto; only child = figlio unico", "open": "aprire", "opposite": "di fronte", "or": "o, oppure", "orange": "arancia; arancione", "oranges": "arance", "our": "nostro, nostra", "ours": "nostro, nostra (da solo)", "out": "fuori", "over": "sopra; over there = laggiù", "packet": "pacchetto", "parents": "genitori", "park": "parco", "party": "festa", "patience": "pazienza", "peaches": "pesche", "peas": "piselli", "peeled": "pelato", "peeled tomatoes": "pomodori pelati", "pen": "penna", "pens": "penne", "people": "persone, gente", "person": "persona", "petrol": "benzina", "phone": "telefono", "piece": "pezzo", "pint": "pinta (circa mezzo litro)", "place": "posto", "plants": "piante", "play": "giocare, suonare", "please": "per favore", "plural": "plurale", "plurals": "plurali", "police": "polizia", "potatoes": "patate", "present": "regalo", "presents": "regali", "pressure": "pressione", "programme": "programma", "purple": "viola", "quite": "abbastanza", "rain": "pioggia", "rather": "piuttosto; would rather = preferirei", "read": "leggere", "real": "vero", "really": "davvero", "red": "rosso", "right": "destra; giusto", "room": "stanza", "rooms": "stanze", "round": "rotondo", "rucksack": "zaino", "same": "stesso", "sandwich": "panino", "save": "salvare, risparmiare", "saxophone": "sassofono", "say": "dire", "school": "scuola", "science": "scienze", "scooters": "motorini", "scottish": "scozzese", "see": "vedere", "shape": "forma", "she": "lei", "she's": "lei è / lei ha (con got)", "shoes": "scarpe", "shop": "negozio", "shops": "negozi", "short": "corto, basso", "silver": "argento", "singer": "cantante", "sister": "sorella", "sisters": "sorelle", "sitting room": "soggiorno", "sky": "cielo", "sleep": "dormire", "sleeping": "sta dormendo", "slice": "fetta", "slim": "magro, snello", "so": "così; so do I = anche io", "soap": "sapone", "sofa": "divano", "some": "un po' di, alcuni", "someone": "qualcuno", "song": "canzone", "songs": "canzoni", "sore throat": "mal di gola", "soup": "zuppa, minestra", "spaghetti": "spaghetti", "spiders": "ragni", "square": "quadrato", "starts": "comincia", "stay": "restare", "stomachache": "mal di pancia", "straight": "liscio (capelli)", "strawberries": "fragole", "student": "studente", "students": "studenti", "study": "studiare", "such": "così, tale", "sugar": "zucchero", "suitcase": "valigia", "summer": "estate", "sun": "sole", "sunday": "domenica", "sunny": "soleggiato; it's sunny = c'è il sole", "supermarket": "supermercato", "swimming": "nuoto", "swimming pool": "piscina", "table": "tavolo", "talk": "parlare", "tank": "serbatoio", "tea": "tè", "teacher": "insegnante", "tears": "lacrime", "teeth": "denti", "temperature": "febbre; temperatura", "ten": "dieci", "terrible": "terribile", "tests": "compiti in classe, verifiche", "thank you": "grazie", "thanks": "grazie", "that": "quello, quella; che", "that's": "quello è", "the": "il, lo, la, i, gli, le", "their": "loro (di loro)", "theirs": "loro (da solo)", "them": "loro (complemento), li, le", "there": "là; there is = c'è", "there's": "c'è", "these": "questi, queste", "they": "loro, essi", "they're": "loro sono", "they've": "loro hanno", "think": "pensare", "thirsty": "assetato; I'm thirsty = ho sete", "this": "questo, questa", "those": "quelli, quelle", "three": "tre", "throat": "gola", "time": "tempo; ora; volta", "tin": "scatoletta di metallo", "tired": "stanco", "to": "a, verso", "today": "oggi", "tomatoes": "pomodori", "tonight": "stasera", "too": "anche; troppo", "tooth": "dente", "toothpaste": "dentifricio", "toys": "giocattoli", "tube": "tubetto", "tuna": "tonno", "tv": "televisione", "twelve": "dodici", "two": "due", "umbrella": "ombrello", "under": "sotto", "university": "università", "up": "su", "us": "noi, ci (complemento)", "use": "usare", "usual": "solito", "vegetables": "verdure", "very": "molto", "villa": "villa", "vinegar": "aceto", "violin": "violino", "wall": "parete, muro", "watch": "orologio da polso; guardare", "watches": "orologi", "water": "acqua", "watermelon": "anguria", "way": "modo; strada", "we": "noi", "we've": "noi abbiamo", "weather": "tempo (meteo)", "weekend": "fine settimana", "well": "bene; beh", "what": "che cosa, quale", "what's": "che cos'è", "when": "quando", "where": "dove", "white": "bianco", "who": "chi", "who's": "chi è", "whose": "di chi", "why": "perché", "window": "finestra", "windy": "ventoso; it's windy = c'è vento", "wine": "vino", "with": "con", "woman": "donna", "women": "donne", "would": "(per chiedere gentilmente) vorresti, preferiresti", "wow": "wow!", "years": "anni", "yellow": "giallo", "yes": "sì", "you": "tu, voi; ti, vi", "you're": "tu sei, voi siete", "you've": "tu hai, voi avete", "young": "giovane", "your": "tuo, tua, vostro, vostra", "yours": "tuo, vostro (da solo)", "sitting": "seduto", "sore": "dolorante", "staying": "restare", "submarine": "sottomarino", "thank": "ringraziare", "poster": "poster", "little": "poco; piccolo", "eat": "mangiare", "sixteen": "sedici", "girlfriend": "fidanzata", "know": "sapere, conoscere", "name's": "il nome è", "there are": "ci sono", "here you are": "ecco a te", "twenty": "venti"};
+const WRONG=new Set(["amn't", "blacks", "blues", "childrens", "feets", "fishs", "foots", "hairs", "homeworks", "knifes", "knifs", "ladyes", "nices", "peoples", "persons", "pressures", "reds", "yellows", "grecian", "boys's"]);
+const BLOCKTP=["cont","adj","qw"];
+let ANSWERING=null;
+function lookup(raw){
+  let w=raw.toLowerCase().replace(/[’‘]/g,"'").replace(/^'+|'+$/g,"");
+  if(!w) return null;
+  if(WRONG.has(w)) return {w:raw,t:"⚠️ questa forma non esiste in inglese",wrong:true};
+  if(DICT[w]) return {w:raw,t:DICT[w]};
+  if(/'s$/.test(w)){const b=w.slice(0,-2);return {w:raw,t:DICT[b]?DICT[b]+" → 's = di (possesso)":"di "+b.charAt(0).toUpperCase()+b.slice(1)};}
+  if(/s'$/.test(raw.toLowerCase())){const b=raw.toLowerCase().slice(0,-1);if(DICT[b])return {w:raw,t:DICT[b]+" → ' = di (possesso)"};}
+  for(const [suf,rep] of [["ies","y"],["es",""],["s",""]]) if(w.endsWith(suf)&&DICT[w.slice(0,-suf.length)+rep]) return {w:raw,t:DICT[w.slice(0,-suf.length)+rep]+" (plurale)"};
+  return null;
+}
+function wordAt(x,y){
+  let node,off;
+  if(document.caretRangeFromPoint){const r=document.caretRangeFromPoint(x,y);if(!r)return null;node=r.startContainer;off=r.startOffset;}
+  else if(document.caretPositionFromPoint){const r=document.caretPositionFromPoint(x,y);if(!r)return null;node=r.offsetNode;off=r.offset;}
+  if(!node||node.nodeType!==3) return null;
+  const t=node.textContent, re=/[A-Za-z'’]/;
+  let a=off,b=off; while(a>0&&re.test(t[a-1]))a--; while(b<t.length&&re.test(t[b]))b++;
+  const w=t.slice(a,b).replace(/^['’]+|['’]+$/g,""); return w?{w,el:node.parentElement}:null;
+}
+const SKIP=".it,.ask,.qtop,.back,.lab,h2,h3,.sub,.stats,.fb b,.muted,.wpop,input,.lock";
+function showWord(x,y,inAnswers){
+  const hit=wordAt(x,y); if(!hit) return false;
+  if(hit.el.closest(SKIP)) return false;
+  const r=lookup(hit.w); if(!r) return false;
+  const pop=document.getElementById("wpop");
+  if(inAnswers&&ANSWERING&&(r.wrong||BLOCKTP.includes(ANSWERING))){pop.innerHTML=`<div style="flex:1"><b>${esc(hit.w)}</b><br>Prima prova a rispondere 😉 Poi te lo dico.</div>`;pop.style.display="flex";return true;}
+  pop.innerHTML=`<div style="flex:1"><b>${esc(r.w)}</b><br>${esc(r.t)}</div>${r.wrong?"":sayBtn(r.w)}`;
+  pop.style.display="flex"; return true;
+}
+document.addEventListener("click",e=>{
+  const pop=document.getElementById("wpop");
+  if(e.target.closest("#wpop")) return;
+  if(pop.style.display==="flex"){pop.style.display="none";}
+  if(e.target.closest("button,a,input,.opt,.tw,.slot,.bank")) return;
+  showWord(e.clientX,e.clientY,false);
+},true);
+let LP=null,LPdone=false;
+document.addEventListener("touchstart",e=>{
+  const b=e.target.closest(".opt,.tw,.bank button,.slot"); if(!b) return;
+  const t=e.touches[0]; LPdone=false;
+  LP=setTimeout(()=>{LPdone=showWord(t.clientX,t.clientY,!!e.target.closest(".opts,.tiles,.built,.bank,.slot"));},550);
+},{passive:true});
+["touchend","touchmove","touchcancel"].forEach(ev=>document.addEventListener(ev,()=>clearTimeout(LP),{passive:true}));
+document.addEventListener("click",e=>{if(LPdone){e.stopPropagation();e.preventDefault();LPdone=false;}},true);
+document.addEventListener("contextmenu",e=>{if(e.target.closest(".opt,.tw,.bank button,.slot")){e.preventDefault();showWord(e.clientX,e.clientY,!!e.target.closest(".opts,.tiles,.built,.bank,.slot"));}});
+
+/* ---------- accesso con codice ---------- */
+const _K=["fl","4v","1a","-e","g"].join("");
+function hcode(dev){let h=2166136261;const t=dev.toUpperCase().trim()+_K;for(let i=0;i<t.length;i++){h^=t.charCodeAt(i);h=Math.imul(h,16777619)>>>0;}return String(h%1000000).padStart(6,"0");}
+function devCode(){if(!S.dev){const A="ABCDEFGHJKLMNPQRSTUVWXYZ23456789";let c="";for(let i=0;i<6;i++)c+=A[Math.floor(Math.random()*A.length)];S.dev=c;save();}return S.dev;}
+function lockScreen(){
+  hdr.style.display="none";
+  app.innerHTML=`<div class="lock card"><h2>Ciao! 👋</h2><p>Questa app è personale. Per aprirla chiedi il <b>codice di accesso</b> a chi te l'ha mandata, e dille questo codice:</p>
+  <div class="code">${devCode()}</div>
+  <input class="ans" id="unl" inputmode="numeric" placeholder="Scrivi qui il codice di accesso" autocomplete="off" style="text-align:center">
+  <div class="row" style="justify-content:center"><button class="btn" onclick="tryUnlock()">Entra</button></div><div id="fb"></div></div>`;
+}
+function tryUnlock(){
+  const v=document.getElementById("unl").value.replace(/\D/g,"");
+  if(v===hcode(devCode())){S.unl=1;save();home();}
+  else document.getElementById("fb").innerHTML='<div class="fb no"><b>Codice non giusto.</b>Controlla di averlo scritto bene.</div>';
+}
+
+/* ---------- dialoghi da completare ---------- */
+let DF=null;
+function dfHTML(q){
+  DF={order:shuffle(q.bank.map((t,k)=>k)),fill:q.lines.filter(l=>typeof l[1]==="number").map(()=>null),sel:0,locked:false};
+  return `<div id="dfbox"></div>`;
+}
+function drawDF(){
+  const q=R.queue[R.i].q, box=document.getElementById("dfbox"); if(!box) return;
+  const used=DF.fill.filter(v=>v!==null);
+  box.innerHTML=`<div>${q.lines.map(l=>typeof l[1]==="number"
+    ?`<div class="dfl"><span class="sp">${esc(l[0])}:</span><button class="slot ${DF.fill[l[1]]!==null?"full":""} ${DF.sel===l[1]&&!DF.locked?"sel":""} ${DF.mark?DF.mark[l[1]]:""}" onclick="dfSlot(${l[1]})">${DF.fill[l[1]]!==null?esc(q.bank[DF.fill[l[1]]]):"("+(l[1]+1)+") …"}</button></div>`
+    :`<div class="dfl"><span class="sp">${esc(l[0])}:</span><span>${esc(l[1])}</span></div>`).join("")}</div>
+  <div class="bank">${DF.order.map(k=>`<button ${used.includes(k)||DF.locked?"disabled":""} onclick="dfPick(${k})">${esc(q.bank[k])}</button>`).join("")}</div>`;
+}
+function dfSlot(i){if(DF.locked)return;if(DF.fill[i]!==null){DF.fill[i]=null;}DF.sel=i;DF.mark=null;drawDF();}
+function dfPick(k){if(DF.locked)return;DF.fill[DF.sel]=k;DF.mark=null;const nx=DF.fill.findIndex(v=>v===null);DF.sel=nx<0?DF.sel:nx;drawDF();}
+function checkDF(){
+  if(R.done) return;
+  const it=R.queue[R.i], q=it.q;
+  if(DF.fill.some(v=>v===null)){fb("info","<b>Completa tutti gli spazi.</b>Tocca uno spazio e poi la frase giusta.");return;}
+  const ok=DF.fill.map((v,i)=>v===i);
+  if(ok.every(Boolean)){DF.locked=true;DF.mark=ok.map(()=>"right");drawDF();succeed([10,6,3][R.tries]);return;}
+  R.tries++; document.querySelectorAll("#tries i").forEach((d,k)=>d.classList.toggle("used",k<R.tries));
+  if(R.tries>=3){DF.fill=DF.fill.map((v,i)=>i);DF.locked=true;DF.mark=DF.fill.map(()=>"right");drawDF();reveal();return;}
+  DF.mark=ok.map(x=>x?"right":"wrong"); drawDF();
+  fb("hint",`<b>${ok.filter(x=>!x).length} battute al posto sbagliato (in rosso).</b>Ricorda: ${esc(q.h)}`);
+}
+function dfSpeech(q){return q.lines.map(l=>typeof l[1]==="number"?q.bank[l[1]]:l[1]).join(" ");}
+
 /* parole da mettere in ordine */
 let TB=null;
 function tilesHTML(q){
@@ -1169,6 +1298,7 @@ function topbar(big){
 function stars(n){n=n||0;return "★".repeat(n)+"☆".repeat(3-n);}
 
 function home(){
+  if(!S.unl){lockScreen();return;}
   topbar(true);
   const wc=weakCount();
   app.innerHTML=`
@@ -1183,6 +1313,7 @@ function home(){
     <button class="tile" onclick="pronPage()"><b>🗣️ Pronuncia</b><span>I trucchi per leggere bene</span></button>
   </div>
   <div class="card" style="margin-top:14px">
+    <p style="margin:0 0 8px"><b>📖 Non sai una parola?</b> Toccala e vedi cosa significa. Sulle risposte da scegliere tieni il dito premuto.</p>
     <div class="toggle"><div><b>Voce lenta</b><br><small class="muted">Per sentire meglio ogni parola</small></div><button class="sw ${S.slow?"on":""}" onclick="S.slow=!S.slow;save();this.classList.toggle('on');say('Hello! How are you?')"></button></div>
     <p class="muted" style="margin:10px 0 0"><small>${VOICE?"Voce inglese: "+esc(VOICE.name)+".":"Su questo telefono non trovo una voce inglese, per questo i pulsanti Ascolta non compaiono."} Per una voce più naturale su iPhone: Impostazioni → Accessibilità → Contenuto letto ad alta voce → Voci → Inglese, e scarica una voce «Avanzata».</small></p>
     <div class="row"><button class="link" onclick="resetAsk(this)">Ricomincia da zero</button></div><div id="rst"></div>
@@ -1192,7 +1323,7 @@ function home(){
 function resetAsk(){
   document.getElementById("rst").innerHTML=`<div class="fb hint"><b>Vuoi cancellare tutti i progressi?</b>Punti, stelline, giorni di fila ed errori tornano a zero.<div class="row"><button class="btn" onclick="doReset()">Sì, ricomincia</button><button class="btn ghost" onclick="document.getElementById('rst').innerHTML=''">No</button></div></div>`;
 }
-function doReset(){S={pts:0,streak:0,last:"",stars:{},weak:{},ok:{},tests:[],sres:{},sdone:{},slow:S.slow};save();home();}
+function doReset(){S={pts:0,streak:0,last:"",stars:{},weak:{},ok:{},tests:[],sres:{},sdone:{},slow:S.slow,unl:S.unl,dev:S.dev};save();home();}
 
 /* ---------- compito ---------- */
 function daysLeft(){
@@ -1342,7 +1473,8 @@ function renderQ(){
     <p class="ask">${esc(q.ask||tp.ask)}</p>
     ${exBox(q)}
     <div class="q">${showQ(q)}</div>
-    ${q.m?`<div class="opts">${shuffle(q.m.map((o,k)=>[o,k])).map(([o,k])=>`<button class="opt" data-k="${k}" onclick="pickOpt(${k})">${esc(o)}</button>`).join("")}</div>`
+    ${q.df?`${dfHTML(q)}<div class="row"><button class="btn" id="chk" onclick="checkDF()">Controlla</button></div><div class="tries" id="tries"><i></i><i></i><i></i></div>`
+      :q.m?`<div class="opts">${shuffle(q.m.map((o,k)=>[o,k])).map(([o,k])=>`<button class="opt" data-k="${k}" onclick="pickOpt(${k})">${esc(o)}</button>`).join("")}</div>`
       :q.o?`${tilesHTML(q)}<div class="row"><button class="btn" id="chk" onclick="checkW(tilesValue(),true)">Controlla</button></div><div class="tries" id="tries"><i></i><i></i><i></i></div>`
       :`<input class="ans" id="ans" autocomplete="off" autocapitalize="off" autocorrect="off" spellcheck="false" placeholder="Scrivi qui" enterkeyhint="done">
         <div class="row"><button class="btn" id="chk" onclick="checkW()">Controlla</button></div>
@@ -1353,6 +1485,8 @@ function renderQ(){
   const inp=document.getElementById("ans");
   if(inp){inp.addEventListener("keydown",e=>{if(e.key==="Enter"){e.preventDefault();checkW();}});setTimeout(()=>inp.focus(),80);}
   if(q.o) drawTiles();
+  if(q.df) drawDF();
+  ANSWERING=q.tp;
 }
 function fb(cls,html){document.getElementById("fb").innerHTML=`<div class="fb ${cls}">${html}</div>`;}
 function hint2(q){
@@ -1385,7 +1519,7 @@ function pickOpt(k){
   if(left<=1||R.tries>=2) reveal();
   else fb("hint",`<b>Non ancora.</b>Ricorda: ${esc(q.h)}`);
 }
-function lock(){R.done=true;if(TB)TB.locked=true;document.querySelectorAll(".tw").forEach(b=>b.disabled=true);document.querySelectorAll(".opt").forEach(b=>b.disabled=true);const i=document.getElementById("ans");if(i)i.disabled=true;const c=document.getElementById("chk");if(c)c.style.display="none";}
+function lock(){R.done=true;ANSWERING=null;if(TB)TB.locked=true;document.querySelectorAll(".tw").forEach(b=>b.disabled=true);document.querySelectorAll(".opt").forEach(b=>b.disabled=true);const i=document.getElementById("ans");if(i)i.disabled=true;const c=document.getElementById("chk");if(c)c.style.display="none";}
 function succeed(p){
   const it=R.queue[R.i], q=it.q; lock();
   if(q.m) document.querySelector(`.opt[data-k="${q.a}"]`).classList.add("right");
@@ -1491,12 +1625,12 @@ function testSetup(){
 function toggleSel(id,el){testSel.has(id)?testSel.delete(id):testSel.add(id);el.classList.toggle("on");}
 function testStart(){
   if(!testSel.size){alertBox("Scegli almeno un argomento.");return;}
-  const pool=ALLQ.filter(q=>testSel.has(q.tp));
+  const pool=ALLQ.filter(q=>testSel.has(q.tp)&&!q.df);
   T={qs:shuffle(pool).slice(0,12),i:0,ans:[],scope:"libera"};
   testQ();
 }
 function testCompito(){
-  const pool=compitoPool(), by={};
+  const pool=compitoPool().filter(q=>!q.df), by={};
   pool.forEach(q=>(by[q.tp]=by[q.tp]||[]).push(q));
   let qs=[]; Object.values(by).forEach(a=>qs.push(shuffle(a)[0]));
   qs=shuffle(qs).slice(0,15);
@@ -1517,6 +1651,7 @@ function testQ(){
   const inp=document.getElementById("ans");
   if(inp){inp.addEventListener("keydown",e=>{if(e.key==="Enter"){e.preventDefault();testAns();}});setTimeout(()=>inp.focus(),80);}
   if(q.o) drawTiles();
+  ANSWERING=q.tp;
 }
 function testAns(k){
   const q=T.qs[T.i]; let given, ok;
