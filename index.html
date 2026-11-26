@@ -1230,9 +1230,11 @@ function hcode(dev){let h=2166136261;const t=dev.toUpperCase().trim()+_K;for(let
 function devCode(){if(!S.dev){const A="ABCDEFGHJKLMNPQRSTUVWXYZ23456789";let c="";for(let i=0;i<6;i++)c+=A[Math.floor(Math.random()*A.length)];S.dev=c;save();}return S.dev;}
 function lockScreen(){
   hdr.style.display="none";
-  app.innerHTML=`<div class="lock card"><h2>Ciao! 👋</h2><p>Questa app è personale. Per aprirla chiedi il <b>codice di accesso</b> a chi te l'ha mandata, e dille questo codice:</p>
+  app.innerHTML=`<div class="lock card"><h2>Ciao! 👋</h2><p>Questa app è personale. Per entrare servono due passaggi:</p>
+  <p style="text-align:left"><b>1.</b> Manda questo codice a chi ti ha dato l'app:</p>
   <div class="code">${devCode()}</div>
-  <input class="ans" id="unl" inputmode="numeric" placeholder="Scrivi qui il codice di accesso" autocomplete="off" style="text-align:center">
+  <p style="text-align:left"><b>2.</b> Ti risponderà con un numero di 6 cifre. Scrivilo qui:</p>
+  <input class="ans" id="unl" inputmode="numeric" placeholder="es. 123456" autocomplete="off" style="text-align:center">
   <div class="row" style="justify-content:center"><button class="btn" onclick="tryUnlock()">Entra</button></div><div id="fb"></div></div>`;
 }
 function tryUnlock(){
